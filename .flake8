@@ -1,0 +1,6 @@
+[flake8]
+max-complexity = 20
+max-line-length = 120
+ignore F401
+exclude = __init__.py demos/* .ipynb_checkpoints/*
+flake8-docstrings = numpy
