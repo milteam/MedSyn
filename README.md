@@ -1,13 +1,7 @@
-# TemplateProject
+# MedTextGeneration
 
-## Folder structure
 
-* *configs* -- folder for *template* config files for project experiments
-* *lib* -- main project library
-    * *core* -- folder for base project
-    * *data* -- folder for datasets, data generation
-    * *losses* -- folder for loss functions implementation
-    * *metrics* -- folder for project metrics implementation
-    * *models* -- folder for model implementation
-    * *training* -- folder for training scripts
-* *scripts* -- folder for training and evaluation scripts
+
+## Data Description:
+* `data/top_ICD10_codes.txt` - top frequent diseases from Sber data.
+* `data/icd_gender_split.json` - split of diseases codes basesd on gender, extracted from [ICD10Volume2_en_2019](https://icd.who.int/browse10/Content/statichtml/ICD10Volume2_en_2019.pdf).
