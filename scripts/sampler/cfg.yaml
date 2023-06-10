@@ -1,0 +1,25 @@
+seed: 42
+    
+n_samples: 20  # target number of samples to generate
+max_iters: 1000  # max iters for generation (some diseases from top does not match with database)
+
+max_diseases: 5  # max numer of diseases per person
+max_symptoms: 5  # max numer of symptoms per disease
+
+symptoms_temperature: 10  # temperature to regulate softmax from tf-idf for symptoms sampling
+min_age: 9  # min person age to sample
+gender_scpec_or_general:  # probability to sample gender specific or general diseases
+  - 0.3
+  - 0.7
+
+icd_gender_split_path: "./data/codes/icd_gender_split.json"
+top_ICD10_codes_path: "./data/codes/top_ICD10_codes.txt"
+
+disease_path: "./data/databases/iBKH/entity/disease_vocab.csv"
+disease_symptom_relation_path: "./data/databases/iBKH/relation/Di_Sy_res.csv"
+mesh_disease_symp_path: "./data/databases//HSDN/Combined-Output.tsv"
+
+edge_gender_pyramyd_path: "./data/demographical/EdgeGenderRU_2022.csv"
+family_status_path: "./data/demographical/FamilyStatusRU.csv"
+ethnic_groups_path: "./data/demographical/EthnicGroups.csv"
+path_to_store: "./data/generated/samples.json"
