@@ -286,9 +286,7 @@ class Sampler:
             cfg["min_age"],
         )
         self.icd_sampler = ICDCodeSampler(
-            cfg["top_ICD10_codes_path"],
-            gender_split,
-            cfg["gender_scpec_or_general"]
+            cfg["top_ICD10_codes_path"], gender_split, cfg["gender_scpec_or_general"]
         )
         self.disease_sampler = Disease(cfg["disease_path"])
         self.symptoms_sampler = Symptoms(

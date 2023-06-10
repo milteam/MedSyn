@@ -1,6 +1,12 @@
 # Medical Text Generation
 
-
+## Samples Generation:
+To generate samples:
+1. Define config `scripts/sampler/cfg.yaml`
+2. Run 
+```
+python3 ./scripts/sampler/generate.py
+```
 
 ## Data Description:
 * `data/codes/top_ICD10_codes.txt` - top frequent diseases from Sber data.
