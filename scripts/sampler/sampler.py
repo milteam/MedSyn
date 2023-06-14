@@ -8,6 +8,8 @@ import pandas as pd
 from tqdm import tqdm
 import warnings
 
+from drug_sampler import DrugSampler
+
 warnings.simplefilter(action="ignore")
 
 
@@ -292,6 +294,14 @@ class Sampler:
         self.symptoms_sampler = Symptoms(
             cfg["disease_symptom_relation_path"], cfg["mesh_disease_symp_path"]
         )
+        self.drug_sampler = DrugSampler(
+            cfg["drug_disease_rel_path"],
+            cfg["drugbank_path"],
+            cfg["disease_to_disease_path"],
+            cfg["indications_path"],
+            cfg["meddra_freq_path"],
+            cfg["max_side_effects"],
+        )
 
     @staticmethod
     def set_seed(seed) -> None:
@@ -333,6 +343,9 @@ class Sampler:
                     }
         return data
 
+    def sample_drug_and_se(self, disease_doid: str):
+        return self.drug_sampler.get_sample(disease_doid)
+
     def get_sample(self) -> Dict:
         sample = self.demographic_sampler.get_sample()
         sample["disease"] = []
@@ -358,6 +371,10 @@ class Sampler:
                 else:
                     sample["disease"].append(disease_info)
                     sample["symptoms"].extend(sample_["symptoms"])
+
+        if sample["disease"]:
+            drug_and_se = self.sample_drug_and_se(sample["disease"][0]["DOID"])
+            sample["drug_and_se"] = drug_and_se
 
         return sample
 

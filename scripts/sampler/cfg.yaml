@@ -5,6 +5,7 @@ max_iters: 1000  # max iters for generation (some diseases from top does not mat
 
 max_diseases: 5  # max numer of diseases per person
 max_symptoms: 5  # max numer of symptoms per disease
+max_side_effects: 3  # mux number of side effects from the drug
 
 symptoms_temperature: 10  # temperature to regulate softmax from tf-idf for symptoms sampling
 min_age: 9  # min person age to sample
@@ -23,3 +24,9 @@ edge_gender_pyramyd_path: "./data/demographical/EdgeGenderRU_2022.csv"
 family_status_path: "./data/demographical/FamilyStatusRU.csv"
 ethnic_groups_path: "./data/demographical/EthnicGroups.csv"
 path_to_store: "./data/generated/samples.json"
+
+drug_disease_rel_path: "./data/databases/iBKH/relation/D_Di_res.csv"
+drugbank_path: "./data/databases/DrugBank/drugbank.csv"
+disease_to_disease_path: "./data/databases/iBKH/relation/Di_Di_res.csv"
+indications_path: "./data/databases/SIDER/indications.csv"
+meddra_freq_path: "./data/databases/SIDER/meddra_freq.csv"

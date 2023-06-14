@@ -19,116 +19,15 @@
             "Hirsutism",
             "Nausea",
             "Abdominal Pain"
-        ]
+        ],
+        "drug_and_se": {}
     },
     "1": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 63,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "ankylosing spondylitis",
-                "DOID": "DOID:7147",
-                "ICD_10": "M45",
-                "MESH_ID": "D013167",
-                "idc_10": "M45"
-            },
-            {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
-            }
-        ],
-        "symptoms": [
-            "Back Pain",
-            "Low Back Pain",
-            "Fatigue",
-            "Hearing Loss, Sensorineural",
-            "Virilism"
-        ]
-    },
-    "2": {
-        "ethical_group": "Русские",
+        "ethical_group": "Карачаевцы",
         "location": "city",
         "gender": "male",
-        "age": 25,
+        "age": 65,
         "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
-        ]
-    },
-    "3": {
-        "ethical_group": "Чеченцы",
-        "location": "countyside",
-        "gender": "male",
-        "age": 38,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "narcolepsy",
-                "DOID": "DOID:8986",
-                "ICD_10": "G47.41",
-                "MESH_ID": "D009290",
-                "idc_10": "G47"
-            },
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Hallucinations",
-            "Sleep Disorders",
-            "Catalepsy",
-            "Sleep Deprivation",
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ]
-    },
-    "4": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 39,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
-            }
-        ],
-        "symptoms": [
-            "Virilism",
-            "Hirsutism"
-        ]
-    },
-    "5": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 42,
-        "family_state": 0,
         "disease": [
             {
                 "Name": "kidney cancer",
@@ -139,150 +38,14 @@
             }
         ],
         "symptoms": [
+            "Abdomen, Acute",
             "Proteinuria",
             "Nausea",
-            "Anoxia",
-            "Fever"
-        ]
-    },
-    "6": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 50,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
+            "Flank Pain"
         ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ]
+        "drug_and_se": {}
     },
-    "7": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 76,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
-            }
-        ],
-        "symptoms": [
-            "Virilism",
-            "Hirsutism"
-        ]
-    },
-    "8": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 58,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "hypothyroidism",
-                "DOID": "DOID:1459",
-                "ICD_10": "E03.9",
-                "MESH_ID": "D007037",
-                "idc_10": "E03"
-            }
-        ],
-        "symptoms": [
-            "Body Weight"
-        ]
-    },
-    "9": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 42,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "dental caries",
-                "DOID": "DOID:216",
-                "ICD_10": "K02",
-                "MESH_ID": "D003731",
-                "idc_10": "K02"
-            }
-        ],
-        "symptoms": [
-            "Toothache"
-        ]
-    },
-    "10": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 75,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
-        ]
-    },
-    "11": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 52,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
-            }
-        ],
-        "symptoms": [
-            "Virilism"
-        ]
-    },
-    "12": {
-        "ethical_group": "Русские",
-        "location": "countyside",
-        "gender": "male",
-        "age": 57,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence"
-        ]
-    },
-    "13": {
+    "2": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
@@ -299,32 +62,136 @@
         ],
         "symptoms": [
             "Urinary Incontinence"
-        ]
+        ],
+        "drug_and_se": {}
     },
-    "14": {
+    "3": {
         "ethical_group": "Русские",
-        "location": "countyside",
-        "gender": "male",
-        "age": 37,
+        "location": "city",
+        "gender": "female",
+        "age": 49,
         "family_state": 1,
         "disease": [
             {
-                "Name": "ankylosing spondylitis",
-                "DOID": "DOID:7147",
-                "ICD_10": "M45",
-                "MESH_ID": "D013167",
-                "idc_10": "M45"
+                "Name": "rheumatoid arthritis",
+                "DOID": "DOID:7148",
+                "ICD_10": "M06.9",
+                "MESH_ID": "D001172",
+                "idc_10": "M06"
             }
         ],
         "symptoms": [
-            "Back Pain"
-        ]
+            "Pain",
+            "Proteinuria"
+        ],
+        "drug_and_se": {}
     },
-    "15": {
+    "4": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 49,
+        "age": 45,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "primary biliary cholangitis",
+                "DOID": "DOID:12236",
+                "ICD_10": "K74.3",
+                "MESH_ID": "D008105",
+                "idc_10": "K74"
+            }
+        ],
+        "symptoms": [
+            "Pruritus",
+            "Fatigue",
+            "Jaundice",
+            "Purpura, Thrombocytopenic, Idiopathic"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:12236",
+            "disease_DOID": "DOID:12236",
+            "drug_db_idx": "DB04173",
+            "drug_name": "FRUCTOSE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
+    },
+    "5": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 36,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "ovarian cancer",
+                "DOID": "DOID:2394",
+                "ICD_10": "C56",
+                "MESH_ID": "D010051",
+                "idc_10": "C56"
+            }
+        ],
+        "symptoms": [
+            "Virilism"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:2394",
+            "disease_DOID": "DOID:2998",
+            "drug_db_idx": "DB04703",
+            "drug_name": "HESPERIDIN",
+            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
+            "side_effect": []
+        }
+    },
+    "6": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 33,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "prostate cancer",
+                "DOID": "DOID:10283",
+                "ICD_10": "C61",
+                "MESH_ID": "D011471",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Urinary Incontinence",
+            "Hot Flashes",
+            "Pain"
+        ],
+        "drug_and_se": {}
+    },
+    "7": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 51,
+        "family_state": 1,
+        "disease": [
+            {
+                "Name": "kidney cancer",
+                "DOID": "DOID:263",
+                "ICD_10": "C64",
+                "MESH_ID": "D007680",
+                "idc_10": "C64"
+            }
+        ],
+        "symptoms": [
+            "Fever",
+            "Vomiting",
+            "Flank Pain"
+        ],
+        "drug_and_se": {}
+    },
+    "8": {
+        "ethical_group": "Чеченцы",
+        "location": "city",
+        "gender": "male",
+        "age": 42,
         "family_state": 1,
         "disease": [
             {
@@ -340,9 +207,21 @@
             "Hot Flashes",
             "Pain",
             "Prostatism"
-        ]
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:10283",
+            "disease_DOID": "DOID:10283",
+            "drug_db_idx": "DB00590",
+            "drug_name": "DOXAZOSIN",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": [
+                "Headache",
+                "Ill-defined disorder",
+                "Chest pain"
+            ]
+        }
     },
-    "16": {
+    "9": {
         "ethical_group": "Русские",
         "location": "countyside",
         "gender": "female",
@@ -350,22 +229,145 @@
         "family_state": 1,
         "disease": [
             {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
+                "Name": "polycystic ovary syndrome",
+                "DOID": "DOID:11612",
+                "ICD_10": "E28.2",
+                "MESH_ID": "D011085",
+                "idc_10": "E28"
             }
         ],
         "symptoms": [
-            "Virilism"
-        ]
+            "Hirsutism",
+            "Obesity"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:11612",
+            "disease_DOID": "DOID:11612",
+            "drug_db_idx": "DB00197",
+            "drug_name": "TROGLITAZONE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
     },
-    "17": {
+    "10": {
+        "ethical_group": "Кабардинцы",
+        "location": "city",
+        "gender": "male",
+        "age": 31,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "prostate cancer",
+                "DOID": "DOID:10283",
+                "ICD_10": "C61",
+                "MESH_ID": "D011471",
+                "idc_10": "C61"
+            },
+            {
+                "Name": "kidney cancer",
+                "DOID": "DOID:263",
+                "ICD_10": "C64",
+                "MESH_ID": "D007680",
+                "idc_10": "C64"
+            }
+        ],
+        "symptoms": [
+            "Urinary Incontinence",
+            "Hot Flashes",
+            "Pain",
+            "Fever",
+            "Fatigue",
+            "Abdomen, Acute"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:10283",
+            "disease_DOID": "DOID:10283",
+            "drug_db_idx": "DB09130",
+            "drug_name": "COPPER",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
+    },
+    "11": {
         "ethical_group": "Русские",
         "location": "city",
+        "gender": "male",
+        "age": 29,
+        "family_state": 1,
+        "disease": [
+            {
+                "Name": "osteoporosis",
+                "DOID": "DOID:11476",
+                "ICD_10": "M81.0",
+                "MESH_ID": "D010024",
+                "idc_10": "M81"
+            }
+        ],
+        "symptoms": [
+            "Back Pain",
+            "Body Weight",
+            "Hot Flashes"
+        ],
+        "drug_and_se": {}
+    },
+    "12": {
+        "ethical_group": "Русские",
+        "location": "countyside",
         "gender": "female",
-        "age": 35,
+        "age": 57,
+        "family_state": 1,
+        "disease": [
+            {
+                "Name": "asthma",
+                "DOID": "DOID:2841",
+                "ICD_10": "J45",
+                "MESH_ID": "D001249",
+                "idc_10": "J45"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Dyspnea"
+        ],
+        "drug_and_se": {}
+    },
+    "13": {
+        "ethical_group": "Чеченцы",
+        "location": "city",
+        "gender": "male",
+        "age": 58,
+        "family_state": 1,
+        "disease": [
+            {
+                "Name": "atherosclerosis",
+                "DOID": "DOID:1936",
+                "ICD_10": "I70",
+                "MESH_ID": "D050197",
+                "idc_10": "I70"
+            }
+        ],
+        "symptoms": [
+            "Acute Coronary Syndrome"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:1936",
+            "disease_DOID": "DOID:1936",
+            "drug_db_idx": "DB01115",
+            "drug_name": "NIFEDIPINE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": [
+                "Headache",
+                "Cough",
+                "Dizziness"
+            ]
+        }
+    },
+    "14": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 67,
         "family_state": 1,
         "disease": [
             {
@@ -379,53 +381,134 @@
         "symptoms": [
             "Virilism",
             "Hirsutism"
-        ]
+        ],
+        "drug_and_se": {}
     },
-    "18": {
+    "15": {
         "ethical_group": "Русские",
         "location": "city",
-        "gender": "female",
-        "age": 86,
-        "family_state": 1,
+        "gender": "male",
+        "age": 22,
+        "family_state": 0,
         "disease": [
             {
-                "Name": "ovarian cancer",
-                "DOID": "DOID:2394",
-                "ICD_10": "C56",
-                "MESH_ID": "D010051",
-                "idc_10": "C56"
+                "Name": "restless legs syndrome",
+                "DOID": "DOID:0050425",
+                "ICD_10": "G25.81",
+                "MESH_ID": "D012148",
+                "idc_10": "G25"
             }
         ],
         "symptoms": [
-            "Virilism"
-        ]
+            "Sleep Disorders",
+            "Myoclonus"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:0050425",
+            "disease_DOID": "DOID:0050425",
+            "drug_db_idx": "DB08917",
+            "drug_name": "FERRIC CARBOXYMALTOSE",
+            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
+            "side_effect": []
+        }
+    },
+    "16": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 47,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "rheumatoid arthritis",
+                "DOID": "DOID:7148",
+                "ICD_10": "M06.9",
+                "MESH_ID": "D001172",
+                "idc_10": "M06"
+            }
+        ],
+        "symptoms": [
+            "Pain",
+            "Proteinuria",
+            "Fatigue"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:7148",
+            "disease_DOID": "DOID:418",
+            "drug_db_idx": "DB00814",
+            "drug_name": "MELOXICAM",
+            "drug_to_disease_relation": "Palliates",
+            "side_effect": [
+                "Rhinitis",
+                "Dyspepsia",
+                "Dyspepsia"
+            ]
+        }
+    },
+    "17": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 64,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "prostate cancer",
+                "DOID": "DOID:10283",
+                "ICD_10": "C61",
+                "MESH_ID": "D011471",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Urinary Incontinence"
+        ],
+        "drug_and_se": {}
+    },
+    "18": {
+        "ethical_group": "Чуваши",
+        "location": "countyside",
+        "gender": "male",
+        "age": 40,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "primary biliary cholangitis",
+                "DOID": "DOID:12236",
+                "ICD_10": "K74.3",
+                "MESH_ID": "D008105",
+                "idc_10": "K74"
+            },
+            {
+                "Name": "prostate cancer",
+                "DOID": "DOID:10283",
+                "ICD_10": "C61",
+                "MESH_ID": "D011471",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Pruritus",
+            "Fatigue",
+            "Urinary Incontinence",
+            "Hot Flashes",
+            "Pain",
+            "Pain, Intractable"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:12236",
+            "disease_DOID": "DOID:12236",
+            "drug_db_idx": "DB00691",
+            "drug_name": "MOEXIPRIL",
+            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
+            "side_effect": []
+        }
     },
     "19": {
         "ethical_group": "Русские",
         "location": "city",
-        "gender": "male",
-        "age": 47,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "multiple sclerosis",
-                "DOID": "DOID:2377",
-                "ICD_10": "G35",
-                "MESH_ID": "D009103",
-                "idc_10": "G35"
-            }
-        ],
-        "symptoms": [
-            "Fatigue",
-            "Muscle Spasticity",
-            "Urinary Bladder, Neurogenic"
-        ]
-    },
-    "20": {
-        "ethical_group": "Аварцы",
-        "location": "city",
         "gender": "female",
-        "age": 44,
+        "age": 59,
         "family_state": 1,
         "disease": [
             {
@@ -438,6 +521,37 @@
         ],
         "symptoms": [
             "Virilism"
-        ]
+        ],
+        "drug_and_se": {}
+    },
+    "20": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 36,
+        "family_state": 0,
+        "disease": [
+            {
+                "Name": "prostate cancer",
+                "DOID": "DOID:10283",
+                "ICD_10": "C61",
+                "MESH_ID": "D011471",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Urinary Incontinence"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:10283",
+            "disease_DOID": "DOID:11819",
+            "drug_db_idx": "DB00316",
+            "drug_name": "ACETAMINOPHEN",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": [
+                "Somnolence",
+                "Injection site reaction"
+            ]
+        }
     }
 }
