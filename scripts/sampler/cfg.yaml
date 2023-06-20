@@ -10,15 +10,17 @@ max_side_effects: 3  # mux number of side effects from the drug
 symptoms_temperature: 10  # temperature to regulate softmax from tf-idf for symptoms sampling
 min_age: 9  # min person age to sample
 gender_scpec_or_general:  # probability to sample gender specific or general diseases
-  - 0.3
-  - 0.7
+  - 0.1
+  - 0.9
 
+icd_codes: "./data/codes/codes.csv"
 icd_gender_split_path: "./data/codes/icd_gender_split.json"
-top_ICD10_codes_path: "./data/codes/top_ICD10_codes.txt"
+top_ICD10_codes_path: "./data/codes/top_ICD10_codes_percent.txt"
+icd_codes_processed: "./data/codes/codes_proc.csv"
 
 disease_path: "./data/databases/iBKH/entity/disease_vocab.csv"
 disease_symptom_relation_path: "./data/databases/iBKH/relation/Di_Sy_res.csv"
-mesh_disease_symp_path: "./data/databases//HSDN/Combined-Output.tsv"
+mesh_disease_symp_path: "./data/databases/HSDN/Combined-Output.tsv"
 
 edge_gender_pyramyd_path: "./data/demographical/EdgeGenderRU_2022.csv"
 family_status_path: "./data/demographical/FamilyStatusRU.csv"

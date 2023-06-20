@@ -9,6 +9,7 @@ from tqdm import tqdm
 import warnings
 
 from drug_sampler import DrugSampler
+from disease_sampler import ICDCodeSampler, Disease
 
 warnings.simplefilter(action="ignore")
 
@@ -171,81 +172,6 @@ class DemographicSampler:
         }
 
 
-class ICDCodeSampler:
-    def __init__(
-        self,
-        path_to_dis: str,
-        icd_gender_split: Dict,
-        gender_scpec_or_general: List[float],
-    ) -> None:
-        self.load_dis(path_to_dis)
-        self.icd_gender_split = icd_gender_split
-        self.get_gender_split()
-        self.gender_scpec_or_general = gender_scpec_or_general
-
-    def load_dis(self, path: str) -> None:
-        with open(path) as f:
-            icd_codes = f.readlines()
-        self.icd_codes = [icd.split("\n")[0] for icd in icd_codes]
-
-    def get_gender_split(self) -> Tuple[List, List]:
-        male = self.icd_gender_split[
-            "List of categories limited to, or more likely to occur in, male persons"
-        ]
-        female = self.icd_gender_split[
-            "List of categories limited to, or more likely to occur in, female persons"
-        ]
-        self.icd_codes_male = [code for code in self.icd_codes if code in male]
-        self.icd_codes_female = [code for code in self.icd_codes if code in female]
-        self.icd_codes_neutral = [
-            code
-            for code in self.icd_codes
-            if code not in self.icd_codes_male + self.icd_codes_female
-        ]
-
-    def get_sample(self, gender: str) -> str:
-        case_ = np.random.choice(
-            ["specific", "general"], p=self.gender_scpec_or_general
-        )
-
-        if case_ == "general":
-            return np.random.choice(self.icd_codes_neutral)
-        if gender == "male":
-            sample = np.random.choice(self.icd_codes_male)
-        elif gender == "female":
-            sample = np.random.choice(self.icd_codes_female)
-        return sample
-
-
-class Disease:
-    def __init__(self, disease_db_path: str) -> None:
-        self.diseases = pd.read_csv(disease_db_path)
-        self.prepare_df()
-
-    def prepare_df(self) -> None:
-        self.diseases = self.diseases.dropna(subset=["icd_10", "icd_9"])
-        self.diseases["icd_10_p"] = self.diseases["icd_10"].apply(
-            lambda x: x.split(".")[0]
-        )
-
-    def get_data_by_icd(self, icd_code: str) -> Dict:
-        data = self.diseases.query("icd_10_p == @icd_code")
-
-        disease_info = {}
-        if data.shape[0] == 0:
-            return disease_info
-
-        for idx in range(data.shape[0]):
-            disease_info[data.iloc[idx]["name"]] = {
-                "Name": data.iloc[idx]["name"],
-                "DOID": data.iloc[idx]["do_id"],
-                "ICD_10": data.iloc[idx]["icd_10"],
-                "MESH_ID": data.iloc[idx]["mesh_id"],
-            }
-
-        return disease_info
-
-
 class Symptoms:
     def __init__(self, disease_symptom_rel_path: str, symptom_mesh_path: str) -> None:
         self.disease_symptom_rel = pd.read_csv(disease_symptom_rel_path)
@@ -288,7 +214,7 @@ class Sampler:
             cfg["min_age"],
         )
         self.icd_sampler = ICDCodeSampler(
-            cfg["top_ICD10_codes_path"], gender_split, cfg["gender_scpec_or_general"]
+            cfg["icd_codes_processed"], gender_split, cfg["gender_scpec_or_general"]
         )
         self.disease_sampler = Disease(cfg["disease_path"])
         self.symptoms_sampler = Symptoms(
@@ -350,8 +276,6 @@ class Sampler:
         sample = self.demographic_sampler.get_sample()
         sample["disease"] = []
         sample["symptoms"] = []
-
-        # sample = {"gender": gender, "age": age, "disease": [], "symptoms": []}
 
         n_diseases = np.random.randint(1, self.cfg["max_diseases"] + 1)
         for _ in range(n_diseases):
