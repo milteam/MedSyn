@@ -86,7 +86,7 @@ class Inferer:
             base_model,
             load_in_8bit=load_in_8bit,
             torch_dtype=torch_dtype,
-            device_map={"": 0},
+            #device_map={"": 0},
         )
 
         if peft:
@@ -170,7 +170,7 @@ class Inferer:
         return response
 
 
-inferer = Inferer("medalpaca/medalpaca-7b", "template.json", load_in_8bit=True)
+inferer = Inferer("medalpaca/medalpaca-7b", "template.json")
 
 print(inferer('''
 What are the symptoms of diabetes?'''))
