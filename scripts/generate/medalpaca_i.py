@@ -86,6 +86,7 @@ class Inferer:
             base_model,
             load_in_8bit=load_in_8bit,
             torch_dtype=torch_dtype,
+            device_map="auto"
             #device_map={"": 0},
         )
 
