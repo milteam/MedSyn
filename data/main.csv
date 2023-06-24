@@ -1,0 +1,681 @@
+icd_10,DOID,MESH,ULMS,Alternateids,Name,Name_DO
+B00.0,DOID:9123,MESH:D007617,,DOID:4408; DOID:9081,eczema herpeticum,eczema herpeticum
+B00.1,,,,,herpesviral vesicular dermatitis,
+B00.2,,,,,herpesviral gingivostomatitis and pharyngotonsillitis,
+B00.3,,,,,herpesviral meningitis,
+B00.4,,,,,herpesviral encephalitis,
+B01.0,,,,,varicella meningitis,
+B07.0,DOID:13775,,,,plantar wart,plantar wart
+B07.8,,,,,other viral warts,
+B07.9,,,,,"viral wart, unspecified",
+B18.0,,,,,chronic viral hepatitis b with delta-agent,
+B18.1,,,,,chronic viral hepatitis b without delta-agent,
+B18.2,,,,,chronic viral hepatitis c,
+B18.8,,,,,None,
+B18.9,,,,,None,
+B37.0,,,,,candidal stomatitis,
+B37.1,,,,,pulmonary candidiasis,
+B37.2,DOID:14512,,,,candidiasis of skin and nail,candidal paronychia
+B37.3,DOID:2272,MESH:D002181,,,candidiasis of vulva and vagina,vulvovaginal candidiasis
+C16.0,DOID:10548,,,,malignant neoplasm of cardia,cardia cancer
+C16.1,DOID:10538,,,,malignant neoplasm of fundus of stomach,gastric fundus cancer
+C16.2,DOID:10534,MESH:D013274,,DOID:10543; DOID:10539; DOID:4713; DOID:10542,malignant neoplasm of body of stomach,stomach cancer
+C16.3,DOID:10547,,,,malignant neoplasm of pyloric antrum,pyloric antrum cancer
+C16.4,DOID:0111648,MESH:C563268,,,malignant neoplasm of pylorus,ectopia lentis with ectopia of pupil
+C16.5,DOID:0050440,MESH:D052496,,,"malignant neoplasm of lesser curvature of stomach, unspecified",familial partial lipodystrophy
+C16.6,DOID:0081249,,,,"malignant neoplasm of greater curvature of stomach, unspecified",EWSR1-negative small round cell tumor
+C16.8,,,,,malignant neoplasm of overlapping sites of stomach,
+C16.9,,,,,"malignant neoplasm of stomach, unspecified",
+C18.0,DOID:1521,MESH:D002430,,,malignant neoplasm of cecum,cecum cancer
+C18.1,DOID:11239,MESH:D001063,,,malignant neoplasm of appendix,appendix cancer
+C18.2,DOID:218,,,,malignant neoplasm of ascending colon,ascending colon cancer
+C18.3,DOID:260,,,,malignant neoplasm of hepatic flexure,hepatic flexure cancer
+C18.4,DOID:261,,,,malignant neoplasm of transverse colon,transverse colon cancer
+C18.5,DOID:12191,,UMLS_CUI:C0153440,,malignant neoplasm of splenic flexure,splenic flexure cancer
+C18.6,DOID:12190,,UMLS_CUI:C0153435,,malignant neoplasm of descending colon,descending colon cancer
+C18.7,DOID:12192,,UMLS_CUI:C0153436,,malignant neoplasm of sigmoid colon,sigmoid colon cancer
+C18.8,,,,,malignant neoplasm of overlapping sites of colon,
+C18.9,DOID:5672,,,,"malignant neoplasm of colon, unspecified",large intestine cancer
+C20,DOID:1993,MESH:D012004,UMLS_CUI:C0949022,,malignant neoplasm of rectum,rectum cancer
+C25.0,DOID:1793,MESH:D010190,UMLS_CUI:C0153463,,malignant neoplasm of head of pancreas,pancreatic cancer
+C25.1,DOID:1793,MESH:D010190,UMLS_CUI:C0153463,,malignant neoplasm of body of pancreas,pancreatic cancer
+C25.2,DOID:1793,MESH:D010190,UMLS_CUI:C0153463,,malignant neoplasm of tail of pancreas,pancreatic cancer
+C25.3,DOID:3587,MESH:D021441,UMLS_CUI:C0153461,,malignant neoplasm of pancreatic duct,pancreatic ductal carcinoma
+C25.4,DOID:1799,MESH:D007516,UMLS_CUI:C0496784,,malignant neoplasm of endocrine pancreas,islet cell tumor
+C25.7,,,,,malignant neoplasm of other parts of pancreas,
+C25.8,,,,,None,
+C25.9,,,,,"malignant neoplasm of pancreas, unspecified",
+C43.0,,,,,malignant melanoma of lip,
+C53.0,,,,,malignant neoplasm of endocervix,
+C53.1,,,,,malignant neoplasm of exocervix,
+C53.8,,,,,malignant neoplasm of overlapping sites of cervix uteri,
+C53.9,,,,,"malignant neoplasm of cervix uteri, unspecified",
+C54.0,,,,,malignant neoplasm of isthmus uteri,
+C54.1,,,,,None,
+C54.2,,,,,None,
+C54.3,,,,,None,
+C54.8,,,,,malignant neoplasm of overlapping sites of corpus uteri,
+C54.9,,,,,"malignant neoplasm of corpus uteri, unspecified",
+C56.1,,,,,None,
+C56.2,,,,,None,
+C56.9,,,,,malignant neoplasm of unspecified ovary,
+C61,,,,,malignant neoplasm of prostate,
+C64.1,,,,,None,
+C64.2,,,,,None,
+C64.9,,,,,"malignant neoplasm of unspecified kidney, except renal pelvis",
+C67.0,,,,,malignant neoplasm of trigone of bladder,
+C67.1,DOID:11820,,UMLS_CUI:C0496827,,malignant neoplasm of dome of bladder,bladder dome cancer
+C67.2,DOID:11593,,UMLS_CUI:C0496828,,malignant neoplasm of lateral wall of bladder,bladder lateral wall cancer
+C67.3,DOID:11814,,UMLS_CUI:C0153611,,malignant neoplasm of anterior wall of bladder,urinary bladder anterior wall cancer
+C67.4,DOID:11811,,UMLS_CUI:C0153612,,malignant neoplasm of posterior wall of bladder,urinary bladder posterior wall cancer
+C67.5,DOID:11809,,UMLS_CUI:C0153613,,malignant neoplasm of bladder neck,bladder neck cancer
+C67.6,DOID:11818,,UMLS_CUI:C0153614,,malignant neoplasm of ureteric orifice,ureteric orifice cancer
+C67.7,DOID:11817,,UMLS_CUI:C0153615,,malignant neoplasm of urachus,urachus cancer
+C67.8,,,,,malignant neoplasm of overlapping sites of bladder,
+C67.9,,,,,"malignant neoplasm of bladder, unspecified",
+C73,DOID:1781,MESH:D013964,UMLS_CUI:C0007115,DOID:10008,malignant neoplasm of thyroid gland,thyroid gland cancer
+D12.0,,,,,None,
+D12.1,,,,,None,
+D12.2,,,,,None,
+D12.3,,,,,None,
+D12.4,,,,,None,
+D12.5,,,,,None,
+D12.6,DOID:0080410,,,,"benign neoplasm of colon, unspecified",familial adenomatous polyposis 2
+D12.7,,,,,None,
+D12.8,,,,,benign neoplasm of rectum,
+D12.9,,,,,None,
+D17.0,,,,,"benign lipomatous neoplasm of skin and subcutaneous tissue of head, face and neck",
+D17.1,,,,,None,
+D21.0,,,,,"benign neoplasm of connective and other soft tissue of head, face and neck",
+D22.0,,,,,None,
+D23.0,,,,,other benign neoplasm of skin of lip,
+D24.1,,,,,benign neoplasm of right breast,
+D24.2,,,,,None,
+D24.9,,,,,None,
+D25.0,DOID:13222,,UMLS_CUI:C0153993,,submucous leiomyoma of uterus,submucous uterine fibroid
+D25.1,DOID:13955,,UMLS_CUI:C0153994,,intramural leiomyoma of uterus,uterus interstitial leiomyoma
+D25.2,DOID:13560,,UMLS_CUI:C0153995,,subserosal leiomyoma of uterus,subserous uterine fibroid
+D25.9,,,,,"leiomyoma of uterus, unspecified",
+D27.0,,,,,None,
+D27.1,,,,,None,
+D27.9,,,,,benign neoplasm of unspecified ovary,
+D50.0,,,,,iron deficiency anemia secondary to blood loss (chronic),
+D50.1,,,,,sideropenic dysphagia,
+D50.8,,,,,other iron deficiency anemias,
+D50.9,,,,,"iron deficiency anemia, unspecified",
+D69.0,DOID:11123,MESH:D011695,UMLS_CUI:C0034152,,allergic purpura,Henoch-Schoenlein purpura
+D69.1,DOID:0111044,MESH:D055652,UMLS_CUI:C0272302,,qualitative platelet defects,gray platelet syndrome
+D69.2,DOID:3326,MESH:D011693,UMLS_CUI:C0034150,,other nonthrombocytopenic purpura,purpura
+D69.3,DOID:8924,MESH:D016553,UMLS_CUI:C0398650,,immune thrombocytopenic purpura,autoimmune thrombocytopenic purpura
+D72.0,,,,,genetic anomalies of leukocytes,
+D72.1,DOID:999,MESH:D004802,UMLS_CUI:C0014457,,eosinophilia,hypereosinophilic syndrome
+E01.0,,,,,None,
+E01.1,,,,,None,
+E01.2,DOID:13198,MESH:D006043,UMLS_CUI:C0018022,,"iodine-deficiency related (endemic) goiter, unspecified",endemic goiter
+E01.8,,,,,other iodine-deficiency related thyroid disorders and allied conditions,
+E03.0,,,,,None,
+E03.1,DOID:0050328,MESH:D003409,UMLS_CUI:C0342200,,None,congenital hypothyroidism
+E03.2,,,,,hypothyroidism due to medicaments and other exogenous substances,
+E03.3,,,,,None,
+E03.4,,,,,None,
+E03.5,,,,,None,
+E03.8,,,,,None,
+E03.9,DOID:11634,MESH:D009230,UMLS_CUI:C0027145,,"hypothyroidism, unspecified",myxedema
+E04.0,,,,,nontoxic diffuse goiter,
+E04.1,,,,,nontoxic single thyroid nodule,
+E04.2,,,,,nontoxic multinodular goiter,
+E04.8,,,,,None,
+E04.9,DOID:13195,,UMLS_CUI:C0221777,,"nontoxic goiter, unspecified",nontoxic goiter
+E06.0,DOID:14350,MESH:D013969,UMLS_CUI:C0040150,,acute thyroiditis,suppurative thyroiditis
+E06.1,DOID:7165,MESH:D013968,UMLS_CUI:C0040149,,subacute thyroiditis,subacute thyroiditis
+E06.2,,,,,None,
+E06.3,DOID:7188,MESH:D013967,UMLS_CUI:C0920350,,autoimmune thyroiditis,autoimmune thyroiditis
+E06.4,,,,,drug-induced thyroiditis,
+E06.5,DOID:14351,,UMLS_CUI:C0154162,,other chronic thyroiditis,Riedel's fibrosing thyroiditis
+E06.9,,,,,"thyroiditis, unspecified",
+E07.0,,,,,hypersecretion of calcitonin,
+E07.1,DOID:0060744,MESH:C536648,UMLS_CUI:C0271829,,dyshormogenetic goiter,Pendred Syndrome
+E22.0,,,,,acromegaly and pituitary gigantism,
+E22.1,DOID:12700,MESH:D002640,UMLS_CUI:C0020514,,None,hyperprolactinemia
+E22.2,DOID:3401,MESH:D007177,UMLS_CUI:C0021141,,syndrome of inappropriate secretion of antidiuretic hormone,inappropriate ADH syndrome
+E22.8,DOID:0112308,MESH:D011629,UMLS_CUI:C0342543,,None,central precocious puberty
+E22.9,,,,,"hyperfunction of pituitary gland, unspecified",
+E28.0,DOID:14336,,UMLS_CUI:C0154209,,estrogen excess,estrogen excess
+E28.1,,,,,androgen excess,
+E28.2,DOID:11612,MESH:D011085,UMLS_CUI:C0032460,,polycystic ovarian syndrome,polycystic ovary syndrome
+E34.0,,,,,carcinoid syndrome,
+E34.1,,,,,None,
+E34.2,,,,,"ectopic hormone secretion, not elsewhere classified",
+E34.3,,,,,short stature due to endocrine disorder,
+E34.4,,,,,None,
+E89.0,DOID:1458,,UMLS_CUI:C0154157,,postprocedural hypothyroidism,postsurgical hypothyroidism
+E89.1,DOID:2181,,UMLS_CUI:C0154190,,postprocedural hypoinsulinemia,post-surgical hypoinsulinemia
+E89.2,,,,,None,
+E89.3,,,,,None,
+G20,DOID:14330,MESH:D010300,UMLS_CUI:C0030567,,parkinson's disease,Parkinson's disease
+G25.0,DOID:4990,MESH:D020329,UMLS_CUI:C0270736,,essential tremor,essential tremor
+G25.1,,,,,None,
+G25.2,,,,,None,
+G25.3,,,,,myoclonus,
+G25.4,,,,,None,
+G25.5,DOID:12859,,,,other chorea,choreatic disease
+G35,DOID:2377,MESH:D009103,UMLS_CUI:C0026769,,multiple sclerosis,multiple sclerosis
+G50.0,DOID:12098,MESH:D014277,UMLS_CUI:C0040997,,trigeminal neuralgia,trigeminal neuralgia
+G50.1,,,,,atypical facial pain,
+G50.8,,,,,other disorders of trigeminal nerve,
+G50.9,,,,,"disorder of trigeminal nerve, unspecified",
+G54.0,DOID:3103,MESH:D013901,UMLS_CUI:C0039984,,brachial plexus disorders,thoracic outlet syndrome
+G54.1,,,,,lumbosacral plexus disorders,
+G54.2,,,,,"cervical root disorders, not elsewhere classified",
+G54.3,,,,,"thoracic root disorders, not elsewhere classified",
+G54.4,,,,,"lumbosacral root disorders, not elsewhere classified",
+G54.5,DOID:10383,MESH:D020968,UMLS_CUI:C1510479,,neuralgic amyotrophy,amyotrophic neuralgia
+G54.6,,,,,phantom limb syndrome with pain,
+G54.7,,,,,None,
+G54.8,,,,,other nerve root and plexus disorders,
+G54.9,,,,,"nerve root and plexus disorder, unspecified",
+G62.0,DOID:14184,,UMLS_CUI:C0154762,,drug-induced polyneuropathy,polyneuropathy due to drug
+G62.1,DOID:14183,MESH:D020269,UMLS_CUI:C0085677,,alcoholic polyneuropathy,alcoholic neuropathy
+G62.2,,,,,polyneuropathy due to other toxic agents,
+G80.0,,,,,spastic quadriplegic cerebral palsy,
+G80.1,DOID:10965,MESH:D002547,UMLS_CUI:C0023882,,spastic diplegic cerebral palsy,spastic diplegia
+G80.2,,,,,spastic hemiplegic cerebral palsy,
+G80.3,,,,,athetoid cerebral palsy,
+G80.4,,,,,None,
+G80.8,,,,,other cerebral palsy,
+G80.9,,,,,"cerebral palsy, unspecified",
+G93.0,,,,,cerebral cysts,
+G93.1,,,,,"anoxic brain damage, not elsewhere classified",
+G93.2,DOID:11459,MESH:D011559,UMLS_CUI:C0033845,,benign intracranial hypertension,pseudotumor cerebri
+G93.3,DOID:8544,MESH:D015673,UMLS_CUI:C0015674,,None,chronic fatigue syndrome
+G96.0,,,,,cerebrospinal fluid leak,
+G98.0,,,,,None,
+G98.8,,,,,None,
+H90.0,,,,,"conductive hearing loss, bilateral",
+I10,DOID:10763,MESH:D006973,UMLS_CUI:C0020538,,essential (primary) hypertension,hypertension
+I11.0,,,,,hypertensive heart disease with heart failure,
+I11.9,,,,,hypertensive heart disease without heart failure,
+I20.0,DOID:8805,MESH:D000789,UMLS_CUI:C0002965,,unstable angina,intermediate coronary syndrome
+I20.1,,,,,angina pectoris with documented spasm,
+I20.8,,,,,other forms of angina pectoris,
+I20.9,,,,,None,
+I34.0,,,,,nonrheumatic mitral (valve) insufficiency,
+I34.1,,,,,None,
+I34.2,,,,,None,
+I34.8,,,,,None,
+I34.9,,,,,None,
+I42.0,,,,,None,
+I42.1,,,,,obstructive hypertrophic cardiomyopathy,
+I42.2,,,,,other hypertrophic cardiomyopathy,
+I42.3,DOID:396,,UMLS_CUI:C0264834,,endomyocardial (eosinophilic) disease,Loeffler endocarditis
+I42.4,DOID:12929,MESH:D004695,UMLS_CUI:C0014117,,endocardial fibroelastosis,endocardial fibroelastosis
+I42.5,DOID:397,MESH:D002313,UMLS_CUI:C0007196,,other restrictive cardiomyopathy,restrictive cardiomyopathy
+I42.6,DOID:12935,MESH:D002310,UMLS_CUI:C0007192,,alcoholic cardiomyopathy,alcoholic cardiomyopathy
+I42.7,,,,,cardiomyopathy due to drug and external agent,
+I42.8,DOID:0060675,,,,other cardiomyopathies,catecholaminergic polymorphic ventricular tachycardia 1
+I42.9,,,,,None,
+I45.0,,,,,None,
+I47.0,,,,,None,
+I47.1,,,,,supraventricular tachycardia,
+I47.2,DOID:0060674,,,,ventricular tachycardia,catecholaminergic polymorphic ventricular tachycardia
+I47.9,,,,,"paroxysmal tachycardia, unspecified",
+I48.0,,,,,None,
+I48.1,,,,,None,
+I48.2,,,,,None,
+I48.3,,,,,None,
+I48.4,,,,,None,
+I51.0,,,,,"cardiac septal defect, acquired",
+I51.1,,,,,"rupture of chordae tendineae, not elsewhere classified",
+I51.2,,,,,"rupture of papillary muscle, not elsewhere classified",
+I51.3,,,,,None,
+I51.4,DOID:820,MESH:D009205,UMLS_CUI:C0027059,,"myocarditis, unspecified",myocarditis
+I51.5,,,,,myocardial degeneration,
+I51.7,,,,,cardiomegaly,
+I67.0,,,,,None,
+I67.1,,,,,"cerebral aneurysm, nonruptured",
+I67.2,DOID:12720,MESH:D002537,UMLS_CUI:C0007775,,cerebral atherosclerosis,cerebral atherosclerosis
+I67.3,,,,,None,
+I67.4,DOID:9427,MESH:D020343,UMLS_CUI:C0151620,,hypertensive encephalopathy,hypertensive encephalopathy
+I67.5,DOID:13099,MESH:D009072,UMLS_CUI:C0026654,,moyamoya disease,Moyamoya disease
+I67.6,,,,,nonpyogenic thrombosis of intracranial venous system,
+I67.7,,,,,"cerebral arteritis, not elsewhere classified",
+I70.0,DOID:10230,,UMLS_CUI:C0155733,,atherosclerosis of aorta,aortic atherosclerosis
+I70.1,DOID:14092,,UMLS_CUI:C0155734,,atherosclerosis of renal artery,renal artery atheroma
+I86.0,,,,,sublingual varices,
+I86.1,DOID:12337,MESH:D014646,UMLS_CUI:C0042341,,scrotal varices,varicocele
+I86.2,DOID:9742,,UMLS_CUI:C0155795,,pelvic varices,pelvic varices
+I86.3,,,,,vulval varices,
+I86.4,,,,,None,
+I86.8,,,,,varicose veins of other specified sites,
+I88.0,DOID:10782,MESH:D008640,UMLS_CUI:C0025469,,nonspecific mesenteric lymphadenitis,mesenteric lymphadenitis
+I88.1,DOID:1602,MESH:D008199,UMLS_CUI:C0024205,,"chronic lymphadenitis, except mesenteric",lymphadenitis
+I88.8,,,,,None,
+I88.9,,,,,"nonspecific lymphadenitis, unspecified",
+J00,DOID:10459,MESH:D003139,UMLS_CUI:C0009443,,acute nasopharyngitis [common cold],common cold
+J02.0,,,,,streptococcal pharyngitis,
+J02.8,,,,,None,
+J02.9,,,,,"acute pharyngitis, unspecified",
+J04.0,DOID:9396,,UMLS_CUI:C0001327,,acute laryngitis,acute laryngitis
+J06.0,DOID:11195,,UMLS_CUI:C0155817,,acute laryngopharyngitis,acute laryngopharyngitis
+J06.9,,,,,"acute upper respiratory infection, unspecified",
+J18.0,DOID:12375,MESH:D001996,UMLS_CUI:C0006285,,"bronchopneumonia, unspecified organism",bronchopneumonia
+J18.1,,,,,None,
+J18.2,,,,,None,
+J18.8,,,,,None,
+J18.9,,,,,"pneumonia, unspecified organism",
+J20.0,,,,,None,
+J20.1,,,,,None,
+J20.2,,,,,None,
+J20.3,,,,,None,
+J20.4,,,,,None,
+J20.5,,,,,None,
+J20.6,,,,,None,
+J20.7,,,,,None,
+J20.8,,,,,None,
+J20.9,,,,,"acute bronchitis, unspecified",
+J30.0,DOID:4730,MESH:D012223,UMLS_CUI:C0035460,,vasomotor rhinitis,vasomotor rhinitis
+J30.1,,,,,allergic rhinitis due to pollen,
+J30.2,,,,,other seasonal allergic rhinitis,
+J30.5,,,,,allergic rhinitis due to food,
+J31.0,DOID:8252,,UMLS_CUI:C0008711,,chronic rhinitis,chronic rhinitis
+J31.1,DOID:10460,MESH:D009304,UMLS_CUI:C0027441,DOID:11587,chronic nasopharyngitis,nasopharyngitis
+J31.2,,,,,chronic pharyngitis,
+J32.0,DOID:10792,,UMLS_CUI:C0008698,,chronic maxillary sinusitis,chronic maxillary sinusitis
+J32.1,DOID:10790,,UMLS_CUI:C0008683,,chronic frontal sinusitis,
+J32.2,DOID:9312,,UMLS_CUI:C0008681,,chronic ethmoidal sinusitis,chronic ethmoiditis
+J32.3,DOID:10793,,UMLS_CUI:C0008712,,chronic sphenoidal sinusitis,chronic sphenoidal sinusitis
+J32.4,,,,,chronic pansinusitis,
+J32.8,,,,,None,
+J32.9,,,,,"chronic sinusitis, unspecified",
+J33.0,,,,,polyp of nasal cavity,
+J33.1,,,,,polypoid sinus degeneration,
+J33.8,,,,,other polyp of sinus,
+J33.9,,,,,"nasal polyp, unspecified",
+J34.0,,,,,None,
+J34.1,,,,,cyst and mucocele of nose and nasal sinus,
+J34.2,,,,,deviated nasal septum,
+J34.3,,,,,hypertrophy of nasal turbinates,
+J37.0,DOID:11797,,UMLS_CUI:C0155836,,chronic laryngitis,chronic laryngitis
+J37.1,DOID:0050148,,UMLS_CUI:C0155837,DOID:9390; DOID:11795,chronic laryngotracheitis,laryngotracheitis
+J40,DOID:6132,MESH:D001991,UMLS_CUI:C0008677,,"bronchitis, not specified as acute or chronic",bronchitis
+J41.0,,,,,simple chronic bronchitis,
+J41.1,,,,,mucopurulent chronic bronchitis,
+J41.8,,,,,mixed simple and mucopurulent chronic bronchitis,
+J42,DOID:6132,MESH:D001991,UMLS_CUI:C0008677,,unspecified chronic bronchitis,bronchitis
+J44.0,,,,,chronic obstructive pulmonary disease with acute lower respiratory infection,
+J44.1,,,,,chronic obstructive pulmonary disease with (acute) exacerbation,
+J44.9,DOID:3083,MESH:D029424,UMLS_CUI:C0024117,,"chronic obstructive pulmonary disease, unspecified",chronic obstructive pulmonary disease
+K00.0,DOID:13714,MESH:D000848,UMLS_CUI:C0399352,,anodontia,anodontia
+K00.1,,,,,supernumerary teeth,
+K00.2,,,,,abnormalities of size and form of teeth,
+K00.3,DOID:13711,MESH:D009050,UMLS_CUI:C0026618,,mottled teeth,dental fluorosis
+K00.4,,,,,disturbances in tooth formation,
+K00.5,DOID:4154,MESH:D003811,UMLS_CUI:C0011436,,"hereditary disturbances in tooth structure, not elsewhere classified",dentinogenesis imperfecta
+K00.6,,,,,disturbances in tooth eruption,
+K00.7,,,,,teething syndrome,
+K00.8,,,,,other disorders of tooth development,
+K00.9,,,,,"disorder of tooth development, unspecified",
+K02.3,,,,,arrested dental caries,
+K21.0,,,,,gastro-esophageal reflux disease with esophagitis,
+K21.9,DOID:8534,MESH:D005764,UMLS_CUI:C0017168,,gastro-esophageal reflux disease without esophagitis,gastroesophageal reflux disease
+K25.0,,,,,acute gastric ulcer with hemorrhage,
+K25.1,,,,,acute gastric ulcer with perforation,
+K25.2,,,,,acute gastric ulcer with both hemorrhage and perforation,
+K25.3,,,,,acute gastric ulcer without hemorrhage or perforation,
+K25.4,,,,,chronic or unspecified gastric ulcer with hemorrhage,
+K25.5,,,,,chronic or unspecified gastric ulcer with perforation,
+K25.6,,,,,chronic or unspecified gastric ulcer with both hemorrhage and perforation,
+K25.7,,,,,chronic gastric ulcer without hemorrhage or perforation,
+K25.9,,,,,"gastric ulcer, unspecified as acute or chronic, without hemorrhage or perforation",
+K26.0,,,,,acute duodenal ulcer with hemorrhage,
+K26.1,,,,,acute duodenal ulcer with perforation,
+K26.2,,,,,acute duodenal ulcer with both hemorrhage and perforation,
+K26.3,,,,,acute duodenal ulcer without hemorrhage or perforation,
+K26.4,,,,,chronic or unspecified duodenal ulcer with hemorrhage,
+K26.5,,,,,chronic or unspecified duodenal ulcer with perforation,
+K26.6,,,,,chronic or unspecified duodenal ulcer with both hemorrhage and perforation,
+K26.7,,,,,chronic duodenal ulcer without hemorrhage or perforation,
+K26.9,,,,,"duodenal ulcer, unspecified as acute or chronic, without hemorrhage or perforation",
+K30,,,,,functional dyspepsia,
+K31.0,,,,,acute dilatation of stomach,
+K31.1,DOID:12639,MESH:D011707,UMLS_CUI:C0034194,,adult hypertrophic pyloric stenosis,pyloric stenosis
+K31.2,DOID:12234,,UMLS_CUI:C0267183,,hourglass stricture and stenosis of stomach,cascade stomach
+K31.3,,,,,"pylorospasm, not elsewhere classified",
+K31.4,,,,,gastric diverticulum,
+K31.5,DOID:3558,MESH:D004380,UMLS_CUI:C0013292,,obstruction of duodenum,duodenal obstruction
+K31.6,,,,,fistula of stomach and duodenum,
+K31.7,,,,,None,
+K35.2,,,,,acute appendicitis with generalized peritonitis,
+K35.3,,,,,acute appendicitis with localized peritonitis,
+K42.0,,,,,"umbilical hernia with obstruction, without gangrene",
+K42.1,,,,,umbilical hernia with gangrene,
+K42.9,,,,,umbilical hernia without obstruction or gangrene,
+K43.0,,,,,"incisional hernia with obstruction, without gangrene",
+K43.1,,,,,incisional hernia with gangrene,
+K43.2,,,,,incisional hernia without obstruction or gangrene,
+K43.3,,,,,None,
+K43.4,,,,,None,
+K43.5,,,,,None,
+K43.6,,,,,"other and unspecified ventral hernia with obstruction, without gangrene",
+K43.7,,,,,other and unspecified ventral hernia with gangrene,
+K43.9,,,,,ventral hernia without obstruction or gangrene,
+K52.0,,,,,gastroenteritis and colitis due to radiation,
+K52.1,,,,,toxic gastroenteritis and colitis,
+K58.0,,,,,None,
+K58.1,,,,,None,
+K58.2,,,,,None,
+K58.8,,,,,None,
+K58.9,,,,,irritable bowel syndrome without diarrhea,
+K60.0,,,,,None,
+K60.1,,,,,None,
+K60.2,,,,,"anal fissure, unspecified",
+K60.3,DOID:0060328,MESH:D012003,,,anal fistula,anal fistula
+K60.4,,,,,None,
+K60.5,,,,,None,
+K64.0,,,,,None,
+K64.1,,,,,None,
+K64.2,,,,,None,
+K64.3,,,,,None,
+K64.4,,,,,residual hemorrhoidal skin tags,
+K64.5,DOID:9745,,UMLS_CUI:C0155784,,perianal venous thrombosis,perianal hematoma
+K64.8,,,,,other hemorrhoids,
+K64.9,,,,,unspecified hemorrhoids,
+K74.0,,,,,hepatic fibrosis,
+K74.1,,,,,None,
+K74.2,,,,,None,
+K74.3,DOID:12236,MESH:D008105,UMLS_CUI:C0008312,DOID:1851,primary biliary cirrhosis,primary biliary cholangitis
+K74.4,,,,,None,
+K74.5,DOID:12236,MESH:D008105,UMLS_CUI:C0023892,DOID:1851,None,primary biliary cholangitis
+K76.0,,,,,None,
+K76.1,DOID:13739,,UMLS_CUI:C0156195,,chronic passive congestion of liver,nutmeg liver
+K76.2,,,,,None,
+K76.3,DOID:13738,MESH:D000081011,UMLS_CUI:C0151731,,infarction of liver,hepatic infarction
+K76.4,DOID:914,MESH:D010382,UMLS_CUI:C0030781,,None,peliosis hepatis
+K76.5,DOID:0080177,MESH:D006504,,,None,hepatic veno-occlusive disease
+K76.6,DOID:10762,MESH:D006975,UMLS_CUI:C0020541,,portal hypertension,portal hypertension
+K76.7,DOID:11823,MESH:D006530,UMLS_CUI:C0019212,,hepatorenal syndrome,hepatorenal syndrome
+K81.0,,,,,acute cholecystitis,
+K81.1,,,,,chronic cholecystitis,
+K81.2,,,,,acute cholecystitis with chronic cholecystitis,
+K81.9,,,,,"cholecystitis, unspecified",
+K82.0,DOID:9714,,UMLS_CUI:C0156214,,obstruction of gallbladder,occlusion of gallbladder
+K82.1,DOID:9717,,UMLS_CUI:C0152445,,hydrops of gallbladder,hydrops of gallbladder
+K82.2,,,,,perforation of gallbladder,
+K82.3,,,,,fistula of gallbladder,
+K82.4,DOID:10254,,UMLS_CUI:C0152456,,cholesterolosis of gallbladder,strawberry gallbladder
+K82.8,,,,,other specified diseases of gallbladder,
+K82.9,,,,,"disease of gallbladder, unspecified",
+K83.0,DOID:9446,MESH:D002761,UMLS_CUI:C0008311,,cholangitis,cholangitis
+K83.1,DOID:13580,MESH:D002779,UMLS_CUI:C0008370,,obstruction of bile duct,cholestasis
+K83.2,DOID:13409,,UMLS_CUI:C0156218,,perforation of bile duct,perforation of bile duct
+K83.3,,,,,fistula of bile duct,
+K83.4,,,,,spasm of sphincter of oddi,
+K83.5,,,,,biliary cyst,
+K83.8,,,,,None,
+K83.9,DOID:9741,MESH:D001660,UMLS_CUI:C0005424,,"disease of biliary tract, unspecified",biliary tract disease
+K86.0,,,,,None,
+K86.1,,,,,other chronic pancreatitis,
+K86.2,,,,,cyst of pancreas,
+K86.3,,,,,None,
+K91.0,,,,,vomiting following gastrointestinal surgery,
+K91.1,DOID:8439,MESH:D011178,UMLS_CUI:C0032763,,postgastric surgery syndromes,postgastrectomy syndrome
+K91.2,,,,,"postsurgical malabsorption, not elsewhere classified",
+L04.0,,,,,None,
+L04.1,,,,,None,
+L04.2,,,,,None,
+L04.3,,,,,None,
+L04.8,,,,,None,
+L04.9,,,,,"acute lymphadenitis, unspecified",
+L08.0,DOID:4223,MESH:D011711,UMLS_CUI:C0034212,,pyoderma,pyoderma
+L08.1,DOID:4131,MESH:D004894,UMLS_CUI:C0014752,,erythrasma,erythrasma
+L20.0,,,,,None,
+L23.0,DOID:0040056,,,,allergic contact dermatitis due to metals,chromium allergic contact dermatitis
+L23.1,,,,,None,
+L23.2,,,,,None,
+L23.3,,,,,None,
+L23.4,,,,,None,
+L23.5,,,,,None,
+L23.6,,,,,None,
+L23.7,,,,,None,
+L27.0,,,,,generalized skin eruption due to drugs and medicaments taken internally,
+L27.1,,,,,None,
+L27.2,,,,,dermatitis due to ingested food,
+L27.8,,,,,dermatitis due to other substances taken internally,
+L27.9,,,,,dermatitis due to unspecified substance taken internally,
+L30.0,,,,,None,
+L30.1,,,,,dyshidrosis [pompholyx],
+L30.2,,,,,None,
+L30.3,,,,,infective dermatitis,
+L30.4,,,,,erythema intertrigo,
+L30.5,,,,,pityriasis alba,
+L30.8,,,,,None,
+L30.9,DOID:2723,MESH:D003872,UMLS_CUI:C0011603,DOID:8917; DOID:8614,None,dermatitis
+L40.0,,,,,None,
+L40.1,DOID:0080474,,,,generalized pustular psoriasis,pustular psoriasis 14
+L40.2,,,,,None,
+L40.3,DOID:4398,MESH:D011565,UMLS_CUI:C0030246,,None,pustulosis of palm and sole
+L40.4,,,,,None,
+L50.0,DOID:10612,,UMLS_CUI:C0149526,,allergic urticaria,allergic urticaria
+L50.1,,,,,idiopathic urticaria,
+L50.2,DOID:0090061,,,,urticaria due to cold and heat,familial cold autoinflammatory syndrome
+L50.3,DOID:743,,UMLS_CUI:C0343065,,dermatographic urticaria,dermatographia
+L50.4,DOID:1554,MESH:D000094482,UMLS_CUI:C0157743,,vibratory urticaria,vibratory urticaria
+L50.5,DOID:14443,,UMLS_CUI:C0152230,,cholinergic urticaria,cholinergic urticaria
+L50.6,,,,,None,
+L50.8,,,,,other urticaria,
+L50.9,,,,,"urticaria, unspecified",
+L60.0,,,,,ingrowing nail,
+L60.1,,,,,onycholysis,
+L60.2,,,,,None,
+L60.3,,,,,None,
+L60.4,,,,,None,
+L60.5,DOID:0050468,MESH:D056684,UMLS_CUI:C0221348,,None,yellow nail syndrome
+L60.8,,,,,None,
+L60.9,,,,,"nail disorder, unspecified",
+L72.0,,,,,None,
+L98.0,,,,,pyogenic granuloma,
+L98.1,DOID:9165,,UMLS_CUI:C1274184,,factitial dermatitis,neurotic excoriation
+L98.2,,,,,None,
+L98.3,,,,,None,
+M13.0,,,,,"polyarthritis, unspecified",
+M15.0,,,,,primary generalized (osteo)arthritis,
+M15.1,,,,,heberden's nodes (with arthropathy),
+M15.2,,,,,None,
+M15.3,,,,,secondary multiple arthritis,
+M15.4,,,,,None,
+M15.8,,,,,other polyosteoarthritis,
+M15.9,,,,,"polyosteoarthritis, unspecified",
+M16.0,,,,,None,
+M17.0,,,,,None,
+M45.0,,,,,None,
+M45.1,,,,,None,
+M45.2,,,,,None,
+M45.3,,,,,None,
+M45.4,,,,,None,
+M45.5,,,,,None,
+M45.6,,,,,None,
+M45.7,,,,,None,
+M45.8,,,,,None,
+M45.9,,,,,ankylosing spondylitis of unspecified sites in spine,
+M53.0,DOID:6692,MESH:D055010,UMLS_CUI:C0376378,,cervicocranial syndrome,Barre-Lieou syndrome
+M53.1,,,,,cervicobrachial syndrome,
+M79.0,,,,,"rheumatism, unspecified",
+M79.1,,,,,None,
+M79.2,,,,,"neuralgia and neuritis, unspecified",
+M79.3,DOID:1526,MESH:D015434,UMLS_CUI:C0030326,,"panniculitis, unspecified",panniculitis
+M79.4,,,,,hypertrophy of (infrapatellar) fat pad,
+M79.5,,,,,residual foreign body in soft tissue,
+M81.0,DOID:11476,MESH:D010024,UMLS_CUI:C0029456,,age-related osteoporosis without current pathological fracture,osteoporosis
+M81.6,,,,,None,
+M81.8,,,,,other osteoporosis without current pathological fracture,
+M95.0,,,,,acquired deformity of nose,
+N10,DOID:559,,UMLS_CUI:C0520575,,acute tubulo-interstitial nephritis,acute pyelonephritis
+N11.0,,,,,nonobstructive reflux-associated chronic pyelonephritis,
+N11.1,,,,,None,
+N11.8,DOID:0060911,,,,other chronic tubulo-interstitial nephritis,karyomegalic interstitial nephritis
+N11.9,,,,,None,
+N13.0,,,,,None,
+N13.1,,,,,None,
+N13.2,,,,,None,
+N18.1,,,,,"chronic kidney disease, stage 1",
+N18.2,,,,,"chronic kidney disease, stage 2 (mild)",
+N18.3,,,,,"chronic kidney disease, stage 3 (moderate)",
+N18.4,,,,,"chronic kidney disease, stage 4 (severe)",
+N18.5,,,,,"chronic kidney disease, stage 5",
+N18.6,,,,,end stage renal disease,
+N18.9,DOID:784,MESH:D007676,UMLS_CUI:C0022661,,"chronic kidney disease, unspecified",chronic kidney disease
+N20.0,,,,,calculus of kidney,
+N20.1,DOID:14146,MESH:D053039,UMLS_CUI:C0041952,,calculus of ureter,ureterolithiasis
+N20.2,,,,,None,
+N20.9,,,,,"urinary calculus, unspecified",
+N28.0,DOID:2972,MESH:D012078,UMLS_CUI:C0035066,,ischemia and infarction of kidney,renal artery obstruction
+N28.1,DOID:9621,,UMLS_CUI:C0268799,,"cyst of kidney, acquired",non-congenital cyst of kidney
+N31.0,,,,,None,
+N31.1,,,,,None,
+N31.2,,,,,"flaccid neuropathic bladder, not elsewhere classified",
+N31.8,,,,,other neuromuscular dysfunction of bladder,
+N31.9,,,,,"neuromuscular dysfunction of bladder, unspecified",
+N39.0,,,,,"urinary tract infection, site not specified",
+N39.3,,,,,stress incontinence (female) (male),
+N40.0,,,,,enlarged prostate without lower urinary tract symptoms,
+N40.1,,,,,enlarged prostate with lower urinary tract symptoms,
+N40.2,,,,,nodular prostate without lower urinary tract symptoms,
+N40.3,,,,,nodular prostate with lower urinary tract symptoms,
+N41.0,,,,,acute prostatitis,
+N41.1,,,,,chronic prostatitis,
+N41.2,,,,,abscess of prostate,
+N41.3,DOID:12355,,UMLS_CUI:C0156291,,prostatocystitis,prostatocystitis
+N41.4,,,,,None,
+N41.8,,,,,other inflammatory diseases of prostate,
+N41.9,DOID:14654,MESH:D011472,UMLS_CUI:C0033581,,"inflammatory disease of prostate, unspecified",prostatitis
+N43.0,,,,,encysted hydrocele,
+N43.1,DOID:9911,,UMLS_CUI:C0156300,,infected hydrocele,infected hydrocele
+N43.2,,,,,other hydrocele,
+N43.3,,,,,"hydrocele, unspecified",
+N47.0,,,,,None,
+N47.1,DOID:2712,MESH:D010688,UMLS_CUI:C0031538,,phimosis,phimosis
+N47.2,DOID:5334,MESH:D010263,UMLS_CUI:C0030483,,None,paraphimosis
+N47.3,,,,,None,
+N47.4,,,,,None,
+N47.5,,,,,None,
+N47.6,DOID:13031,,UMLS_CUI:C0004691,,balanoposthitis,balanoposthitis
+N47.7,,,,,None,
+N47.8,,,,,None,
+N48.0,DOID:8738,MESH:D052798,UMLS_CUI:C0022782,,leukoplakia of penis,leukoplakia of penis
+N48.1,DOID:13033,MESH:D001446,UMLS_CUI:C0004690,,None,balanitis
+N63.0,,,,,None,
+N64.0,,,,,fissure and fistula of nipple,
+N64.1,DOID:10691,,UMLS_CUI:C0156321,,fat necrosis of breast,fat necrosis of breast
+N64.2,,,,,atrophy of breast,
+N64.3,,,,,galactorrhea not associated with childbirth,
+N64.4,,,,,mastodynia,
+N72,DOID:2568,MESH:D002575,UMLS_CUI:C0007861,DOID:10110,inflammatory disease of cervix uteri,cervicitis
+N73.0,,,,,acute parametritis and pelvic cellulitis,
+N73.1,,,,,chronic parametritis and pelvic cellulitis,
+N73.2,,,,,None,
+N73.3,DOID:9978,,UMLS_CUI:C0269032,,female acute pelvic peritonitis,acute female pelvic peritonitis
+N73.4,,,,,female chronic pelvic peritonitis,
+N73.5,,,,,None,
+N73.6,,,,,female pelvic peritoneal adhesions (postinfective),
+N73.8,,,,,other specified female pelvic inflammatory diseases,
+N73.9,DOID:1003,MESH:D000292,UMLS_CUI:C0242172,,"female pelvic inflammatory disease, unspecified",pelvic inflammatory disease
+N76.0,DOID:2273,MESH:D014848,UMLS_CUI:C0042998,,acute vaginitis,vulvovaginitis
+N76.1,,,,,None,
+N76.2,DOID:3901,MESH:D014847,UMLS_CUI:C0042996,,None,vulvitis
+N76.3,,,,,None,
+N76.4,,,,,abscess of vulva,
+N76.5,,,,,None,
+N76.6,,,,,ulceration of vulva,
+N80.0,DOID:288,,UMLS_CUI:C0341858,,endometriosis of uterus,endometriosis of uterus
+N80.1,DOID:11432,,UMLS_CUI:C0156344,,endometriosis of ovary,endometriosis of ovary
+N80.2,DOID:11424,,UMLS_CUI:C0014177,,endometriosis of fallopian tube,fallopian tube endometriosis
+N80.3,DOID:11429,,UMLS_CUI:C0156345,,endometriosis of pelvic peritoneum,endometriosis of pelvic peritoneum
+N80.4,DOID:11431,,UMLS_CUI:C0156346,,endometriosis of rectovaginal septum and vagina,endometriosis of rectovaginal septum and vagina
+N80.5,DOID:11428,,UMLS_CUI:C0156347,,endometriosis of intestine,endometriosis of intestine
+N80.6,DOID:11430,,UMLS_CUI:C0156348,,endometriosis in cutaneous scar,endometriosis in scar of skin
+N80.8,,,,,other endometriosis,
+N80.9,,,,,"endometriosis, unspecified",
+N81.0,DOID:12369,,UMLS_CUI:C0238502,,urethrocele,prolapse of urethra
+N84.0,DOID:9042,,UMLS_CUI:C0156369,,polyp of corpus uteri,polyp of corpus uteri
+N84.1,,,,,polyp of cervix uteri,
+N84.2,,,,,polyp of vagina,
+N84.3,,,,,polyp of vulva,
+N84.8,,,,,None,
+N84.9,,,,,None,
+N86,,,,,erosion and ectropion of cervix uteri,
+N87.0,,,,,mild cervical dysplasia,
+N87.1,,,,,moderate cervical dysplasia,
+N87.9,,,,,"dysplasia of cervix uteri, unspecified",
+N88.0,DOID:9043,,UMLS_CUI:C0269194,,leukoplakia of cervix uteri,uterine cervix leukoplakia
+N88.1,,,,,old laceration of cervix uteri,
+N88.2,,,,,stricture and stenosis of cervix uteri,
+N88.3,DOID:9681,MESH:D002581,UMLS_CUI:C0007871,,incompetence of cervix uteri,cervical incompetence
+N88.4,DOID:9681,,UMLS_CUI:C0020561,,hypertrophic elongation of cervix uteri,hypertrophic elongation of cervix
+N88.8,,,,,other specified noninflammatory disorders of cervix uteri,
+N88.9,,,,,"noninflammatory disorder of cervix uteri, unspecified",
+N89.0,,,,,None,
+N89.1,,,,,None,
+N89.3,,,,,"dysplasia of vagina, unspecified",
+N89.4,DOID:8920,,UMLS_CUI:C0156385,,leukoplakia of vagina,leukoplakia of vagina
+N89.5,,,,,stricture and atresia of vagina,
+N89.6,,,,,tight hymenal ring,
+N89.7,,,,,None,
+N89.8,DOID:3766,MESH:D007973,UMLS_CUI:C0023533,,other specified noninflammatory disorders of vagina,leukorrhea
+N89.9,,,,,"noninflammatory disorder of vagina, unspecified",
+N90.0,,,,,mild vulvar dysplasia,
+N90.1,,,,,moderate vulvar dysplasia,
+N90.3,,,,,None,
+N90.4,DOID:14292,,UMLS_CUI:C0013426,,leukoplakia of vulva,vulvar dystrophy
+N90.5,DOID:14275,,UMLS_CUI:C0156393,,atrophy of vulva,atrophic vulva
+N91.0,,,,,None,
+N91.1,,,,,None,
+N91.2,DOID:13938,MESH:D000568,UMLS_CUI:C0002453,,"amenorrhea, unspecified",amenorrhea
+N91.3,,,,,None,
+N91.4,,,,,None,
+N91.5,,,,,"oligomenorrhea, unspecified",
+N92.0,,,,,excessive and frequent menstruation with regular cycle,
+N92.1,,,,,excessive and frequent menstruation with irregular cycle,
+N92.2,,,,,excessive menstruation at puberty,
+N92.3,,,,,ovulation bleeding,
+N92.4,,,,,excessive bleeding in the premenopausal period,
+N92.5,,,,,other specified irregular menstruation,
+N92.6,,,,,None,
+N94.0,,,,,mittelschmerz,
+N95.0,,,,,postmenopausal bleeding,
+N95.1,,,,,menopausal and female climacteric states,
+N95.2,DOID:11968,,UMLS_CUI:C0156409,,postmenopausal atrophic vaginitis,postmenopausal atrophic vaginitis
+N95.8,,,,,other specified menopausal and perimenopausal disorders,
+N95.9,,,,,unspecified menopausal and perimenopausal disorder,
+N97.0,,,,,female infertility associated with anovulation,
+N97.1,,,,,female infertility of tubal origin,
+N97.2,DOID:13589,,UMLS_CUI:C0156416,,female infertility of uterine origin,female infertility of uterine origin
+N97.8,,,,,female infertility of other origin,
+N97.9,,,,,"female infertility, unspecified",
+N99.0,,,,,None,
+Q20.0,,,,,common arterial trunk,
+Q20.1,DOID:6406,MESH:D004310,UMLS_CUI:C0013069,,double outlet right ventricle,double outlet right ventricle
+Q20.2,,,,,None,
+Q20.3,DOID:0060770,,,,discordant ventriculoarterial connection,dextro-looped transposition of the great arteries
+Q20.4,,,,,double inlet ventricle,
+Q20.5,,,,,discordant atrioventricular connection,
+Q20.6,DOID:0060856,,,,None,right atrial isomerism
+Q20.8,,,,,other congenital malformations of cardiac chambers and connections,
+Q20.9,,,,,"congenital malformation of cardiac chambers and connections, unspecified",
+Q21.0,DOID:1657,MESH:D006345,UMLS_CUI:C0018818,,ventricular septal defect,ventricular septal defect
+Q21.1,DOID:1882,MESH:D006344,UMLS_CUI:C0018817,,atrial septal defect,atrial heart septal defect
+Q21.2,DOID:0050651,MESH:D004694,UMLS_CUI:C0014116,,atrioventricular septal defect,atrioventricular septal defect
+Q21.3,DOID:6419,MESH:D013771,UMLS_CUI:C0039685,,tetralogy of fallot,tetralogy of Fallot
+Q21.4,,,,,None,
+Q21.8,,,,,None,
+Q21.9,DOID:1681,MESH:D006343,UMLS_CUI:C0018816,,"congenital malformation of cardiac septum, unspecified",heart septal defect
+Q24.0,DOID:9565,MESH:D003914,UMLS_CUI:C0011813,,None,dextrocardia
+Q24.1,,,,,None,
+Q24.2,,,,,cor triatriatum,
+Q24.3,DOID:8861,MESH:D011662,UMLS_CUI:C0034084,,pulmonary infundibular stenosis,pulmonary subvalvular stenosis
+Q24.4,,,,,congenital subaortic stenosis,
+Q24.5,,,,,malformation of coronary vessels,
+Q24.6,DOID:990,MESH:C535758,UMLS_CUI:C0149530,,congenital heart block,congenital heart block
+Q24.8,DOID:0110070,MESH:C536932,,,other specified congenital malformations of heart,arrhythmogenic right ventricular dysplasia 1
+Q24.9,DOID:0110070,MESH:D006330,UMLS_CUI:C0018798,,None,congenital heart disease
+Q66.0,,,,,congenital talipes equinovarus,
+Q66.1,,,,,None,
