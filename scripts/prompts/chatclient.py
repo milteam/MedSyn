@@ -12,7 +12,7 @@ In fact, the patient has an exacerbation of chronic gastritis, but the doctor do
 The patient complains of stomach pain and vomiting.
 Mark up the text: highlight all the symptoms and medical terms in square brackets, write down the type of the word”
 '''
-# response = openai.Completion.create(model="text-davinci-003", prompt="Say this is a test", temperature=0, max_tokens=7)
+# response = prompts.Completion.create(model="text-davinci-003", prompt="Say this is a test", temperature=0, max_tokens=7)
 response = openai.ChatCompletion.create(
     model="gpt-4-0314",
     messages=[
