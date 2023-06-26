@@ -1,15 +1,15 @@
 seed: 42
-    
-n_samples: 20  # target number of samples to generate
-max_iters: 1000  # max iters for generation (some diseases from top does not match with database)
 
-max_diseases: 5  # max numer of diseases per person
-max_symptoms: 5  # max numer of symptoms per disease
-max_side_effects: 3  # mux number of side effects from the drug
+n_samples: 20 # target number of samples to generate
+max_iters: 1000 # max iters for generation (some diseases from top does not match with database)
 
-symptoms_temperature: 10  # temperature to regulate softmax from tf-idf for symptoms sampling
-min_age: 9  # min person age to sample
-gender_scpec_or_general:  # probability to sample gender specific or general diseases
+max_diseases: 5 # max numer of diseases per person
+max_symptoms: 5 # max numer of symptoms per disease
+max_side_effects: 3 # mux number of side effects from the drug
+
+symptoms_temperature: 10 # temperature to regulate softmax from tf-idf for symptoms sampling
+min_age: 9 # min person age to sample
+gender_scpec_or_general: # probability to sample gender specific or general diseases
   - 0.1
   - 0.9
 
@@ -32,3 +32,7 @@ drugbank_path: "./data/databases/DrugBank/drugbank.csv"
 disease_to_disease_path: "./data/databases/iBKH/relation/Di_Di_res.csv"
 indications_path: "./data/databases/SIDER/indications.csv"
 meddra_freq_path: "./data/databases/SIDER/meddra_freq.csv"
+
+main_df: "./data/main.csv"
+mesh2icd: "./data/MESH_ICD10_Mapping.csv"
+symptoms_DO: "./data/symptoms-DO.tsv"
