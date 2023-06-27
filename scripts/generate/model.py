@@ -171,7 +171,7 @@ class Inferer:
 
 class Medalpaca7BInferer(Inferer):
     def __init__(self):
-        super().__init__("medalpaca/medalpaca-7b", "generate/template.json")
+        super().__init__("medalpaca/medalpaca-7b", "template.json")
 
 
 def load_model() -> Inferer:
