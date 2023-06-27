@@ -166,7 +166,7 @@ class Inferer:
             )
         generation_output_decoded = self.data_handler.tokenizer.decode(generation_output.sequences[0])
         split = f'{self.data_handler.prompt_template["output"]}{output or ""}'
-        response = generation_output_decoded.split(split)[-1].strip()
+        response = generation_output_decoded#.split(split)[-1].strip()
         return response
 
 class Medalpaca7BInferer(Inferer):
