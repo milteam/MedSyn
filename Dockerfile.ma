@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/pytorch:22.07-py3
 
-WORKDIR /scripts/generate
+WORKDIR /
 
 COPY requirements.txt ./
 
@@ -9,8 +9,12 @@ RUN pip install wheel && \
     pip install -r requirements.txt && \
     pip install gradio
 
-COPY scripts ./
+COPY scripts/generate/model.py /
+COPY scripts/generate/handler.py /
 
-RUN python generate/model.py
+RUN python model.py
 
-CMD ["python", "generate/medalpaca_i.py"]
+COPY scripts/generate/medalpaca_i.py /
+
+
+CMD ["python", "medalpaca_i.py"]
