@@ -1,6 +1,6 @@
 {
-        "primer": "",
-        "instruction": "Answer this question truthfully",
-        "input": "What are the symptoms of Allergy?",
-        "output": "Allergy symptoms vary, but may include:\nBreathing problems (coughing, shortness of breath) Burning, tearing, or itchy eyes Conjunctivitis (red, swollen eyes) Coughing Diarrhea Headache Hives Itching of the nose, mouth, throat, skin, or any other area Runny nose Skin rashes Stomach cramps Vomiting Wheezing\nWhat part of the body is contacted by the allergen plays a role in the symptoms you develop. For example:\nAllergens that are breathed in often cause a stuffy nose, itchy nose and throat, mucus production, cough, or wheezing. Allergens that touch the eyes may cause itchy, watery, red, swollen eyes. Eating something you are allergic to can cause nausea, vomiting, abdominal pain, cramping, diarrhea, or a severe, life-threatening reaction. Allergens that touch the skin can cause a skin rash, hives, itching, blisters, or even skin peeling. Drug allergies usually involve the whole body and can lead to a variety of symptoms."
-    }
+  "primer": "",
+  "instruction": "",
+  "input": "",
+  "output": ""
+}
