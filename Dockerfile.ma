@@ -11,11 +11,11 @@ RUN pip install wheel && \
 
 COPY scripts/generate/model.py /
 COPY scripts/generate/handler.py /
+COPY scripts/generate/template.json /
 
 RUN python model.py
 
 COPY scripts/generate/medalpaca_i.py /
-COPY scripts/generate/template.json /
 
 
 CMD ["python", "medalpaca_i.py"]
