@@ -171,7 +171,7 @@ class Inferer:
         return response
 
 
-inferer = Inferer("medalpaca/medalpaca-7b", "template.json")
+inferer = Inferer("medalpaca/medalpaca-7b", "generate/template.json")
 
 print(inferer('''
 What are the symptoms of diabetes?'''))

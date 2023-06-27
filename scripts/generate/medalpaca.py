@@ -1,7 +1,9 @@
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 
 #qa_pipeline = pipeline("question-answering", model="medalpaca/medalpaca-lora-7b-8bit", tokenizer="medalpaca/medalpaca-lora-7b-8bit", config="./ma7b8conf")
-qa_pipeline = pipeline("question-answering", model="medalpaca/medalpaca-7b", tokenizer="medalpaca/medalpaca-7b")
+qa_pipeline = pipeline("question-answering", model="medalpaca/medalpaca-7b", tokenizer=AutoTokenizer.from_pretrained("medalpaca/medalpaca-7b", unk_token="<unk>",
+                                                    bos_token="<s>",
+                                                    eos_token="</s>"))
 
 question = "What are the symptoms of diabetes?"
 context = "Diabetes is a metabolic disease that causes high blood sugar. The symptoms include increased thirst, frequent urination, and unexplained weight loss."
