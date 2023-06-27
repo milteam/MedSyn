@@ -5,7 +5,6 @@ from peft import PeftModel
 from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer, AutoModelForCausalLM, AutoTokenizer
 from handler import DataHandler
 
-assert torch.cuda.is_available(), "No cuda device detected"
 
 
 class Inferer:

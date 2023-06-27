@@ -1,4 +1,7 @@
+import torch
+
 from model import load_model
+assert torch.cuda.is_available(), "No cuda device detected"
 
 inferer = load_model()
 
