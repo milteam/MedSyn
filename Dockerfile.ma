@@ -15,6 +15,7 @@ COPY scripts/generate/handler.py /
 RUN python model.py
 
 COPY scripts/generate/medalpaca_i.py /
+COPY scripts/generate/template.json /
 
 
 CMD ["python", "medalpaca_i.py"]
