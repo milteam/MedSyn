@@ -201,6 +201,8 @@ class DataHandler:
             f'{self.prompt_template["output"]}{output or ""}'
         )
 
+        print(prompt)
+        print("====================")
         return prompt
 
     def resolve_output(self, output: str):

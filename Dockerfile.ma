@@ -11,4 +11,6 @@ RUN pip install wheel && \
 
 COPY scripts ./
 
+RUN python generate/model.py
+
 CMD ["python", "generate/medalpaca_i.py"]
