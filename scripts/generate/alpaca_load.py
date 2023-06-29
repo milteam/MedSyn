@@ -5,6 +5,6 @@ tokenizer = LlamaTokenizer.from_pretrained("decapoda-research/llama-7b-hf")
 model = LlamaForCausalLM.from_pretrained(
     "decapoda-research/llama-7b-hf",
     load_in_8bit=True,
-    device_map="auto",
+    device_map="cpu",
 )
 model = PeftModel.from_pretrained(model, "tloen/alpaca-lora-7b")
