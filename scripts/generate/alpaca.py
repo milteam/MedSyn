@@ -51,7 +51,7 @@ def evaluate(instruction, input=None):
     )
     for s in generation_output.sequences:
         output = tokenizer.decode(s)
-        print("Response:", output.split("### Response:")[1].strip())
+        print(output)#"Response:", output.split("### Response:")[1].strip())
 
 evaluate('''
 Act like a professional doctor who listened to the patient. Write a well-structured and extremely detailed medical anamnesis that includes all the required sections.
