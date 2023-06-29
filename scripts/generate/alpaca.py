@@ -13,23 +13,21 @@ model = LlamaForCausalLM.from_pretrained(
 model = PeftModel.from_pretrained(model, "tloen/alpaca-lora-7b")
 
 def generate_prompt(instruction, input=None):
-#     if input:
-#         return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-#
-# ### Instruction:
-# {instruction}
-#
-# ### Input:
-# {input}
-#
-# ### Response:"""
-#     else:
-#         return f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
-#
-# ### Instruction:
-# {instruction}
-    return instruction
+    if input:
+        return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
+### Instruction:
+{instruction}
+
+### Input:
+{input}
+
+### Response:"""
+    else:
+        return f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
 ### Response:"""
 
 generation_config = GenerationConfig(
@@ -40,6 +38,8 @@ generation_config = GenerationConfig(
 
 def evaluate(instruction, input=None):
     prompt = generate_prompt(instruction, input)
+    print(prompt)
+    print('===============')
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"].cuda()
     generation_output = model.generate(
@@ -51,7 +51,7 @@ def evaluate(instruction, input=None):
     )
     for s in generation_output.sequences:
         output = tokenizer.decode(s)
-        print(output)#"Response:", output.split("### Response:")[1].strip())
+        print("Response:", output.split("### Response:")[1].strip())
 
 evaluate('''
 Act like a professional doctor who listened to the patient. Write a well-structured and extremely detailed medical anamnesis that includes all the required sections.
