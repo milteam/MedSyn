@@ -5,7 +5,23 @@ from peft import PeftModel
 from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer, AutoModelForCausalLM, AutoTokenizer
 from handler import DataHandler
 
+def generate_prompt(instruction, input=None):
+    if input:
+        return f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
+### Instruction:
+{instruction}
+
+### Input:
+{input}
+
+### Response:"""
+    else:
+        return f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+### Response:"""
 
 class Inferer:
     """
@@ -147,9 +163,11 @@ class Inferer:
             str: The generated response from the medAlpaca model.
         """
 
-        prompt = self.data_handler.generate_prompt(instruction=instruction, input=input, output=output)
-        if verbose:
-            print(prompt)
+        prompt = generate_prompt(instruction, input)#self.data_handler.generate_prompt(instruction=instruction, input=input, output=output)
+        # if verbose:
+        #     print(prompt)
+        print(prompt)
+        print("+++++++++++++++++===========================================+++++++++++++++++++++++")
 
         input_tokens = self.data_handler.tokenizer(prompt, return_tensors="pt")
         input_token_ids = input_tokens["input_ids"].to("cuda")
