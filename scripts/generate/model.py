@@ -134,8 +134,8 @@ class Inferer:
 
     def __call__(
             self,
-            input: str,
-            instruction: str = None,
+            instruction: str,
+            input: str = None,
             output: str = None,
             max_new_tokens: int = 128,
             verbose: bool = False,
