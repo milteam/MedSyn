@@ -55,6 +55,8 @@ def evaluate(instruction, input=None):
 
 evaluate('''
 Act like a professional doctor who listened to the patient. Write a well-structured and extremely detailed medical anamnesis that includes all the required sections.
-The patient has chronic diseases: gastritis, tonsillitis.
+''',
+         '''
+         The patient has chronic diseases: gastritis, tonsillitis.
 In fact, the patient has an exacerbation of chronic gastritis, but the doctor does not know about it.
-''')
+         ''')
