@@ -21,4 +21,4 @@ COPY scripts/prompts/prompt_generator.py /
 COPY data/generated/samples.json /
 
 
-CMD ["python", "prompt_generator.py"]
+CMD python prompt_generator.py --samples samples.json
