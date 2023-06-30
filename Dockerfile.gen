@@ -13,10 +13,6 @@ COPY scripts/generate/alpaca_load.py /
 
 RUN python alpaca_load.py
 
-# COPY scripts/generate/alpaca.py /
-
-# CMD ["python", "alpaca.py"]
-
 COPY scripts/prompts/prompt_generator.py /
 COPY data/generated/samples.json /
 
