@@ -3,7 +3,7 @@ seed: 42
 n_samples: 20 # target number of samples to generate
 max_iters: 1000 # max iters for generation (some diseases from top does not match with database)
 
-max_diseases: 5 # max numer of diseases per person
+max_diseases: 2 # max numer of diseases per person
 max_symptoms: 5 # max numer of symptoms per disease
 max_side_effects: 3 # mux number of side effects from the drug
 
@@ -36,3 +36,4 @@ meddra_freq_path: "./data/databases/SIDER/meddra_freq.csv"
 main_df: "./data/main.csv"
 mesh2icd: "./data/MESH_ICD10_Mapping.csv"
 symptoms_DO: "./data/symptoms-DO.tsv"
+main_df_diseases_data: "./data/main_proc.csv"

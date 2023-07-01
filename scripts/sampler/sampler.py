@@ -9,7 +9,7 @@ from tqdm import tqdm
 import warnings
 
 from drug_sampler import DrugSampler
-from disease_sampler import ICDCodeSampler, Disease
+from disease_sampler import DiseaseSampler
 
 warnings.simplefilter(action="ignore")
 
@@ -206,20 +206,20 @@ class Sampler:
     def __init__(self, cfg: Dict) -> None:
         self.cfg = cfg
         self.set_seed(cfg["seed"])
-        gender_split = self.load_gender_split()
+        # gender_split = self.load_gender_split()
         self.demographic_sampler = DemographicSampler(
             cfg["edge_gender_pyramyd_path"],
             cfg["family_status_path"],
             cfg["ethnic_groups_path"],
             cfg["min_age"],
         )
-        self.icd_sampler = ICDCodeSampler(
-            cfg["icd_codes_processed"], gender_split, cfg["gender_scpec_or_general"]
-        )
-        self.disease_sampler = Disease(cfg["disease_path"])
-        self.symptoms_sampler = Symptoms(
-            cfg["disease_symptom_relation_path"], cfg["mesh_disease_symp_path"]
-        )
+        # self.icd_sampler = ICDCodeSampler(
+        #     cfg["icd_codes_processed"], gender_split, cfg["gender_scpec_or_general"]
+        # )
+        self.disease_sampler = DiseaseSampler(cfg)
+        # self.symptoms_sampler = Symptoms(
+        #     cfg["disease_symptom_relation_path"], cfg["mesh_disease_symp_path"]
+        # )
         self.drug_sampler = DrugSampler(
             cfg["drug_disease_rel_path"],
             cfg["drugbank_path"],
@@ -243,31 +243,31 @@ class Sampler:
             icd_gender_split_path = json.load(f)
             return icd_gender_split_path
 
-    def get_data_for_icd(self, icd_code: str) -> Dict:
-        data = {}
-        disease_sample = self.disease_sampler.get_data_by_icd(icd_code)
-        if disease_sample:
-            for disease_name, disease_data in disease_sample.items():
-                symptoms = self.symptoms_sampler.get_symptoms(disease_data)
-                if symptoms:
-                    n_symptoms = min(
-                        len(symptoms), np.random.randint(1, self.cfg["max_symptoms"])
-                    )
-                    symptoms_name = [symp["Term"] for symp in symptoms.values()]
-                    symptoms_tfidf = np.array(
-                        [symp["TFIDF"] for symp in symptoms.values()]
-                    )
-                    symptoms_scores = self.softmax(symptoms_tfidf)
-                    symptoms = np.random.choice(
-                        symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
-                    )
+    # def get_data_for_icd(self, icd_code: str) -> Dict:
+    #     data = {}
+    #     disease_sample = self.disease_sampler.get_data_by_icd(icd_code)
+    #     if disease_sample:
+    #         for disease_name, disease_data in disease_sample.items():
+    #             symptoms = self.symptoms_sampler.get_symptoms(disease_data)
+    #             if symptoms:
+    #                 n_symptoms = min(
+    #                     len(symptoms), np.random.randint(1, self.cfg["max_symptoms"])
+    #                 )
+    #                 symptoms_name = [symp["Term"] for symp in symptoms.values()]
+    #                 symptoms_tfidf = np.array(
+    #                     [symp["TFIDF"] for symp in symptoms.values()]
+    #                 )
+    #                 symptoms_scores = self.softmax(symptoms_tfidf)
+    #                 symptoms = np.random.choice(
+    #                     symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
+    #                 )
 
-                    data = {
-                        "icd_code": icd_code,
-                        "disease": disease_data,
-                        "symptoms": symptoms,
-                    }
-        return data
+    #                 data = {
+    #                     "icd_code": icd_code,
+    #                     "disease": disease_data,
+    #                     "symptoms": symptoms,
+    #                 }
+    #     return data
 
     def sample_drug_and_se(self, disease_doid: str):
         return self.drug_sampler.get_sample(disease_doid)
@@ -279,26 +279,30 @@ class Sampler:
 
         n_diseases = np.random.randint(1, self.cfg["max_diseases"] + 1)
         for _ in range(n_diseases):
-            disease_icd = self.icd_sampler.get_sample(sample["gender"])
-            sample_ = self.get_data_for_icd(disease_icd)
-            if sample_:
-                disease_info = sample_["disease"]
-                disease_info["idc_10"] = sample_["icd_code"]
+            # disease_icd = self.icd_sampler.get_sample(sample["gender"])
+            sample_ = self.disease_sampler.get_sample(sample["gender"])
+            disease_info = sample_["disease"]
+            disease_info["idc_10"] = disease_info["icd_code"]
 
-                # Add only if disease is new:
-                if sample["disease"]:
-                    if sample_["disease"]["Name"] not in [
-                        d["Name"] for d in sample["disease"]
-                    ]:
-                        sample["disease"].append(disease_info)
-                        sample["symptoms"].extend(sample_["symptoms"])
-                else:
+            # Add only if disease is new:
+            if sample["disease"]:
+                if sample_["disease"]["name"] not in [
+                    d["name"] for d in sample["disease"]
+                ]:
                     sample["disease"].append(disease_info)
                     sample["symptoms"].extend(sample_["symptoms"])
+            else:
+                sample["disease"].append(disease_info)
+                sample["symptoms"].extend(sample_["symptoms"])
 
         if sample["disease"]:
-            drug_and_se = self.sample_drug_and_se(sample["disease"][0]["DOID"])
-            sample["drug_and_se"] = drug_and_se
+            do_ids = [
+                data["DOID"] for data in sample["disease"] if data["DOID"] is not np.nan
+            ]
+            if do_ids:
+                do_id = np.random.choice(do_ids)
+                drug_and_se = self.sample_drug_and_se(do_id)
+                sample["drug_and_se"] = drug_and_se
 
         return sample
 

@@ -1,5 +1,364 @@
 {
     "0": {
+        "ethical_group": "Азербайджанцы",
+        "location": "city",
+        "gender": "female",
+        "age": 49,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "E28.2",
+                "DOID": "DOID:11612",
+                "MESH_ID": "['MESH:D011085']",
+                "name": "polycystic ovarian syndrome",
+                "descriptions": "['Polycystic ovarian syndrome', 'Stein-Leventhal syndrome', 'Sclerocystic ovary syndrome']",
+                "idc_10": "E28.2"
+            }
+        ],
+        "symptoms": [
+            "Hirsutism"
+        ],
+        "drug_and_se": {}
+    },
+    "1": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 26,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            },
+            {
+                "icd_code": "I20.0",
+                "DOID": "DOID:8805",
+                "MESH_ID": "['MESH:D000789']",
+                "name": "unstable angina",
+                "descriptions": "['Unstable angina', 'Crescendo angina', 'Preinfarction syndrome', 'Intermediate coronary syndrome']",
+                "idc_10": "I20.0"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Fever",
+            "Pain"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:8805",
+            "disease_DOID": "DOID:8805",
+            "drug_db_idx": "DB00569",
+            "drug_name": "FONDAPARINUX SODIUM",
+            "drug_to_disease_relation": "Treats",
+            "side_effect": [
+                "Nausea",
+                "Flatulence",
+                "Abdominal distension"
+            ]
+        }
+    },
+    "2": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 53,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I20.8",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D000787', 'MESH:D000787', 'MESH:D060050']",
+                "name": "other forms of angina pectoris",
+                "descriptions": "['Angina of effort', 'Stenocardia', 'Stable angina']",
+                "idc_10": "I20.8"
+            },
+            {
+                "icd_code": "J30.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D006255', 'MESH:D006255', 'MESH:D006255']",
+                "name": "allergic rhinitis due to pollen",
+                "descriptions": "['Allergic rhinitis due to pollen', 'Hay fever', 'Pollinosis']",
+                "idc_10": "J30.1"
+            }
+        ],
+        "symptoms": [
+            "Snoring",
+            "Sneezing",
+            "Sneezing",
+            "Sneezing"
+        ]
+    },
+    "3": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 66,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "Q24.2",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D003310']",
+                "name": "cor triatriatum",
+                "descriptions": "['Cor triatriatum']",
+                "idc_10": "Q24.2"
+            },
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Chest Pain",
+            "Sleep Disorders",
+            "Respiratory Sounds",
+            "Cough",
+            "Diarrhea",
+            "Fever"
+        ]
+    },
+    "4": {
+        "ethical_group": "Карачаевцы",
+        "location": "countyside",
+        "gender": "male",
+        "age": 24,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I48.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D001281']",
+                "name": NaN,
+                "descriptions": "['Persistent atrial fibrillation']",
+                "idc_10": "I48.1"
+            }
+        ],
+        "symptoms": [
+            "Syncope"
+        ]
+    },
+    "5": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 52,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "G35",
+                "DOID": "DOID:2377",
+                "MESH_ID": "['MESH:D009103']",
+                "name": "multiple sclerosis",
+                "descriptions": "['Multiple sclerosis', 'Multiple sclerosis NOS', 'Generalized multiple sclerosis']",
+                "idc_10": "G35"
+            },
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Fatigue",
+            "Muscle Spasticity",
+            "Urinary Bladder, Neurogenic",
+            "Respiratory Sounds"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:2377",
+            "disease_DOID": "DOID:332",
+            "drug_db_idx": "DB00181",
+            "drug_name": "BACLOFEN",
+            "drug_to_disease_relation": "Effect",
+            "side_effect": [
+                "Urinary incontinence",
+                "Vomiting",
+                "Muscle relaxant therapy"
+            ]
+        }
+    },
+    "6": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 49,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            },
+            {
+                "icd_code": "E03.9",
+                "DOID": "DOID:11634",
+                "MESH_ID": "['MESH:D009230']",
+                "name": "hypothyroidism, unspecified",
+                "descriptions": "['Hypothyroidism, unspecified', 'Myxedema NOS']",
+                "idc_10": "E03.9"
+            }
+        ],
+        "symptoms": [
+            "Urinary Incontinence",
+            "Coma"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:11634",
+            "disease_DOID": "DOID:11634",
+            "drug_db_idx": "DB00451",
+            "drug_name": "LEVOTHYROXINE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
+    },
+    "7": {
+        "ethical_group": "Чеченцы",
+        "location": "city",
+        "gender": "male",
+        "age": 11,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough"
+        ]
+    },
+    "8": {
+        "ethical_group": "Удмурты",
+        "location": "countyside",
+        "gender": "male",
+        "age": 65,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            },
+            {
+                "icd_code": "G20",
+                "DOID": "DOID:14330",
+                "MESH_ID": "['MESH:D010300']",
+                "name": "parkinson's disease",
+                "descriptions": "[\"Parkinson's disease\", 'Paralysis agitans']",
+                "idc_10": "G20"
+            }
+        ],
+        "symptoms": [
+            "Cough",
+            "Respiratory Sounds",
+            "Fever",
+            "Tremor",
+            "Supranuclear Palsy, Progressive",
+            "Muscle Rigidity"
+        ],
+        "drug_and_se": {}
+    },
+    "9": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 48,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Fever",
+            "Diarrhea"
+        ]
+    },
+    "10": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 11,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Fever",
+            "Diarrhea"
+        ]
+    },
+    "11": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 28,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            },
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Urinary Incontinence",
+            "Hot Flashes"
+        ]
+    },
+    "12": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
@@ -7,149 +366,129 @@
         "family_state": 0,
         "disease": [
             {
-                "Name": "hypothyroidism",
-                "DOID": "DOID:1459",
-                "ICD_10": "E03.9",
-                "MESH_ID": "D007037",
-                "idc_10": "E03.9"
+                "icd_code": "K86.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D050500', 'MESH:D050500']",
+                "name": "other chronic pancreatitis",
+                "descriptions": "['Relapsing chronic pancreatitis', 'Chronic pancreatitis NOS']",
+                "idc_10": "K86.1"
             }
         ],
         "symptoms": [
-            "Body Weight",
-            "Coma"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:1459",
-            "disease_DOID": "DOID:1781",
-            "drug_db_idx": "DB00398",
-            "drug_name": "SORAFENIB",
-            "drug_to_disease_relation": "Treats",
-            "side_effect": [
-                "Weight decreased",
-                "Nausea",
-                "Pruritus"
-            ]
-        }
+            "Jaundice, Obstructive"
+        ]
     },
-    "1": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 39,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "hypertension",
-                "DOID": "DOID:10763",
-                "ICD_10": "I10",
-                "MESH_ID": "D006973",
-                "idc_10": "I10"
-            }
-        ],
-        "symptoms": [
-            "Albuminuria",
-            "Proteinuria",
-            "Body Weight"
-        ],
-        "drug_and_se": {}
-    },
-    "2": {
-        "ethical_group": "Русские",
-        "location": "countyside",
-        "gender": "male",
-        "age": 56,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ],
-        "drug_and_se": {}
-    },
-    "3": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 81,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:2998",
-            "drug_db_idx": "DB00290",
-            "drug_name": "BLEOMYCIN",
-            "drug_to_disease_relation": "Treats",
-            "side_effect": [
-                "Body temperature increased",
-                "Stomatitis"
-            ]
-        }
-    },
-    "4": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 46,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:2998",
-            "drug_db_idx": "DB00928",
-            "drug_name": "AZACITIDINE",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": [
-                "Injection site induration",
-                "Anaemia",
-                "Chest pain"
-            ]
-        }
-    },
-    "5": {
+    "13": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "female",
-        "age": 65,
+        "age": 70,
         "family_state": 0,
         "disease": [
             {
-                "Name": "hypertension",
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Diarrhea"
+        ]
+    },
+    "14": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 38,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            },
+            {
+                "icd_code": "E28.2",
+                "DOID": "DOID:11612",
+                "MESH_ID": "['MESH:D011085']",
+                "name": "polycystic ovarian syndrome",
+                "descriptions": "['Polycystic ovarian syndrome', 'Stein-Leventhal syndrome', 'Sclerocystic ovary syndrome']",
+                "idc_10": "E28.2"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Hirsutism"
+        ],
+        "drug_and_se": {}
+    },
+    "15": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 42,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Fever"
+        ]
+    },
+    "16": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 45,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
+            "Diarrhea",
+            "Diarrhea, Infantile"
+        ]
+    },
+    "17": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 28,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I10",
                 "DOID": "DOID:10763",
-                "ICD_10": "I10",
-                "MESH_ID": "D006973",
+                "MESH_ID": "['MESH:D006973']",
+                "name": "essential (primary) hypertension",
+                "descriptions": "['Essential (primary) hypertension', 'high blood pressure']",
                 "idc_10": "I10"
             }
         ],
@@ -161,396 +500,81 @@
         ],
         "drug_and_se": {}
     },
-    "6": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 28,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain",
-            "Pain, Intractable"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:2998",
-            "drug_db_idx": "DB00445",
-            "drug_name": "EPIRUBICIN",
-            "drug_to_disease_relation": "Treats",
-            "side_effect": [
-                "Breast disorder",
-                "Cardiotoxicity",
-                "Pain"
-            ]
-        }
-    },
-    "7": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 17,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:10283",
-            "drug_db_idx": "DB00445",
-            "drug_name": "EPIRUBICIN",
-            "drug_to_disease_relation": "Treats",
-            "side_effect": [
-                "Hot flush",
-                "Mouth ulceration",
-                "Nausea"
-            ]
-        }
-    },
-    "8": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 17,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "osteoporosis",
-                "DOID": "DOID:11476",
-                "ICD_10": "M81.0",
-                "MESH_ID": "D010024",
-                "idc_10": "M81.0"
-            }
-        ],
-        "symptoms": [
-            "Back Pain"
-        ],
-        "drug_and_se": {}
-    },
-    "9": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 11,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:2998",
-            "drug_db_idx": "DB03467",
-            "drug_name": "NARINGENIN",
-            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
-            "side_effect": []
-        }
-    },
-    "10": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 32,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:11819",
-            "drug_db_idx": "DB03419",
-            "drug_name": "URACIL",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": []
-        }
-    },
-    "11": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 91,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:10283",
-            "drug_db_idx": "DB00163",
-            "drug_name": "VITAMIN E",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": []
-        }
-    },
-    "12": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 35,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:2998",
-            "drug_db_idx": "DB03467",
-            "drug_name": "NARINGENIN",
-            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
-            "side_effect": []
-        }
-    },
-    "13": {
-        "ethical_group": "Татары",
-        "location": "city",
-        "gender": "male",
-        "age": 37,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:11819",
-            "drug_db_idx": "DB00201",
-            "drug_name": "CAFFEINE",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": [
-                "Gastrointestinal haemorrhage"
-            ]
-        }
-    },
-    "14": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 53,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "osteoporosis",
-                "DOID": "DOID:11476",
-                "ICD_10": "M81.0",
-                "MESH_ID": "D010024",
-                "idc_10": "M81.0"
-            }
-        ],
-        "symptoms": [
-            "Back Pain",
-            "Body Weight",
-            "Hot Flashes",
-            "Hemiplegia"
-        ],
-        "drug_and_se": {}
-    },
-    "15": {
-        "ethical_group": "Башкиры",
-        "location": "city",
-        "gender": "male",
-        "age": 54,
-        "family_state": 1,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence"
-        ],
-        "drug_and_se": {}
-    },
-    "16": {
-        "ethical_group": "Русские",
-        "location": "countyside",
-        "gender": "male",
-        "age": 21,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Prostatism",
-            "Pain"
-        ],
-        "drug_and_se": {}
-    },
-    "17": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "male",
-        "age": 18,
-        "family_state": 0,
-        "disease": [
-            {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Hot Flashes"
-        ],
-        "drug_and_se": {}
-    },
     "18": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 41,
+        "age": 55,
         "family_state": 1,
         "disease": [
             {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            },
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "descriptions": "['Malignant neoplasm of prostate']",
                 "idc_10": "C61"
             }
         ],
         "symptoms": [
+            "Respiratory Sounds",
+            "Cough",
             "Urinary Incontinence",
             "Hot Flashes",
-            "Pain",
-            "Pain, Intractable"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:10283",
-            "drug_db_idx": "DB03496",
-            "drug_name": "FLAVOPIRIDOL",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": []
-        }
+            "Pain"
+        ]
     },
     "19": {
         "ethical_group": "Русские",
         "location": "city",
-        "gender": "male",
-        "age": 52,
+        "gender": "female",
+        "age": 24,
         "family_state": 1,
         "disease": [
             {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
+                "icd_code": "I67.2",
+                "DOID": "DOID:12720",
+                "MESH_ID": "['MESH:D002537']",
+                "name": "cerebral atherosclerosis",
+                "descriptions": "['Cerebral atherosclerosis']",
+                "idc_10": "I67.2"
             }
         ],
         "symptoms": [
-            "Urinary Incontinence"
+            "Diplopia",
+            "Hearing Loss, Sensorineural",
+            "Hemiplegia"
         ],
         "drug_and_se": {}
     },
     "20": {
         "ethical_group": "Русские",
-        "location": "city",
+        "location": "countyside",
         "gender": "male",
-        "age": 26,
-        "family_state": 0,
+        "age": 46,
+        "family_state": 1,
         "disease": [
             {
-                "Name": "prostate cancer",
-                "DOID": "DOID:10283",
-                "ICD_10": "C61",
-                "MESH_ID": "D011471",
-                "idc_10": "C61"
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Urinary Incontinence"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:10283",
-            "disease_DOID": "DOID:10283",
-            "drug_db_idx": "DB09079",
-            "drug_name": "NINTEDANIB",
-            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
-            "side_effect": []
-        }
+            "Respiratory Sounds",
+            "Cough",
+            "Diarrhea"
+        ]
     }
 }

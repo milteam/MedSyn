@@ -185,6 +185,9 @@ def add_symptoms(
                         sympt_str.append(symptom_term.iloc[idx]["MeSH_Symptom_Term"])
                         symp_tf_idf.append(symptom_term.iloc[idx]["TFIDF_score"])
 
+        if sympt_str:
+            assert len(sympt_str) == len(symp_tf_idf)
+
         symptoms_mesh_ids.append(symp_ids if symp_ids else np.nan)
         symptoms.append(sympt_str if sympt_str else np.nan)
         sympotoms_tf_idfs.append(symp_tf_idf if symp_tf_idf else np.nan)
@@ -240,6 +243,9 @@ def add_symptoms_do(
                             symptoms_ids.append(do_data.iloc[i]["symptom_id"])
                             symptoms_tfidfs.append(do_data.iloc[i]["tfidf_score"])
 
+        if symptoms_ is not np.nan:
+            assert len(symptoms_) == len(symptoms_tfidfs)
+
         symptoms.append(symptoms_)
         symptoms_mesh_ids.append(symptoms_ids)
         sympotoms_tf_idfs.append(symptoms_tfidfs)
@@ -268,7 +274,7 @@ def prepare_data(cfg: Dict) -> None:
     main_df = add_gender(main_df, gender_split)
     main_df = add_diseases(main_df, disease_df)
     main_df = add_symptoms(main_df, disease_symptom_rel, symptom_mesh)
-    main_df = add_symptoms_do(main_df, symptom_DO)
+    main_df = add_symptoms_do(main_df, symptom_DO, symptom_mesh)
 
     main_df.to_csv("./data/main_proc.csv", index=False)
 

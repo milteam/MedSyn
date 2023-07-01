@@ -4,52 +4,25 @@ import numpy as np
 import pandas as pd
 
 
-class ICDCodeSampler:
-    def __init__(
-        self,
-        path_to_dis: str,
-        icd_gender_split: Dict,
-        gender_scpec_or_general: List[float],
-    ) -> None:
-        self.icd_gender_split = icd_gender_split
-        self.load_dis(path_to_dis)
-        self.gender_scpec_or_general = gender_scpec_or_general
-        self.get_gender_split()
+class DiseaseSampler:
+    def __init__(self, cfg: Dict) -> None:
+        self.diseases = pd.read_csv(cfg["main_df_diseases_data"])
+        self.prepare_df()
+        self.gender_scpec_or_general = cfg["gender_scpec_or_general"]
+        self.prepare_gender_probs()
+        self.cfg = cfg
 
-    def load_dis(self, path: str) -> None:
-        self.icd_codes_probs = pd.read_csv(path)
-        self.icd_codes_probs = dict(
-            zip(
-                self.icd_codes_probs["codes"].values,
-                self.icd_codes_probs["probs"].values,
-            )
-        )
-        self.icd_codes = list(self.icd_codes_probs.keys())
+    def prepare_df(self) -> None:
+        self.diseases = self.diseases.dropna(subset=["symptoms"], axis=0)
 
-    def get_gender_split(self) -> Tuple[List, List]:
-        male = self.icd_gender_split[
-            "List of categories limited to, or more likely to occur in, male persons"
-        ]
-        female = self.icd_gender_split[
-            "List of categories limited to, or more likely to occur in, female persons"
-        ]
-        self.icd_codes_male = [code for code in self.icd_codes if code in male]
-        self.icd_codes_female = [code for code in self.icd_codes if code in female]
-        self.icd_codes_neutral = [
-            code
-            for code in self.icd_codes
-            if code not in self.icd_codes_male + self.icd_codes_female
-        ]
+    def prepare_gender_probs(self) -> None:
+        self.icd_codes_male = self.diseases.query("gender == 'male'")["icd_10"]
+        self.icd_codes_female = self.diseases.query("gender == 'female'")["icd_10"]
+        self.icd_codes_neutral = self.diseases.query("gender == 'neutral'")["icd_10"]
 
-        self.icd_codes_male_p = np.array(
-            [self.icd_codes_probs[code] for code in self.icd_codes_male]
-        )
-        self.icd_codes_female_p = np.array(
-            [self.icd_codes_probs[code] for code in self.icd_codes_female]
-        )
-        self.icd_codes_neutral_p = np.array(
-            [self.icd_codes_probs[code] for code in self.icd_codes_neutral]
-        )
+        self.icd_codes_male_p = self.diseases.query("gender == 'male'")["probs"]
+        self.icd_codes_female_p = self.diseases.query("gender == 'female'")["probs"]
+        self.icd_codes_neutral_p = self.diseases.query("gender == 'neutral'")["probs"]
 
         # Renormalize:
         self.icd_codes_male_p = self.icd_codes_male_p / self.icd_codes_male_p.sum()
@@ -60,11 +33,17 @@ class ICDCodeSampler:
             self.icd_codes_neutral_p / self.icd_codes_neutral_p.sum()
         )
 
-    def get_sample(self, gender: str) -> str:
+    def softmax(self, values: np.ndarray) -> np.ndarray:
+        T = self.cfg["symptoms_temperature"]
+        p = np.exp(values / T) / np.sum(np.exp(values / T))
+        if np.isnan(p).any():
+            p = np.array([1 / len(values) for _ in range(len(values))])
+        return p
+
+    def sample_icd(self, gender: str):
         case_ = np.random.choice(
             ["specific", "general"], p=self.gender_scpec_or_general
         )
-
         if case_ == "general":
             return np.random.choice(self.icd_codes_neutral, p=self.icd_codes_neutral_p)
         if gender == "male":
@@ -73,31 +52,47 @@ class ICDCodeSampler:
             sample = np.random.choice(self.icd_codes_female, p=self.icd_codes_female_p)
         return sample
 
-
-class Disease:
-    def __init__(self, disease_db_path: str) -> None:
-        self.diseases = pd.read_csv(disease_db_path)
-        self.prepare_df()
-
-    def prepare_df(self) -> None:
-        self.diseases = self.diseases.dropna(subset=["icd_10", "icd_9"])
-        self.diseases["icd_10_p"] = self.diseases["icd_10"].apply(
-            lambda x: x.split(".")[0]
+    def sample_symptoms(self, data: pd.DataFrame) -> Dict:
+        symptoms_name = data["symptoms"].values[0]
+        symptoms_tfidf = data["sympotoms_tf_idfs"].values[0]
+        symptoms_name = [
+            s_name.replace(" '", "").replace("'", "")
+            for s_name in symptoms_name.replace("[", "").replace("]", "").split("',")
+        ]
+        n_symptoms = min(
+            len(symptoms_name), np.random.randint(1, self.cfg["max_symptoms"])
         )
+        symptoms_tfidf = data["sympotoms_tf_idfs"].values[0]
+        symptoms_tfidf = np.array(
+            [
+                float(tf_idf)
+                for tf_idf in symptoms_tfidf.replace("[", "")
+                .replace("]", "")
+                .split(",")
+            ]
+        )
+        symptoms_scores = self.softmax(symptoms_tfidf)
+        symptoms = np.random.choice(
+            symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
+        )
+        return symptoms
 
-    def get_data_by_icd(self, icd_code: str) -> Dict:
+    def get_sample(self, gender: str) -> Dict:
+        icd_code = self.sample_icd(gender)
         data = self.diseases.query("icd_10 == @icd_code")
+        doid = data["DOID"].values[0]
+        mesh_id = data["MESH"].values[0]
+        symptoms = self.sample_symptoms(data)
 
-        disease_info = {}
-        if data.shape[0] == 0:
-            return disease_info
-
-        for idx in range(data.shape[0]):
-            disease_info[data.iloc[idx]["name"]] = {
-                "Name": data.iloc[idx]["name"],
-                "DOID": data.iloc[idx]["do_id"],
-                "ICD_10": data.iloc[idx]["icd_10"],
-                "MESH_ID": data.iloc[idx]["mesh_id"],
-            }
+        disease_info = {
+            "disease": {
+                "icd_code": icd_code,
+                "DOID": doid,
+                "MESH_ID": mesh_id,
+                "name": data["Name"].values[0],
+                "descriptions": data["Descriptions"].values[0],
+            },
+            "symptoms": list(symptoms),
+        }
 
         return disease_info
