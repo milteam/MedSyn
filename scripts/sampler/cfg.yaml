@@ -37,3 +37,7 @@ main_df: "./data/main.csv"
 mesh2icd: "./data/MESH_ICD10_Mapping.csv"
 symptoms_DO: "./data/symptoms-DO.tsv"
 main_df_diseases_data: "./data/main_proc.csv"
+
+mkb_10_ru: "data/eng_to_ru/spr_mkb10.csv"
+wiki_dd: "data/eng_to_ru/wiki_disease_ru.csv"
+symptoms_ru: "data/eng_to_ru/symptoms_eng_ru .csv"
