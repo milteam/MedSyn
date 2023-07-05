@@ -53,7 +53,11 @@ class DiseaseSampler:
         return sample
 
     def sample_symptoms(self, data: pd.DataFrame) -> Dict:
-        symptoms_name = data["symptoms"].values[0]
+        if self.cfg["lang"] == "eng":
+            symptoms_name = data["symptoms"].values[0]
+        elif self.cfg["lang"] == "ru":
+            symptoms_name = data["symptoms_ru"].values[0]
+
         symptoms_tfidf = data["sympotoms_tf_idfs"].values[0]
         symptoms_name = [
             s_name.replace(" '", "").replace("'", "")
@@ -75,6 +79,12 @@ class DiseaseSampler:
         symptoms = np.random.choice(
             symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
         )
+
+        if self.cfg["lang"] == "ru":
+            symptoms = list(
+                set([np.random.choice(sympt.split(",")).strip() for sympt in symptoms])
+            )
+
         return symptoms
 
     def get_sample(self, gender: str) -> Dict:
@@ -90,6 +100,7 @@ class DiseaseSampler:
                 "DOID": doid,
                 "MESH_ID": mesh_id,
                 "name": data["Name"].values[0],
+                "name_ru": data["names_ru"].values[0],
                 "descriptions": data["Descriptions"].values[0],
             },
             "symptoms": list(symptoms),

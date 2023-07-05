@@ -7,24 +7,28 @@
         "family_state": 1,
         "disease": [
             {
-                "icd_code": "E28.2",
-                "DOID": "DOID:11612",
-                "MESH_ID": "['MESH:D011085']",
-                "name": "polycystic ovarian syndrome",
-                "descriptions": "['Polycystic ovarian syndrome', 'Stein-Leventhal syndrome', 'Sclerocystic ovary syndrome']",
-                "idc_10": "E28.2"
+                "icd_code": "E03.9",
+                "DOID": "DOID:11634",
+                "MESH_ID": "['MESH:D009230']",
+                "name": "hypothyroidism, unspecified",
+                "name_ru": "Гипотиреоз неуточненный",
+                "descriptions": "['Hypothyroidism, unspecified', 'Myxedema NOS']",
+                "idc_10": "E03.9"
             }
         ],
         "symptoms": [
-            "Hirsutism"
+            "вертиго",
+            "кома",
+            "Высокая температура",
+            "переохлаждение"
         ],
         "drug_and_se": {}
     },
     "1": {
         "ethical_group": "Русские",
-        "location": "countyside",
+        "location": "city",
         "gender": "male",
-        "age": 26,
+        "age": 81,
         "family_state": 1,
         "disease": [
             {
@@ -32,126 +36,578 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
-            },
-            {
-                "icd_code": "I20.0",
-                "DOID": "DOID:8805",
-                "MESH_ID": "['MESH:D000789']",
-                "name": "unstable angina",
-                "descriptions": "['Unstable angina', 'Crescendo angina', 'Preinfarction syndrome', 'Intermediate coronary syndrome']",
-                "idc_10": "I20.0"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Fever",
-            "Pain"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:8805",
-            "disease_DOID": "DOID:8805",
-            "drug_db_idx": "DB00569",
-            "drug_name": "FONDAPARINUX SODIUM",
-            "drug_to_disease_relation": "Treats",
-            "side_effect": [
-                "Nausea",
-                "Flatulence",
-                "Abdominal distension"
-            ]
-        }
+            "хрипы в грудной клетке"
+        ]
     },
     "2": {
         "ethical_group": "Русские",
         "location": "countyside",
         "gender": "male",
-        "age": 53,
+        "age": 17,
         "family_state": 0,
         "disease": [
-            {
-                "icd_code": "I20.8",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D000787', 'MESH:D000787', 'MESH:D060050']",
-                "name": "other forms of angina pectoris",
-                "descriptions": "['Angina of effort', 'Stenocardia', 'Stable angina']",
-                "idc_10": "I20.8"
-            },
-            {
-                "icd_code": "J30.1",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D006255', 'MESH:D006255', 'MESH:D006255']",
-                "name": "allergic rhinitis due to pollen",
-                "descriptions": "['Allergic rhinitis due to pollen', 'Hay fever', 'Pollinosis']",
-                "idc_10": "J30.1"
-            }
-        ],
-        "symptoms": [
-            "Snoring",
-            "Sneezing",
-            "Sneezing",
-            "Sneezing"
-        ]
-    },
-    "3": {
-        "ethical_group": "Русские",
-        "location": "countyside",
-        "gender": "female",
-        "age": 66,
-        "family_state": 1,
-        "disease": [
-            {
-                "icd_code": "Q24.2",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D003310']",
-                "name": "cor triatriatum",
-                "descriptions": "['Cor triatriatum']",
-                "idc_10": "Q24.2"
-            },
             {
                 "icd_code": "J06.9",
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Chest Pain",
-            "Sleep Disorders",
-            "Respiratory Sounds",
-            "Cough",
-            "Diarrhea",
-            "Fever"
+            "температура",
+            "понос",
+            "хрипы в грудной клетке",
+            "Кашель"
         ]
     },
-    "4": {
-        "ethical_group": "Карачаевцы",
-        "location": "countyside",
-        "gender": "male",
-        "age": 24,
+    "3": {
+        "ethical_group": "Кабардинцы",
+        "location": "city",
+        "gender": "female",
+        "age": 32,
         "family_state": 0,
         "disease": [
             {
-                "icd_code": "I48.1",
+                "icd_code": "N20.0",
                 "DOID": NaN,
-                "MESH_ID": "['MESH:D001281']",
-                "name": NaN,
-                "descriptions": "['Persistent atrial fibrillation']",
-                "idc_10": "I48.1"
+                "MESH_ID": "['MESH:D007669', 'MESH:D007669', 'MESH:D007669', 'MESH:D007669', 'MESH:D053040', 'MESH:D000069856']",
+                "name": "calculus of kidney",
+                "name_ru": "Камни почки",
+                "descriptions": "['Calculus of kidney', 'Renal stone', 'Stone in kidney', 'Renal calculus', 'Nephrolithiasis NOS', 'Staghorn calculus']",
+                "idc_10": "N20.0"
             }
         ],
         "symptoms": [
-            "Syncope"
+            "Колики"
+        ]
+    },
+    "4": {
+        "ethical_group": "Татары",
+        "location": "city",
+        "gender": "male",
+        "age": 22,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Кашель"
         ]
     },
     "5": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
+        "age": 15,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "6": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 47,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I67.2",
+                "DOID": "DOID:12720",
+                "MESH_ID": "['MESH:D002537']",
+                "name": "cerebral atherosclerosis",
+                "name_ru": "Церебральный атеросклероз",
+                "descriptions": "['Cerebral atherosclerosis']",
+                "idc_10": "I67.2"
+            }
+        ],
+        "symptoms": [
+            "вертиго",
+            "усталость",
+            "гемиплегия"
+        ],
+        "drug_and_se": {}
+    },
+    "7": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 50,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I20.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D000787', 'MESH:D000787', 'MESH:D000787', 'MESH:D000787', 'MESH:D000787']",
+                "name": NaN,
+                "name_ru": "Стенокардия неуточненная",
+                "descriptions": "['Angina pectoris, unspecified', 'Anginal syndrome', 'Cardiac angina', 'Ischemic chest pain', 'Angina NOS']",
+                "idc_10": "I20.9"
+            }
+        ],
+        "symptoms": [
+            "парапарез",
+            "Глухота",
+            "Паралич",
+            "Психофизиологические расстройства"
+        ]
+    },
+    "8": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 23,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I20.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D000788', 'MESH:D000788']",
+                "name": "angina pectoris with documented spasm",
+                "name_ru": "Стенокардия с документально подтвержденным спазмом",
+                "descriptions": "['Variant angina', 'Prinzmetal angina']",
+                "idc_10": "I20.1"
+            }
+        ],
+        "symptoms": [
+            "Стенокардия"
+        ]
+    },
+    "9": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 33,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "G93.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D016080']",
+                "name": "cerebral cysts",
+                "name_ru": "Церебральная киста",
+                "descriptions": "['Arachnoid cyst']",
+                "idc_10": "G93.0"
+            }
+        ],
+        "symptoms": [
+            "Расстройства слухового восприятия"
+        ]
+    },
+    "10": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 59,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Недержание мочи"
+        ]
+    },
+    "11": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 12,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "12": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 27,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "D50.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011004', 'MESH:D011004', 'MESH:D011004']",
+                "name": "sideropenic dysphagia",
+                "name_ru": "Сидеропеническая дисфагия",
+                "descriptions": "['Sideropenic dysphagia', 'Kelly-Paterson syndrome', 'Plummer-Vinson syndrome']",
+                "idc_10": "D50.1"
+            }
+        ],
+        "symptoms": [
+            "Вес тела",
+            "анорексия"
+        ]
+    },
+    "13": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 62,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "диарея",
+            "температура",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "14": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 16,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "M13.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D001168']",
+                "name": "polyarthritis, unspecified",
+                "name_ru": "Полиартрит неуточненный",
+                "descriptions": "['Polyarthritis, unspecified']",
+                "idc_10": "M13.0"
+            }
+        ],
+        "symptoms": [
+            "Боль"
+        ]
+    },
+    "15": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 57,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "N39.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D014552']",
+                "name": "urinary tract infection, site not specified",
+                "name_ru": "Инфекция мочевыводящих путей без установленной локализации",
+                "descriptions": "['Urinary tract infection, site not specified']",
+                "idc_10": "N39.0"
+            }
+        ],
+        "symptoms": [
+            "нейрогенный мочевой пузырь",
+            "температура",
+            "обстипация",
+            "Недержание мочи"
+        ]
+    },
+    "16": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 12,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "B37.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002180', 'MESH:D002180']",
+                "name": "candidal stomatitis",
+                "name_ru": "Кандидозный стоматит",
+                "descriptions": "['Candidal stomatitis', 'Oral thrush']",
+                "idc_10": "B37.0"
+            }
+        ],
+        "symptoms": [
+            "дурной запах изо рта",
+            "глоссодиния"
+        ]
+    },
+    "17": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 53,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I67.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002532']",
+                "name": "cerebral aneurysm, nonruptured",
+                "name_ru": "Аневризма мозга без разрыва",
+                "descriptions": "['Cerebral aneurysm NOS']",
+                "idc_10": "I67.1"
+            }
+        ],
+        "symptoms": [
+            "цефалгия"
+        ]
+    },
+    "18": {
+        "ethical_group": "Татары",
+        "location": "city",
+        "gender": "female",
+        "age": 47,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I67.2",
+                "DOID": "DOID:12720",
+                "MESH_ID": "['MESH:D002537']",
+                "name": "cerebral atherosclerosis",
+                "name_ru": "Церебральный атеросклероз",
+                "descriptions": "['Cerebral atherosclerosis']",
+                "idc_10": "I67.2"
+            }
+        ],
+        "symptoms": [
+            "головокружение",
+            "Надъядерный паралич прогрессирующий"
+        ],
+        "drug_and_se": {}
+    },
+    "19": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 48,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I67.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002532']",
+                "name": "cerebral aneurysm, nonruptured",
+                "name_ru": "Аневризма мозга без разрыва",
+                "descriptions": "['Cerebral aneurysm NOS']",
+                "idc_10": "I67.1"
+            }
+        ],
+        "symptoms": [
+            "офтальмоплегия",
+            "головная боль",
+            "Гемианопсия",
+            "Диплопия"
+        ]
+    },
+    "20": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 30,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "N39.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D014552']",
+                "name": "urinary tract infection, site not specified",
+                "name_ru": "Инфекция мочевыводящих путей без установленной локализации",
+                "descriptions": "['Urinary tract infection, site not specified']",
+                "idc_10": "N39.0"
+            }
+        ],
+        "symptoms": [
+            "нейрогенный мочевой пузырь",
+            "альбуминурия",
+            "температура",
+            "Недержание мочи"
+        ]
+    },
+    "21": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 71,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "понос",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "22": {
+        "ethical_group": "Аварцы",
+        "location": "countyside",
+        "gender": "male",
+        "age": 30,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "D50.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011004', 'MESH:D011004', 'MESH:D011004']",
+                "name": "sideropenic dysphagia",
+                "name_ru": "Сидеропеническая дисфагия",
+                "descriptions": "['Sideropenic dysphagia', 'Kelly-Paterson syndrome', 'Plummer-Vinson syndrome']",
+                "idc_10": "D50.1"
+            }
+        ],
+        "symptoms": [
+            "анорексия"
+        ]
+    },
+    "23": {
+        "ethical_group": "Татары",
+        "location": "countyside",
+        "gender": "female",
+        "age": 22,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "24": {
+        "ethical_group": "Таджики",
+        "location": "city",
+        "gender": "male",
+        "age": 61,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "диарея",
+            "Высокая температура",
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "25": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 38,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "D25.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D007889']",
+                "name": "leiomyoma of uterus, unspecified",
+                "name_ru": "Лейомиома матки неуточненная",
+                "descriptions": "['Leiomyoma of uterus, unspecified']",
+                "idc_10": "D25.9"
+            }
+        ],
+        "symptoms": [
+            "Боль в области таза"
+        ]
+    },
+    "26": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
         "age": 52,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "27": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 62,
         "family_state": 0,
         "disease": [
             {
@@ -159,79 +615,47 @@
                 "DOID": "DOID:2377",
                 "MESH_ID": "['MESH:D009103']",
                 "name": "multiple sclerosis",
+                "name_ru": "Рассеянный склероз",
                 "descriptions": "['Multiple sclerosis', 'Multiple sclerosis NOS', 'Generalized multiple sclerosis']",
                 "idc_10": "G35"
-            },
+            }
+        ],
+        "symptoms": [
+            "нейрогенный мочевой пузырь",
+            "усталость",
+            "Мышечная спастичность",
+            "Тремор"
+        ],
+        "drug_and_se": {}
+    },
+    "28": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 83,
+        "family_state": 1,
+        "disease": [
             {
                 "icd_code": "J06.9",
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Fatigue",
-            "Muscle Spasticity",
-            "Urinary Bladder, Neurogenic",
-            "Respiratory Sounds"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:2377",
-            "disease_DOID": "DOID:332",
-            "drug_db_idx": "DB00181",
-            "drug_name": "BACLOFEN",
-            "drug_to_disease_relation": "Effect",
-            "side_effect": [
-                "Urinary incontinence",
-                "Vomiting",
-                "Muscle relaxant therapy"
-            ]
-        }
+            "Высокая температура",
+            "Кашель",
+            "распиратоные звуки"
+        ]
     },
-    "6": {
+    "29": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 49,
-        "family_state": 1,
-        "disease": [
-            {
-                "icd_code": "C61",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D011471']",
-                "name": "malignant neoplasm of prostate",
-                "descriptions": "['Malignant neoplasm of prostate']",
-                "idc_10": "C61"
-            },
-            {
-                "icd_code": "E03.9",
-                "DOID": "DOID:11634",
-                "MESH_ID": "['MESH:D009230']",
-                "name": "hypothyroidism, unspecified",
-                "descriptions": "['Hypothyroidism, unspecified', 'Myxedema NOS']",
-                "idc_10": "E03.9"
-            }
-        ],
-        "symptoms": [
-            "Urinary Incontinence",
-            "Coma"
-        ],
-        "drug_and_se": {
-            "initial_disease_DOID": "DOID:11634",
-            "disease_DOID": "DOID:11634",
-            "drug_db_idx": "DB00451",
-            "drug_name": "LEVOTHYROXINE",
-            "drug_to_disease_relation": "Associate",
-            "side_effect": []
-        }
-    },
-    "7": {
-        "ethical_group": "Чеченцы",
-        "location": "city",
-        "gender": "male",
-        "age": 11,
+        "age": 20,
         "family_state": 0,
         "disease": [
             {
@@ -239,20 +663,99 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough"
+            "температура",
+            "понос",
+            "хрипы в грудной клетке",
+            "Кашель"
         ]
     },
-    "8": {
-        "ethical_group": "Удмурты",
+    "30": {
+        "ethical_group": "Русские",
         "location": "countyside",
         "gender": "male",
-        "age": 65,
+        "age": 69,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "31": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 57,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "L60.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D054039']",
+                "name": "onycholysis",
+                "name_ru": "Онихолиз",
+                "descriptions": "['Onycholysis']",
+                "idc_10": "L60.1"
+            }
+        ],
+        "symptoms": [
+            "Мышечная слабость",
+            "Парез"
+        ]
+    },
+    "32": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 35,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "G20",
+                "DOID": "DOID:14330",
+                "MESH_ID": "['MESH:D010300']",
+                "name": "parkinson's disease",
+                "name_ru": "Болезнь Паркинсона",
+                "descriptions": "[\"Parkinson's disease\", 'Paralysis agitans']",
+                "idc_10": "G20"
+            }
+        ],
+        "symptoms": [
+            "Тремор"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:14330",
+            "disease_DOID": "DOID:0050425",
+            "drug_db_idx": "DB00413",
+            "drug_name": "PRAMIPEXOLE",
+            "drug_to_disease_relation": "Palliates",
+            "side_effect": [
+                "Abnormal dreams",
+                "Gait disturbance",
+                "Dysphagia"
+            ]
+        }
+    },
+    "33": {
+        "ethical_group": "Алтайцы",
+        "location": "city",
+        "gender": "male",
+        "age": 71,
         "family_state": 1,
         "disease": [
             {
@@ -260,29 +763,173 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
-            },
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "34": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 75,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "Q24.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D007979']",
+                "name": NaN,
+                "name_ru": "Левокардия",
+                "descriptions": "['Levocardia']",
+                "idc_10": "Q24.1"
+            }
+        ],
+        "symptoms": [
+            "Цианоз"
+        ]
+    },
+    "35": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 72,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке"
+        ]
+    },
+    "36": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 21,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Недержание мочи",
+            "горячие вспышки"
+        ]
+    },
+    "37": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 20,
+        "family_state": 0,
+        "disease": [
             {
                 "icd_code": "G20",
                 "DOID": "DOID:14330",
                 "MESH_ID": "['MESH:D010300']",
                 "name": "parkinson's disease",
+                "name_ru": "Болезнь Паркинсона",
                 "descriptions": "[\"Parkinson's disease\", 'Paralysis agitans']",
                 "idc_10": "G20"
             }
         ],
         "symptoms": [
-            "Cough",
-            "Respiratory Sounds",
-            "Fever",
-            "Tremor",
-            "Supranuclear Palsy, Progressive",
-            "Muscle Rigidity"
+            "Жесткость мышц",
+            "Галлюцинации",
+            "Надъядерный паралич прогрессирующий",
+            "Тремор"
         ],
         "drug_and_se": {}
     },
-    "9": {
+    "38": {
+        "ethical_group": "Тувинцы",
+        "location": "countyside",
+        "gender": "female",
+        "age": 11,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "C54.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D016889']",
+                "name": NaN,
+                "name_ru": "Злокач. новообр. эндометрия",
+                "descriptions": NaN,
+                "idc_10": "C54.1"
+            }
+        ],
+        "symptoms": [
+            "фактор насыщения",
+            "понос"
+        ]
+    },
+    "39": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 9,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J20.8",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D018352']",
+                "name": NaN,
+                "name_ru": "Острый бронхит, вызванный другими уточненными агентами",
+                "descriptions": NaN,
+                "idc_10": "J20.8"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "потеря веса",
+            "диарея"
+        ]
+    },
+    "40": {
+        "ethical_group": "Азербайджанцы",
+        "location": "city",
+        "gender": "male",
+        "age": 33,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "41": {
         "ethical_group": "Русские",
         "location": "countyside",
         "gender": "male",
@@ -294,18 +941,19 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Fever",
-            "Diarrhea"
+            "температура",
+            "понос",
+            "хрипы в грудной клетке",
+            "Кашель"
         ]
     },
-    "10": {
+    "42": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "female",
@@ -317,94 +965,94 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Fever",
-            "Diarrhea"
+            "Кашель",
+            "распиратоные звуки"
         ]
     },
-    "11": {
+    "43": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 28,
-        "family_state": 0,
+        "age": 35,
+        "family_state": 1,
         "disease": [
-            {
-                "icd_code": "J06.9",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D012141']",
-                "name": "acute upper respiratory infection, unspecified",
-                "descriptions": "['Upper respiratory infection NOS']",
-                "idc_10": "J06.9"
-            },
             {
                 "icd_code": "C61",
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D011471']",
                 "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
                 "descriptions": "['Malignant neoplasm of prostate']",
                 "idc_10": "C61"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Urinary Incontinence",
-            "Hot Flashes"
+            "Недержание мочи",
+            "горячие вспышки"
         ]
     },
-    "12": {
+    "44": {
+        "ethical_group": "Азербайджанцы",
+        "location": "countyside",
+        "gender": "female",
+        "age": 60,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "G50.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D020433']",
+                "name": "disorder of trigeminal nerve, unspecified",
+                "name_ru": "Поражение тройничного нерва неуточненное",
+                "descriptions": "['Disorder of trigeminal nerve, unspecified']",
+                "idc_10": "G50.9"
+            }
+        ],
+        "symptoms": [
+            "лицевая боль",
+            "гипестезия"
+        ]
+    },
+    "45": {
         "ethical_group": "Русские",
         "location": "city",
+        "gender": "female",
+        "age": 32,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "E28.2",
+                "DOID": "DOID:11612",
+                "MESH_ID": "['MESH:D011085']",
+                "name": "polycystic ovarian syndrome",
+                "name_ru": "Синдром поликистоза яичников",
+                "descriptions": "['Polycystic ovarian syndrome', 'Stein-Leventhal syndrome', 'Sclerocystic ovary syndrome']",
+                "idc_10": "E28.2"
+            }
+        ],
+        "symptoms": [
+            "гирсутизм"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:11612",
+            "disease_DOID": "DOID:9352",
+            "drug_db_idx": "DB00197",
+            "drug_name": "TROGLITAZONE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
+    },
+    "46": {
+        "ethical_group": "Русские",
+        "location": "countyside",
         "gender": "male",
-        "age": 12,
-        "family_state": 0,
-        "disease": [
-            {
-                "icd_code": "K86.1",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D050500', 'MESH:D050500']",
-                "name": "other chronic pancreatitis",
-                "descriptions": "['Relapsing chronic pancreatitis', 'Chronic pancreatitis NOS']",
-                "idc_10": "K86.1"
-            }
-        ],
-        "symptoms": [
-            "Jaundice, Obstructive"
-        ]
-    },
-    "13": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 70,
-        "family_state": 0,
-        "disease": [
-            {
-                "icd_code": "J06.9",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D012141']",
-                "name": "acute upper respiratory infection, unspecified",
-                "descriptions": "['Upper respiratory infection NOS']",
-                "idc_10": "J06.9"
-            }
-        ],
-        "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Diarrhea"
-        ]
-    },
-    "14": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 38,
+        "age": 23,
         "family_state": 1,
         "disease": [
             {
@@ -412,26 +1060,545 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
-            },
-            {
-                "icd_code": "E28.2",
-                "DOID": "DOID:11612",
-                "MESH_ID": "['MESH:D011085']",
-                "name": "polycystic ovarian syndrome",
-                "descriptions": "['Polycystic ovarian syndrome', 'Stein-Leventhal syndrome', 'Sclerocystic ovary syndrome']",
-                "idc_10": "E28.2"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Hirsutism"
+            "Высокая температура",
+            "Кашель",
+            "Диарея инфантильная",
+            "распиратоные звуки"
+        ]
+    },
+    "47": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 35,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "распиратоные звуки",
+            "понос",
+            "Кашель"
+        ]
+    },
+    "48": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 28,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "диарея",
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "49": {
+        "ethical_group": "Кабардинцы",
+        "location": "city",
+        "gender": "male",
+        "age": 70,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "понос",
+            "Высокая температура",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "50": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 38,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "51": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 80,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "K81.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002764']",
+                "name": "cholecystitis, unspecified",
+                "name_ru": "Холецистит неуточненный",
+                "descriptions": "['Cholecystitis, unspecified']",
+                "idc_10": "K81.9"
+            }
+        ],
+        "symptoms": [
+            "острая боль живота"
+        ]
+    },
+    "52": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 66,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002532']",
+                "name": "cerebral aneurysm, nonruptured",
+                "name_ru": "Аневризма мозга без разрыва",
+                "descriptions": "['Cerebral aneurysm NOS']",
+                "idc_10": "I67.1"
+            }
+        ],
+        "symptoms": [
+            "офтальмоплегия",
+            "Стенокардия",
+            "цефалгия",
+            "гемиплегия"
+        ]
+    },
+    "53": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 26,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "54": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 42,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "55": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 32,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.2",
+                "DOID": "DOID:12720",
+                "MESH_ID": "['MESH:D002537']",
+                "name": "cerebral atherosclerosis",
+                "name_ru": "Церебральный атеросклероз",
+                "descriptions": "['Cerebral atherosclerosis']",
+                "idc_10": "I67.2"
+            }
+        ],
+        "symptoms": [
+            "Перемежающаяся хромота"
         ],
         "drug_and_se": {}
     },
-    "15": {
+    "56": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 38,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I67.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002532']",
+                "name": "cerebral aneurysm, nonruptured",
+                "name_ru": "Аневризма мозга без разрыва",
+                "descriptions": "['Cerebral aneurysm NOS']",
+                "idc_10": "I67.1"
+            }
+        ],
+        "symptoms": [
+            "офтальмоплегия"
+        ]
+    },
+    "57": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 35,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Недержание мочи",
+            "горячие вспышки"
+        ]
+    },
+    "58": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 17,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "59": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 23,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "Q21.8",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D004541']",
+                "name": NaN,
+                "name_ru": "Другие врожденные аномалии сердечной перегородки",
+                "descriptions": "[\"Eisenmenger's defect\"]",
+                "idc_10": "Q21.8"
+            }
+        ],
+        "symptoms": [
+            "Цианоз",
+            "Боль",
+            "обморок",
+            "Аноксия"
+        ]
+    },
+    "60": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 59,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "D50.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011004', 'MESH:D011004', 'MESH:D011004']",
+                "name": "sideropenic dysphagia",
+                "name_ru": "Сидеропеническая дисфагия",
+                "descriptions": "['Sideropenic dysphagia', 'Kelly-Paterson syndrome', 'Plummer-Vinson syndrome']",
+                "idc_10": "D50.1"
+            }
+        ],
+        "symptoms": [
+            "анорексия"
+        ]
+    },
+    "61": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 18,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.2",
+                "DOID": "DOID:12720",
+                "MESH_ID": "['MESH:D002537']",
+                "name": "cerebral atherosclerosis",
+                "name_ru": "Церебральный атеросклероз",
+                "descriptions": "['Cerebral atherosclerosis']",
+                "idc_10": "I67.2"
+            }
+        ],
+        "symptoms": [
+            "головокружение",
+            "гемиплегия"
+        ],
+        "drug_and_se": {}
+    },
+    "62": {
+        "ethical_group": "Молдаване",
+        "location": "city",
+        "gender": "female",
+        "age": 20,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "диарея",
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "63": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 73,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке"
+        ]
+    },
+    "64": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 66,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J20.8",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D018352']",
+                "name": NaN,
+                "name_ru": "Острый бронхит, вызванный другими уточненными агентами",
+                "descriptions": NaN,
+                "idc_10": "J20.8"
+            }
+        ],
+        "symptoms": [
+            "Кашель"
+        ]
+    },
+    "65": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 74,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке"
+        ]
+    },
+    "66": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 21,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I20.0",
+                "DOID": "DOID:8805",
+                "MESH_ID": "['MESH:D000789']",
+                "name": "unstable angina",
+                "name_ru": "Нестабильная стенокардия",
+                "descriptions": "['Unstable angina', 'Crescendo angina', 'Preinfarction syndrome', 'Intermediate coronary syndrome']",
+                "idc_10": "I20.0"
+            }
+        ],
+        "symptoms": [
+            "гипервентиляция",
+            "головокружение",
+            "одышка"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:8805",
+            "disease_DOID": "DOID:8805",
+            "drug_db_idx": "DB00187",
+            "drug_name": "ESMOLOL",
+            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
+            "side_effect": [
+                "Hypotension"
+            ]
+        }
+    },
+    "67": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 73,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.3",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D015140']",
+                "name": NaN,
+                "name_ru": "Прогрессирующая сосудистая лейкоэнцефалопатия",
+                "descriptions": "[\"Binswanger's disease\"]",
+                "idc_10": "I67.3"
+            }
+        ],
+        "symptoms": [
+            "Расстройства памяти",
+            "Психомоторное возбуждение",
+            "Мышечная гипотония"
+        ]
+    },
+    "68": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 37,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "K86.2",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D010181']",
+                "name": "cyst of pancreas",
+                "name_ru": "Киста поджелудочной железы",
+                "descriptions": "['Cyst of pancreas']",
+                "idc_10": "K86.2"
+            }
+        ],
+        "symptoms": [
+            "кровавая рвота",
+            "острая боль живота",
+            "Боль в животе",
+            "отёк"
+        ]
+    },
+    "69": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 73,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "I88.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D008199']",
+                "name": "nonspecific lymphadenitis, unspecified",
+                "name_ru": "Неспецифический лимфаденит неуточненный",
+                "descriptions": "['Lymphadenitis NOS']",
+                "idc_10": "I88.9"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "Лихорадка неизвестного происхождения",
+            "кривошея",
+            "Боль в груди"
+        ]
+    },
+    "70": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
@@ -443,21 +1610,66 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Fever"
+            "Кашель",
+            "распиратоные звуки"
         ]
     },
-    "16": {
+    "71": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 45,
+        "age": 84,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "K81.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D041881', 'MESH:D002764']",
+                "name": "acute cholecystitis",
+                "name_ru": "Острый холецистит",
+                "descriptions": "['Acute cholecystitis', 'Empyema of gallbladder']",
+                "idc_10": "K81.0"
+            }
+        ],
+        "symptoms": [
+            "острая боль живота",
+            "жжения",
+            "Колики",
+            "желтуха"
+        ]
+    },
+    "72": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 27,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "G93.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D016080']",
+                "name": "cerebral cysts",
+                "name_ru": "Церебральная киста",
+                "descriptions": "['Arachnoid cyst']",
+                "idc_10": "G93.0"
+            }
+        ],
+        "symptoms": [
+            "гипестезия"
+        ]
+    },
+    "73": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 68,
         "family_state": 0,
         "disease": [
             {
@@ -465,22 +1677,66 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Diarrhea",
-            "Diarrhea, Infantile"
+            "Высокая температура",
+            "хрипы в грудной клетке",
+            "одышка",
+            "Кашель"
         ]
     },
-    "17": {
+    "74": {
+        "ethical_group": "Башкиры",
+        "location": "city",
+        "gender": "male",
+        "age": 14,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.3",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D015140']",
+                "name": NaN,
+                "name_ru": "Прогрессирующая сосудистая лейкоэнцефалопатия",
+                "descriptions": "[\"Binswanger's disease\"]",
+                "idc_10": "I67.3"
+            }
+        ],
+        "symptoms": [
+            "Расстройства памяти"
+        ]
+    },
+    "75": {
         "ethical_group": "Русские",
         "location": "city",
+        "gender": "male",
+        "age": 56,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Недержание мочи",
+            "горячие вспышки"
+        ]
+    },
+    "76": {
+        "ethical_group": "Русские",
+        "location": "countyside",
         "gender": "female",
-        "age": 28,
+        "age": 68,
         "family_state": 1,
         "disease": [
             {
@@ -488,78 +1744,147 @@
                 "DOID": "DOID:10763",
                 "MESH_ID": "['MESH:D006973']",
                 "name": "essential (primary) hypertension",
+                "name_ru": "Эссенциальная [первичная] гипертензия",
                 "descriptions": "['Essential (primary) hypertension', 'high blood pressure']",
                 "idc_10": "I10"
             }
         ],
         "symptoms": [
-            "Albuminuria",
-            "Proteinuria",
-            "Body Weight",
-            "Angina Pectoris"
+            "Вес тела",
+            "альбуминурия",
+            "протеинурия"
         ],
-        "drug_and_se": {}
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:10763",
+            "disease_DOID": "DOID:14221",
+            "drug_db_idx": "DB01083",
+            "drug_name": "ORLISTAT",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": [
+                "Gastrointestinal pain",
+                "Dry skin",
+                "Flatulence"
+            ]
+        }
     },
-    "18": {
+    "77": {
         "ethical_group": "Русские",
         "location": "city",
         "gender": "male",
-        "age": 55,
-        "family_state": 1,
+        "age": 24,
+        "family_state": 0,
         "disease": [
-            {
-                "icd_code": "J06.9",
-                "DOID": NaN,
-                "MESH_ID": "['MESH:D012141']",
-                "name": "acute upper respiratory infection, unspecified",
-                "descriptions": "['Upper respiratory infection NOS']",
-                "idc_10": "J06.9"
-            },
             {
                 "icd_code": "C61",
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D011471']",
                 "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
                 "descriptions": "['Malignant neoplasm of prostate']",
                 "idc_10": "C61"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Urinary Incontinence",
-            "Hot Flashes",
-            "Pain"
+            "Недержание мочи",
+            "тучность",
+            "Боль",
+            "горячие вспышки"
         ]
     },
-    "19": {
-        "ethical_group": "Русские",
-        "location": "city",
-        "gender": "female",
-        "age": 24,
-        "family_state": 1,
-        "disease": [
-            {
-                "icd_code": "I67.2",
-                "DOID": "DOID:12720",
-                "MESH_ID": "['MESH:D002537']",
-                "name": "cerebral atherosclerosis",
-                "descriptions": "['Cerebral atherosclerosis']",
-                "idc_10": "I67.2"
-            }
-        ],
-        "symptoms": [
-            "Diplopia",
-            "Hearing Loss, Sensorineural",
-            "Hemiplegia"
-        ],
-        "drug_and_se": {}
-    },
-    "20": {
+    "78": {
         "ethical_group": "Русские",
         "location": "countyside",
         "gender": "male",
-        "age": 46,
+        "age": 61,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "G35",
+                "DOID": "DOID:2377",
+                "MESH_ID": "['MESH:D009103']",
+                "name": "multiple sclerosis",
+                "name_ru": "Рассеянный склероз",
+                "descriptions": "['Multiple sclerosis', 'Multiple sclerosis NOS', 'Generalized multiple sclerosis']",
+                "idc_10": "G35"
+            }
+        ],
+        "symptoms": [
+            "усталость"
+        ],
+        "drug_and_se": {}
+    },
+    "79": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 33,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "80": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 60,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "E06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D013966']",
+                "name": "thyroiditis, unspecified",
+                "name_ru": "Тиреоидит неуточненный",
+                "descriptions": "['Thyroiditis, unspecified']",
+                "idc_10": "E06.9"
+            }
+        ],
+        "symptoms": [
+            "Психофизиологические расстройства",
+            "галзные проявления",
+            "Боль в шее",
+            "коп-ростаз"
+        ]
+    },
+    "81": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 9,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "82": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 28,
         "family_state": 1,
         "disease": [
             {
@@ -567,14 +1892,437 @@
                 "DOID": NaN,
                 "MESH_ID": "['MESH:D012141']",
                 "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
                 "descriptions": "['Upper respiratory infection NOS']",
                 "idc_10": "J06.9"
             }
         ],
         "symptoms": [
-            "Respiratory Sounds",
-            "Cough",
-            "Diarrhea"
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "83": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 34,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "диарея",
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "84": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 31,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "G35",
+                "DOID": "DOID:2377",
+                "MESH_ID": "['MESH:D009103']",
+                "name": "multiple sclerosis",
+                "name_ru": "Рассеянный склероз",
+                "descriptions": "['Multiple sclerosis', 'Multiple sclerosis NOS', 'Generalized multiple sclerosis']",
+                "idc_10": "G35"
+            }
+        ],
+        "symptoms": [
+            "нейрогенный мочевой пузырь",
+            "усталость",
+            "Мышечная спастичность",
+            "Тремор"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:2377",
+            "disease_DOID": "DOID:2377",
+            "drug_db_idx": "DB01844",
+            "drug_name": "DIMETHYLFORMAMIDE",
+            "drug_to_disease_relation": "treatment/therapy (including investigatory)",
+            "side_effect": []
+        }
+    },
+    "85": {
+        "ethical_group": "Аварцы",
+        "location": "countyside",
+        "gender": "male",
+        "age": 65,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "температура",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "86": {
+        "ethical_group": "Татары",
+        "location": "city",
+        "gender": "male",
+        "age": 52,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "Q20.0",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D014339', 'MESH:D014339']",
+                "name": "common arterial trunk",
+                "name_ru": "Общий артериальный ствол",
+                "descriptions": "['Common arterial trunk', 'Persistent truncus arteriosus']",
+                "idc_10": "Q20.0"
+            }
+        ],
+        "symptoms": [
+            "кровохарканье",
+            "Боль в груди"
+        ]
+    },
+    "87": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 67,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "распиратоные звуки"
+        ]
+    },
+    "88": {
+        "ethical_group": "Татары",
+        "location": "countyside",
+        "gender": "female",
+        "age": 43,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Кашель",
+            "распиратоные звуки"
+        ]
+    },
+    "89": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "female",
+        "age": 45,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "M81.0",
+                "DOID": "DOID:11476",
+                "MESH_ID": "['MESH:D010024']",
+                "name": "age-related osteoporosis without current pathological fracture",
+                "name_ru": "Постменопаузный остеопороз (без патологического перелома)",
+                "descriptions": "['Osteoporosis NOS']",
+                "idc_10": "M81.0"
+            }
+        ],
+        "symptoms": [
+            "Вес тела",
+            "Боль в спине"
+        ],
+        "drug_and_se": {}
+    },
+    "90": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 31,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "91": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 47,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Высокая температура",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "92": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 36,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "C16.2",
+                "DOID": "DOID:10534",
+                "MESH_ID": "['MESH:D013274']",
+                "name": "malignant neoplasm of body of stomach",
+                "name_ru": "Злокач. новообр. тела желудка",
+                "descriptions": NaN,
+                "idc_10": "C16.2"
+            }
+        ],
+        "symptoms": [
+            "диспепсия",
+            "кровавая рвота",
+            "тошнота"
+        ],
+        "drug_and_se": {}
+    },
+    "93": {
+        "ethical_group": "Аварцы",
+        "location": "city",
+        "gender": "female",
+        "age": 71,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "Высокая температура",
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "94": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 40,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "D50.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D018798']",
+                "name": "iron deficiency anemia, unspecified",
+                "name_ru": "Железодефицитная анемия неуточненная",
+                "descriptions": "['Iron deficiency anemia, unspecified']",
+                "idc_10": "D50.9"
+            }
+        ],
+        "symptoms": [
+            "Расстройства памяти",
+            "Вес при рождении",
+            "Боль в груди",
+            "Боль в спине"
+        ]
+    },
+    "95": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 33,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке"
+        ]
+    },
+    "96": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 22,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I67.1",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D002532']",
+                "name": "cerebral aneurysm, nonruptured",
+                "name_ru": "Аневризма мозга без разрыва",
+                "descriptions": "['Cerebral aneurysm NOS']",
+                "idc_10": "I67.1"
+            }
+        ],
+        "symptoms": [
+            "офтальмоплегия",
+            "цефалгия",
+            "гемиплегия"
+        ]
+    },
+    "97": {
+        "ethical_group": "Татары",
+        "location": "city",
+        "gender": "male",
+        "age": 25,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "J06.9",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D012141']",
+                "name": "acute upper respiratory infection, unspecified",
+                "name_ru": "Острая инфекция верхних дыхательных путей неуточненная",
+                "descriptions": "['Upper respiratory infection NOS']",
+                "idc_10": "J06.9"
+            }
+        ],
+        "symptoms": [
+            "хрипы в грудной клетке",
+            "Кашель"
+        ]
+    },
+    "98": {
+        "ethical_group": "Русские",
+        "location": "countyside",
+        "gender": "male",
+        "age": 44,
+        "family_state": 1,
+        "disease": [
+            {
+                "icd_code": "C61",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D011471']",
+                "name": "malignant neoplasm of prostate",
+                "name_ru": "Злокачественное новообразование предстательной железы",
+                "descriptions": "['Malignant neoplasm of prostate']",
+                "idc_10": "C61"
+            }
+        ],
+        "symptoms": [
+            "Недержание мочи",
+            "горячие вспышки"
+        ]
+    },
+    "99": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "female",
+        "age": 34,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I10",
+                "DOID": "DOID:10763",
+                "MESH_ID": "['MESH:D006973']",
+                "name": "essential (primary) hypertension",
+                "name_ru": "Эссенциальная [первичная] гипертензия",
+                "descriptions": "['Essential (primary) hypertension', 'high blood pressure']",
+                "idc_10": "I10"
+            }
+        ],
+        "symptoms": [
+            "альбуминурия"
+        ],
+        "drug_and_se": {
+            "initial_disease_DOID": "DOID:10763",
+            "disease_DOID": "DOID:10763",
+            "drug_db_idx": "DB00574",
+            "drug_name": "FENFLURAMINE",
+            "drug_to_disease_relation": "Associate",
+            "side_effect": []
+        }
+    },
+    "100": {
+        "ethical_group": "Русские",
+        "location": "city",
+        "gender": "male",
+        "age": 28,
+        "family_state": 0,
+        "disease": [
+            {
+                "icd_code": "I20.8",
+                "DOID": NaN,
+                "MESH_ID": "['MESH:D000787', 'MESH:D000787', 'MESH:D060050']",
+                "name": "other forms of angina pectoris",
+                "name_ru": "Другие формы стенокардии",
+                "descriptions": "['Angina of effort', 'Stenocardia', 'Stable angina']",
+                "idc_10": "I20.8"
+            }
+        ],
+        "symptoms": [
+            "Мышечная гипотония",
+            "Промывка",
+            "обморок",
+            "Боль в шее"
         ]
     }
 }
