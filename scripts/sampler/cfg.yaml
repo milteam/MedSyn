@@ -2,8 +2,8 @@ seed: 42
 
 lang: "ru"
 
-n_samples: 100 # target number of samples to generate
-max_iters: 1000 # max iters for generation (some diseases from top does not match with database)
+n_samples: 1000 # target number of samples to generate
+max_iters: 2000 # max iters for generation (some diseases from top does not match with database)
 
 max_diseases: 1 # max numer of diseases per person
 max_symptoms: 5 # max numer of symptoms per disease

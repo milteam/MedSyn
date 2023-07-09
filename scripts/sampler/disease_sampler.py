@@ -12,7 +12,7 @@ class DiseaseSampler:
         self.gender_scpec_or_general = cfg["gender_scpec_or_general"]
         self.prepare_gender_probs()
 
-        self.dummy_symptoms = ["Вес при рождении", "кома", "Вес тела"]
+        self.dummy_symptoms = ["Вес при рождении", "кома", "Вес тела", "Вес плода"]
 
     def prepare_df(self) -> None:
         if self.cfg["lang"] == "eng":
@@ -93,7 +93,6 @@ class DiseaseSampler:
 
     def sample_symptoms_without_stats(self, symptoms_name: str) -> List:
         symptoms = [s.lower().strip() for s in symptoms_name.split(",")]
-        symptoms = [s for s in symptoms if s not in self.dummy_symptoms]
         n_symptoms = min(
             len(symptoms), np.random.randint(1, self.cfg["max_symptoms"])
         )
@@ -112,6 +111,8 @@ class DiseaseSampler:
             else:
                 symptoms_name = data["symptoms_ru_no_stat"].values[0]
                 symptoms = self.sample_symptoms_without_stats(symptoms_name)
+
+        symptoms = [s for s in symptoms if s not in self.dummy_symptoms]
 
         return symptoms
 
