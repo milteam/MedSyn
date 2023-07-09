@@ -302,6 +302,13 @@ def add_symptoms_ru(
     return main_df
 
 
+def add_symptoms_ru_no_stats(
+    main_df: pd.DataFrame, ru_symp: pd.DataFrame
+) -> pd.DataFrame:
+    main_df = main_df.merge(ru_symp[["icd_10", "symptoms_ru_no_stat"]], on="icd_10")
+    return main_df
+
+
 def prepare_data(cfg: Dict) -> None:
     main_df = pd.read_csv(cfg["main_df"])
     mesh2icd10_mapping = pd.read_csv(cfg["mesh2icd"])
@@ -318,6 +325,8 @@ def prepare_data(cfg: Dict) -> None:
     wiki_ru = pd.read_csv(cfg["wiki_dd"])
     symptoms_mapping_df = pd.read_csv(cfg["symptoms_ru"])
 
+    ru_symp = pd.read_csv(cfg["symp_ru_no_stats"])
+
     main_df = add_mesh_codes(main_df, mesh2icd10_mapping)
     main_df = add_probabilities(main_df, codes_and_probs)
     main_df = add_gender(main_df, gender_split)
@@ -326,6 +335,7 @@ def prepare_data(cfg: Dict) -> None:
     main_df = add_symptoms_do(main_df, symptom_DO, symptom_mesh)
     main_df = add_diseases_ru(main_df, wiki_ru, mkb_10)
     main_df = add_symptoms_ru(main_df, symptoms_mapping_df)
+    main_df = add_symptoms_ru_no_stats(main_df, ru_symp)
 
     main_df.to_csv("./data/main_proc.csv", index=False)
 
