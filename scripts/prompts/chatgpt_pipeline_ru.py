@@ -3,6 +3,7 @@ import os
 import time
 import openai
 import click
+from openai.error import ServiceUnavailableError, OpenAIError
 
 
 def get_sample(data):
@@ -34,35 +35,54 @@ def get_sample(data):
 
 
 @click.command()
-@click.option('--out', '-o',
-              help='Output file name', required=True)
+@click.option('--dir', '-d',
+              help='Output dir name', required=True)
 @click.option('--samples', '-s', help='JSON files with deseases', required=True)
-@click.option('--limit', '-l', help='A number of sentences to generate', default=5)
-
-def main(out, samples, limit):
+@click.option('--limit', '-l', help='A number of sentences to generate', default=100)
+@click.option('--offset', '-o', help='A number of sentences to skip', default=0)
+def main(dir, samples, limit, offset):
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     tic = time.perf_counter()
 
+    if not os.path.exists(dir):
+        os.makedirs(dir)
     res = []
     with open(samples, encoding="utf8") as f:
         data = json.load(f)
-        print(f"Generating {limit} samples out of {len(data)}")
+        print(f"Generating {limit} samples out of {len(data)} starting from {offset}")
 
-        for idx, desease in zip(range(limit), data.values()):
-            print(f"\n\n\n======================== Sample {idx+1} ========================")
-            desease_info = get_sample(desease)
-            print(desease_info["prompt"])
-            print("-----------------------------------------------------------------")
-            response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": desease_info["prompt"]}])
-            desease_info["response"] = response['choices'][0]['message']['content']
-            print(desease_info["response"])
-            res.append(desease_info)
+        data = list(data.values())
+        idx = offset
+        while idx < len(data):
+            try:
+                if idx % 20 == 0 and idx > offset:
+                    print(f"Storing results from {idx-20} to {idx}")
+                    with open(os.path.join(dir, f"result_{idx-20}-{idx}.json"), 'w', encoding='utf8') as f:
+                        json.dump(res, f, indent=3, ensure_ascii=False)
+                        res = []
+
+                print(f"\n\n\n======================== Sample {idx+1} ========================")
+                desease_info = get_sample(data[idx])
+                print(desease_info["prompt"])
+                print("-----------------------------------------------------------------")
+                response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": desease_info["prompt"]}])
+                desease_info["response"] = response['choices'][0]['message']['content']
+                print(desease_info["response"])
+                res.append(desease_info)
+                idx += 1
+                if idx-offset == limit:
+                    break
+            except OpenAIError as e:
+                print(f"OpeanAI Exception, service is busy, waiting a few seconds: {e}")
+                time.sleep(5)
+                continue
+
 
     toc = time.perf_counter()
     print(f"Time to generate {limit} samples {toc-tic} seconds")
 
-    with open(out, 'w', encoding='utf8')  as f:
+    with open(os.path.join(dir, f"result_{idx - 20}-{idx}.json"), 'w', encoding='utf8') as f:
         json.dump(res, f, indent=3, ensure_ascii=False)
 
 if __name__ == '__main__':
