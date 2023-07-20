@@ -32,7 +32,7 @@ def prompt_diagnostics(symptoms, diagnose, marital, smoking, gender, conj ):
     Пациент жалуется на {symptoms}.
     Реалистично придумай все недостающие детали и результаты исследований, которые могли быть назначены в такой ситуации. '''
 
-PROMPTS = [prompt_diagnostics]
+PROMPTS = [prompt_no_patent_info, prompt_with_patient_info, short_promt, prompt_diagnostics]
 
 def get_sample(data):
     desease_code = data["disease"][0]["idc_10"]
