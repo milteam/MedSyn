@@ -42,7 +42,7 @@ def get_sample(data):
     marital_state = data["family_state"]
     smoking = data["smoking"]
 
-    desaese_name = (data["disease"][0]["name_ru"] or "").lower()
+    desaese_name = str(data["disease"][0]["name_ru"]).lower()
     if gender == "male":
         marital = "замужний" if marital_state else "незамужний"
         smoking = "курящий" if smoking else "некурящий"
@@ -67,7 +67,7 @@ def get_sample(data):
 @click.option('--dir', '-d',
               help='Output dir name', required=True)
 @click.option('--samples', '-s', help='JSON files with deseases', required=True)
-@click.option('--limit', '-l', help='A number of sentences to generate', default=100)
+@click.option('--limit', '-l', help='A number of sentences to generate', default=500)
 @click.option('--offset', '-o', help='A number of sentences to skip', default=0)
 def main(dir, samples, limit, offset):
     random.seed(0)
