@@ -309,6 +309,27 @@ def add_symptoms_ru_no_stats(
     return main_df
 
 
+def remove_duplicates(main_df: pd.DataFrame) -> pd.DataFrame:
+    dup_codes = main_df[main_df["icd_10"].duplicated()]["icd_10"]
+    for code in dup_codes:
+        dup_data = main_df.query("icd_10 == @code")
+        assert dup_data.shape[0] == 2
+        idxs = dup_data.index
+        if not isinstance(dup_data.loc[idxs[0]]["symptoms_ru"], str):
+            main_df = main_df.drop(index=idxs[0])
+        else:
+            main_df = main_df.drop(index=idxs[1])
+    return main_df
+
+
+def fill_probs(main_df: pd.DataFrame) -> pd.DataFrame:
+    main_df["probs"] = main_df["probs"].fillna(
+        (1 - main_df["probs"].sum()) / len(main_df[main_df["probs"].isna()]["icd_10"])
+    )
+    assert abs(1 - main_df["probs"].sum()) < 0.01
+    return main_df
+
+
 def prepare_data(cfg: Dict) -> None:
     main_df = pd.read_csv(cfg["main_df"])
     mesh2icd10_mapping = pd.read_csv(cfg["mesh2icd"])
@@ -336,6 +357,10 @@ def prepare_data(cfg: Dict) -> None:
     main_df = add_diseases_ru(main_df, wiki_ru, mkb_10)
     main_df = add_symptoms_ru(main_df, symptoms_mapping_df)
     main_df = add_symptoms_ru_no_stats(main_df, ru_symp)
+
+    main_df = main_df.dropna(subset=["icd_10"])
+    main_df = remove_duplicates(main_df)
+    main_df = fill_probs(main_df)
 
     main_df.to_csv("./data/main_proc.csv", index=False)
 

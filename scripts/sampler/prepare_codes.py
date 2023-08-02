@@ -46,10 +46,13 @@ def prepare_codes(cfg: Dict) -> None:
         subcats = codes_filt.query("Primary_code == @cat")["Secondary_code"].values
         code_p = icd_codes_probs[cat]
         for subcat in subcats:
-            codes.append(cat + "." + str(subcat) if str(subcat) != "nan" else cat)
+            cat_name = cat + "." + str(subcat) if str(subcat) != "nan" else cat
+            if cat_name[-1] == ".":
+                cat_name = cat_name[:-1]
+            codes.append(cat_name)
             probs.append(code_p / len(subcats))
 
-    codes_and_probs = pd.DataFrame(list(zip(codes, probs)), columns=["codes", "probs"])
+    codes_and_probs = pd.DataFrame(list(zip(codes, probs)), columns=["icd_10", "probs"])
     codes_and_probs.to_csv(cfg["icd_codes_processed"], index=False)
 
 

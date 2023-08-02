@@ -1,9 +1,9 @@
-seed: 42
+seed: 123
 
 lang: "ru"
 
-n_samples: 1000 # target number of samples to generate
-max_iters: 2000 # max iters for generation (some diseases from top does not match with database)
+n_samples: 5000 # target number of samples to generate
+max_iters: 6000 # max iters for generation (some diseases from top does not match with database)
 
 max_diseases: 1 # max numer of diseases per person
 max_symptoms: 5 # max numer of symptoms per disease
@@ -16,6 +16,7 @@ gender_scpec_or_general: # probability to sample gender specific or general dise
   - 0.9
 
 icd_codes: "./data/codes/codes.csv"
+max_icd_depth: 2  # use diseases with secondary code of max_icd_depth length, for ex. A00.0 - length 1, A01.09 - length 2, etc.
 icd_gender_split_path: "./data/codes/icd_gender_split.json"
 top_ICD10_codes_path: "./data/codes/top_ICD10_codes_percent.txt"
 icd_codes_processed: "./data/codes/codes_proc.csv"
