@@ -20,3 +20,23 @@ python3 ./scripts/sampler/generate.py
 * `data/MESH_ICD10_Mapping.csv` - [source](https://github.com/kush02/Automated-ICD10-Codes-Assignment/tree/master)
 
 * `data/symptoms-DO.tsv` - [source](https://think-lab.github.io/d/52/)
+
+
+## WikiMed parsing:
+[WikiMed](http://wikimed.pro/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BC%D0%B5%D0%B4)
+```
+mkdir ./data/wikimed
+cd ./parsing/wikimed
+
+# Parse disease/meds pages and their links:
+scrapy crawl all_data -O ../../data/wikimed/all_data.json
+
+# Parse diseases data to csv table:
+python3 ./parsing/wikimed/parse_diseases.py
+
+# Parse meds pages and their links:
+scrapy crawl meds -O ../../data/wikimed/meds.json
+
+# Parse meds data to csv table:
+python3 ./parsing/wikimed/parse_meds.py
+```
