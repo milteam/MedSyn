@@ -2,6 +2,7 @@ from typing import Dict, Tuple, List
 
 import json
 import random
+import shortuuid
 import numpy as np
 import pandas as pd
 
@@ -272,6 +273,8 @@ class Sampler:
             sample = self.get_sample()
             if sample["disease"]:
                 samples[idx] = sample
+                UID = shortuuid.uuid()
+                samples["UID"] = UID
                 idx += 1
 
             if idx > self.cfg["n_samples"]:

@@ -43,6 +43,7 @@ PROMPTS = [
 
 
 def get_sample(data):
+    uid = data["UID"]
     desease_code = data["disease"][0]["idc_10"]
     symptoms = data["symptoms"]
     # age = data["age"]
@@ -65,6 +66,7 @@ def get_sample(data):
     # if len(symptoms) > 3:
     #     symptoms = random.sample(symptoms, random.randint(1,4))
     return dict(
+        uid=uid,
         desease_code=desease_code,
         symptoms=symptoms,
         gender=gender,
