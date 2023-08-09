@@ -1,0 +1,93 @@
+import argparse
+import itertools
+import json
+import os
+from functools import partial
+from glob import glob
+from pathlib import Path
+from typing import Iterable, Literal, TypedDict
+
+import numpy as np
+import pandas as pd
+from numpy.typing import ArrayLike
+from razdel import sentenize
+from sentence_transformers import SentenceTransformer, util
+
+
+GenderType = Literal["male", "female"]
+
+
+ICD_CODE = str
+
+
+class SyntheticRecord(TypedDict, total=True):
+    UID: str
+    gender: GenderType
+    desease_code: ICD_CODE
+    response: str
+
+
+def load_file(path: str):
+    with open(path, "rt") as file:
+        d = json.load(file)
+    filename = Path(path).name
+    for e in d:
+        e["filename"] = filename
+    return d
+
+
+def isGenderOK(record: SyntheticRecord, gen: Iterable[ArrayLike]):
+    n_sentences = record["n_sentences"]
+    scores = np.vstack(list(itertools.islice(gen, n_sentences)))
+    diff = scores[:, 0] - scores[:, 1]
+    something_wrong = (record["gender"] == "female" and any(diff >= 0.035)) or (record["gender"] == "male" and any(diff <= -0.07))
+    return not something_wrong
+
+
+def main():
+    #region Command Line Arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input-folder", type=str, required=True, help="Директория, содержащая JSON-файлы с параметрами и результатами генерации.")
+    parser.add_argument("--output-path", type=str, required=True, help="Пусть к CSV-таблице с результатами фильтрации.")
+    args = vars(parser.parse_args())
+    #endregion
+
+    INPUT_FOLDER = args["input_folder"]
+    OUTPUT_PATH = args["output_path"]
+    # Кол-во извлекаемых предложений для анализа гендера.
+    N_SENTENCES = 3
+
+    data = [load_file(filename) for filename in glob(os.path.join(INPUT_FOLDER, "*.json"))]
+    data = list(itertools.chain(*data))
+
+    model = SentenceTransformer("ai-forever/sbert_large_mt_nlu_ru")
+
+    #region Sentence Preprocessing
+    sentences = [[s.text for s in itertools.islice(sentenize(record["response"]), N_SENTENCES)] for record in data]
+
+    for r, s in zip(data, sentences):
+        r["n_sentences"] = len(s)
+
+    sentences = list(itertools.chain(*sentences))
+    sentence_emb = model.encode(sentences, convert_to_tensor=True)
+
+    gender_prompts = ["Мужчина обратился с жалобой.", "Женщина обратилась с жалобой."]
+    gender_emb = model.encode(gender_prompts, convert_to_tensor=True, show_progress_bar=False)
+    #endregion
+
+    scores = util.cos_sim(sentence_emb, gender_emb)
+    scores = scores.cpu().numpy()
+
+    check_gender = partial(isGenderOK, gen=(row for row in scores))
+
+    record_info = [{
+        "UID": r["UID"],
+        "STATUS": np.uint8(check_gender(r)),
+        "FILENAME": r["filename"]
+    } for r in data]
+
+    pd.DataFrame(record_info).to_csv(OUTPUT_PATH, index=None)
+
+
+if __name__ == "__main__":
+    main()
