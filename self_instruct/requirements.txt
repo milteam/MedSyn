@@ -1,0 +1,15 @@
+accelerate
+appdirs
+loralib
+bitsandbytes
+black
+black[jupyter]
+datasets
+fire
+git+https://github.com/huggingface/peft.git@e06d94d
+git+https://github.com/huggingface/transformers.git@6112b1c
+sentencepiece
+gradio
+scipy
+timm
+protobuf
