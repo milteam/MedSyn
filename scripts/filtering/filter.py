@@ -69,7 +69,7 @@ def main():
     #region Command Line Arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-folder", type=str, required=True, help="Директория, содержащая JSON-файлы с параметрами и результатами генерации.")
-    parser.add_argument("--output-path", type=str, required=True, help="Пусть к CSV-таблице с результатами фильтрации.")
+    parser.add_argument("--output-path", type=str, required=True, help="Путь к CSV-таблице с результатами фильтрации.")
     args = vars(parser.parse_args())
     #endregion
 
@@ -104,7 +104,7 @@ def main():
     record_info = [{
         "UID": r["UID"],
         "STATUS": 1,
-        "WRONG_GENDER": int(check_gender(r)),
+        "WRONG_GENDER": int(not check_gender(r)),
         "SPEECH": int(isSpeech(r["response"])),
         "FORM": int(isForm(r["response"])),
         "FILENAME": r["filename"]
