@@ -2,6 +2,7 @@ import argparse
 import itertools
 import json
 import os
+import re
 from functools import partial
 from glob import glob
 from pathlib import Path
@@ -44,6 +45,26 @@ def isGenderOK(record: SyntheticRecord, gen: Iterable[ArrayLike]):
     return not something_wrong
 
 
+_speech_tokens = ["?", "!", "добрый день", "здравствуй", "спасибо", "пожалуйста", " я ",
+    " расскажи", " давайте", " вас ", " вы ", " мне ", " меня ", " мой ", " мою ",
+    "начнем", "стесняйтесь", "стесняться"]
+
+
+def isSpeech(s: str) -> bool:
+    return any(token in s.lower() for token in _speech_tokens) or " ваш" in s or " Ваш" in s
+
+
+field_expr = re.compile(r'\[.+\]')
+angle_expr = re.compile(r'<.+>')
+
+
+def isForm(s: str) -> bool:
+    # Except for: (ФИО), (возраст), ...
+    s = s.lower().replace("<<", "\"")
+    return ('__' in s) or ('██' in s) or ("подпись" in s) or ("печать" in s) or \
+        (field_expr.search(s) is not None) or (angle_expr.search(s) is not None)
+
+
 def main():
     #region Command Line Arguments
     parser = argparse.ArgumentParser()
@@ -82,11 +103,16 @@ def main():
 
     record_info = [{
         "UID": r["UID"],
-        "STATUS": np.uint8(check_gender(r)),
+        "STATUS": 1,
+        "WRONG_GENDER": int(check_gender(r)),
+        "SPEECH": int(isSpeech(r["response"])),
+        "FORM": int(isForm(r["response"])),
         "FILENAME": r["filename"]
     } for r in data]
 
-    pd.DataFrame(record_info).to_csv(OUTPUT_PATH, index=None)
+    df = pd.DataFrame(record_info)
+    df["STATUS"] = np.uint8(df[["WRONG_GENDER", "SPEECH", "FORM"]].sum(axis=1) == 0)
+    df.to_csv(OUTPUT_PATH, index=None)
 
 
 if __name__ == "__main__":
