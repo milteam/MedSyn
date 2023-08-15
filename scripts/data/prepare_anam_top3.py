@@ -1,3 +1,5 @@
+"""Add generated anamnesis to RuMedTop3 data format."""
+
 from typing import Dict
 
 import os

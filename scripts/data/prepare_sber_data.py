@@ -1,3 +1,5 @@
+"""Convert real anamnesis to LLaMA IFT data format."""
+
 from typing import Dict, Set
 
 from os.path import join

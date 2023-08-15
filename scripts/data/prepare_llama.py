@@ -1,3 +1,5 @@
+"""Convert generated anamnesis to LLaMA IFT data format."""
+
 from typing import Dict
 
 import os

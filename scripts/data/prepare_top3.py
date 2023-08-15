@@ -1,3 +1,5 @@
+"""Managing RuMedTop3 data."""
+
 import os
 import random
 import json
