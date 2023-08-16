@@ -12,7 +12,7 @@ def pars_args():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         "--downsampling-ratio",
-        default=1,
+        default=0.75,
     )
     argparser.add_argument(
         "--n-new-samples",
@@ -36,7 +36,7 @@ def pars_args():
     )
     argparser.add_argument(
         "--train-aug",
-        default="/home/gleb/VSProjects/projects/MIL/RuMedBench/data/RuMedTop3/",
+        default="data/benchmarks/RuMedTop3",
     )
     args = argparser.parse_args()
     return args
@@ -98,9 +98,9 @@ def main(args):
 
     else:
         train = train.groupby("code", group_keys=False).apply(
-            lambda x: x.sample(frac=args.downsampling_ratio)
+            lambda x: x.sample(frac=args.downsampling_ratio, replace=False)
         )
-        data_name = f"train_v1_r_{args.downsampling_ratio}.jsonl"
+        data_name = f"train_v1_dsr_{args.downsampling_ratio}.jsonl"
 
     train_codes = list(train["code"].unique())
     all_codes_new = set(dev_codes).union(set(test_codes)).union(set(train_codes))
