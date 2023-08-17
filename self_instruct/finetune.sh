@@ -5,8 +5,8 @@ docker run --gpus '"device=4,5"' --shm-size 64g -p 7860:7860 --name alpaca \
   -v "${HOME}"/MedTexts/alpaca-lora/models/"$OUTPUT_DIR":/workspace/models/"$OUTPUT_DIR" \
   --rm alpaca-lora \
   python3.10 finetune.py \
-    --base_model='/home/kuzkina/models/decapoda-llama-7b' \
-    --resume_from_checkpoint="/home/kuzkina/models/ru_turbo_alpaca_7b" \
+    --base_model='models/decapoda-llama-7b' \
+    --resume_from_checkpoint="models/ru_turbo_alpaca_7b" \
     --only_target_loss=False \
     --data_path='data/alpaca_med_data_10_5k.json' \
     --template_path="templates/ru_alpaca.json" \
