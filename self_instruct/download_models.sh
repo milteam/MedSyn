@@ -12,6 +12,5 @@ docker run --name alpaca -v "${HOME}"/.cache:/root/.cache \
   --env LORA_DIR=$LORA_DIR \
   --env LORA_WEIGHTS=$LORA_WEIGHTS \
   --env HF_TOKEN=HF_TOKEN \
-
   --rm alpaca-lora \
   python3.10 download_models.py
