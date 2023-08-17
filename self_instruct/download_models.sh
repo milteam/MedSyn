@@ -1,7 +1,7 @@
-MODEL_DIR='models/meta-llama-v2-7b'
-BASE_MODEL='meta-llama/Llama-2-7b-hf'
-LORA_DIR='models/ru_saiga-v2_7b'
-LORA_WEIGHTS='IlyaGusev/saiga2_7b_lora'
+MODEL_DIR='models/decapoda-llama-7b'
+BASE_MODEL='decapoda-research/llama-7b-hf'
+LORA_DIR='models/ru_turbo_alpaca_7b'
+LORA_WEIGHTS='IlyaGusev/llama_7b_ru_turbo_alpaca_lora'
 
 docker run --name alpaca -v "${HOME}"/.cache:/root/.cache \
   -v "${HOME}"/MedTexts/alpaca-lora/"${MODEL_DIR}":/workspace/"${MODEL_DIR}" \
