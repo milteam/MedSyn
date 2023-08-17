@@ -8,11 +8,12 @@ model_dir = os.environ["MODEL_DIR"]
 base_model = os.environ["BASE_MODEL"] 
 lora_dir = os.environ["LORA_DIR"]
 lora_weights = os.environ["LORA_WEIGHTS"]
+token = os.environ["HF_TOKEN"]
 
 # load base model
-snapshot_download(repo_id=base_model, local_dir=model_dir, ignore_patterns=["LICENSE", "README.md", "*.safetensors"])
+snapshot_download(repo_id=base_model, local_dir=model_dir, ignore_patterns=["LICENSE", "README.md", "*.safetensors"], use_auth_token=token)
 # load lora weights
-snapshot_download(repo_id=lora_weights, local_dir=lora_dir, ignore_patterns=["LICENSE", "README.md", "*.safetensors"])
+snapshot_download(repo_id=lora_weights, local_dir=lora_dir, ignore_patterns=["LICENSE", "README.md", "*.safetensors"], use_auth_token=token)
 
 patch_base_model_name = False if "tloen" in lora_weights.lower() else True
 patch_model_config = True if "decapoda" in base_model.lower() else False
