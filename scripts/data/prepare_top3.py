@@ -1,4 +1,4 @@
-"""Managing RuMedTop3 data."""
+"""Managing RuMedTop3 data and upsampling with templates."""
 
 import os
 import random
@@ -8,15 +8,18 @@ import numpy as np
 import pandas as pd
 
 
+FULL_TRAIN_SET = 4690
+
+
 def pars_args():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         "--downsampling-ratio",
-        default=0.75,
+        default=1,
     )
     argparser.add_argument(
-        "--n-new-samples",
-        default=3000,
+        "--ratio",
+        default=0.75,
     )
     argparser.add_argument(
         "--dev-path",
@@ -78,23 +81,33 @@ def main(args):
             if d["icd_code"].split(".")[0] in common_codes:
                 common_samples.append(sample)
 
-        train_samples = []
-
-        n_smpls = min(args.n_new_samples, len(common_samples))
-        for idx, sample in enumerate(common_samples[:n_smpls]):
-            pre = np.random.choice(["", "Жалуется на "])
+        # Constrained sampling:
+        samples_df = pd.DataFrame(columns=["icd_full", "icd", "symptoms"])
+        for idx, sample in enumerate(common_samples):
+            pre = np.random.choice(["", "Жалуется на ", "Пациент обратился с "])
             idx = "{:08d}".format(idx)
             symptoms = pre + ", ".join(sample["symptoms"])
-            code = sample["disease"][0]["icd_code"].split(".")[0]
-            data = {"idx": idx, "symptoms": symptoms, "code": code}
-            train_samples.append(data)
+            code_full = sample["disease"][0]["icd_code"]
+            code = code_full.split(".")[0]
+            samples_df.loc[idx] = [
+                code_full,
+                code,
+                symptoms,
+            ]
+
+        frac = args.ratio * FULL_TRAIN_SET / samples_df.shape[0]
+        samples_df_sampled = samples_df.groupby("icd", group_keys=False).apply(
+            lambda x: x.sample(frac=frac, replace=False)
+        )
 
         pad = len(train)
-        for idx, sample in enumerate(train_samples):
-            data = list(sample.values())
+        for idx in range(len(samples_df_sampled)):
+            sample = samples_df_sampled.iloc[idx]
+            idx_ = "{:08d}".format(idx)
+            data = [idx_, sample["symptoms"], sample["icd"]]
             train.loc[pad + idx] = data
 
-        data_name = f"train_v1_aug_{n_smpls//1e3}k.jsonl"
+        data_name = f"train_v1_aug_{args.ratio}_cons_temp.jsonl"
 
     else:
         train = train.groupby("code", group_keys=False).apply(
