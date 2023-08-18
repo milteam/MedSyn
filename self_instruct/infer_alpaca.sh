@@ -1,10 +1,11 @@
 #--output_path 'output/ru_baseline_llama-v2-7b_saiga-v2_generated.jsonl' \
 
 docker run --gpus '"device=5"' --shm-size 64g -p 7860:7860 \
-  -v "${HOME}"/.cache:/root/.cache \
-  -v "${HOME}"/MedTexts/alpaca-lora/output:/workspace/output --rm alpaca-lora \
+  -v "${HOME}"/cache:/root/.cache \
+  -v "${HOME}"/SberMedText/self_instruct/data/:/workspace/data \
+  -v "${HOME}"/SberMedText/self_instruct/output:/workspace/output --rm alpaca-lora \
   python3.10 infer_alpaca.py \
-    --model_name 'models/eng_tloen-alpaca_7b' \
+    --model_name 'models/ru_llama_7b_lora' \
     --template_path 'templates/alpaca.json' \
-    --input_path 'test.jsonl' \
-    --output_path 'output/test.jsonl'
+    --input_path 'data/samples.json' \
+    --output_path 'output/samples.json'
