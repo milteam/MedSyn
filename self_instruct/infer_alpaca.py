@@ -55,6 +55,7 @@ def generate_answers(
 
     with open(input_path) as f:
         records = json.load(f)
+
     with open(output_path, "w") as w:
         for record in tqdm(records):
             text = generate_prompt(record, templates)
