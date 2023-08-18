@@ -68,7 +68,9 @@ def generate_answers(
                 )[0]
             output = tokenizer.decode(output_ids, skip_special_tokens=True)
             answer = output.split(templates["output_separator"])[-1].strip()
+            print("-----------Input text for Alpaca----")
             print(text)
+            print("-----------Answer of Alpaca----")
             print(answer)
             record["answer"] = answer
             w.write(json.dumps(record, ensure_ascii=False).strip() + "\n")
