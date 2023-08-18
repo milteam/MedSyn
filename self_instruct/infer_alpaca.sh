@@ -1,6 +1,6 @@
 #--output_path 'output/ru_baseline_llama-v2-7b_saiga-v2_generated.jsonl' \
 
-docker run --gpus '"device=5"' --shm-size 64g -p 7860:7860 \
+docker run--gpus '"device=4,5"' --shm-size 64g -p 7860:7860 \
   -v "${HOME}"/cache:/root/.cache \
   -v "${HOME}"/SberMedText/self_instruct/data/:/workspace/data \
   -v "${HOME}"/SberMedText/self_instruct/models/:/workspace/models \
