@@ -29,6 +29,9 @@ def generate_answers(
     output_path: str,
     batch_size: int = 1
 ):
+    with open(input_path) as f:
+        records = json.load(f)
+
     assert batch_size == 1, "Batch inference is not yet supported"
     with open(template_path) as r:
         templates = json.load(r)
@@ -52,9 +55,6 @@ def generate_answers(
     model.eval()
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
-
-    with open(input_path) as f:
-        records = json.load(f)
 
     with open(output_path, "w") as w:
         for record in tqdm(records):
