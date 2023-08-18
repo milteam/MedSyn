@@ -9,5 +9,5 @@ docker run --gpus '"device=5"' --shm-size 64g -p 7860:7860 \
   python3.10 code/infer_alpaca.py \
     --model_name 'IlyaGusev/llama_7b_ru_turbo_alpaca_lora' \
     --template_path 'templates/alpaca.json' \
-    --input_path 'data/samples.json' \
-    --output_path 'output/samples.json'
+    --input_path 'data/testset.json' \
+    --output_path 'output/testset.json'
