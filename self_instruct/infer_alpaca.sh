@@ -5,7 +5,7 @@ docker run --gpus '"device=5"' --shm-size 64g -p 7860:7860 \
   -v "${HOME}"/SberMedText/self_instruct/data/:/workspace/data \
   -v "${HOME}"/SberMedText/self_instruct/output:/workspace/output --rm alpaca-lora \
   python3.10 infer_alpaca.py \
-    --model_name 'models/ru_llama_7b_lora' \
+    --model_name 'models/decapoda-llama-7b' \
     --template_path 'templates/alpaca.json' \
     --input_path 'data/samples.json' \
     --output_path 'output/samples.json'
