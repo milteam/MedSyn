@@ -53,7 +53,8 @@ def generate_answers(
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
 
-    records = read_jsonl(input_path)
+    with open(input_path) as f:
+        records = json.load(f)
     with open(output_path, "w") as w:
         for record in tqdm(records):
             text = generate_prompt(record, templates)
