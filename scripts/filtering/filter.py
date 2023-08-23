@@ -8,12 +8,15 @@ from glob import glob
 from pathlib import Path
 from typing import Iterable, Literal, TypedDict
 
+import cupy as cp
 import numpy as np
 import pandas as pd
+from cuml.manifold import UMAP
+from cuml.svm import SVC as SVC
 from numpy.typing import ArrayLike
 from razdel import sentenize
 from sentence_transformers import SentenceTransformer, util
-
+from tqdm import tqdm
 
 GenderType = Literal["male", "female"]
 
@@ -35,6 +38,56 @@ def load_file(path: str):
     for e in d:
         e["filename"] = filename
     return d
+
+#region FICTION FILTERING
+_fiction_tokens = [" вымышлен", " выдуман", " фантаз", " виртуальн", " реальн", " гипотетичес", " фиктив", " фикци", \
+    " демонстрац", " художеств", " квалифицир", " симул", " надуман", \
+    " educational", " не может заменить", " условн", " иллюстр", "openai", "gpt", " ии", " анамнез представлен справочно"]
+
+
+edu_expr = re.compile(r"(образовательн|учеб|информацион|ознакомительн)\w+\s(характер|цел)")
+nomed_expr = re.compile(r"не является (медицинской )?(консультацией|советом)")
+llm_expr = re.compile(r"(языков\w+ модел)|(искусствен\w+ интеллект)")
+
+
+def isFictionSentence(sentence: str) -> bool:
+    return any(token in " " + sentence.lower() for token in _fiction_tokens) or \
+        (llm_expr.search(sentence) is not None) or \
+        (edu_expr.search(sentence) is not None) or \
+        (nomed_expr.search(sentence) is not None)
+
+
+def isFictionSentences(sentences: Iterable[str], normalized_emb):
+    labels = np.array([isFictionSentence(s) for s in sentences], dtype=np.int32)
+
+    N_COMPONENTS = 4
+    REG_PARAM = 2
+    SEED = 42
+
+    for k in range(4):
+        pred = np.zeros_like(labels, dtype=np.int32)
+        for k in tqdm(range(15)):
+            reductor = UMAP(n_components=N_COMPONENTS, random_state=SEED, metric="cosine")
+            X = cp.asnumpy(reductor.fit_transform(normalized_emb))
+
+            clf = SVC(random_state=SEED, C=REG_PARAM)
+            clf.fit(X, labels)
+            pred += clf.predict(X)
+
+        pred = np.int32(pred > 0)
+
+        mask = labels - pred >= 0
+        if all(mask):
+            break
+        labels[~mask] = 1
+
+    return labels
+
+
+def isFiction(record: SyntheticRecord, gen: Iterable[np.uint8]):
+    n_tail_sentences = record["n_tail_sentences"]
+    return any(list(itertools.islice(gen, n_tail_sentences)))
+#endregion
 
 
 def isGenderOK(record: SyntheticRecord, gen: Iterable[ArrayLike]):
@@ -77,6 +130,7 @@ def main():
     OUTPUT_PATH = args["output_path"]
     # Кол-во извлекаемых предложений для анализа гендера.
     N_SENTENCES = 3
+    N_TAIL_SENTENCES = 5
 
     data = [load_file(filename) for filename in glob(os.path.join(INPUT_FOLDER, "*.json"))]
     data = list(itertools.chain(*data))
@@ -84,6 +138,17 @@ def main():
     model = SentenceTransformer("ai-forever/sbert_large_mt_nlu_ru")
 
     #region Sentence Preprocessing
+    for r in data:
+        r["sentences"] = [s.text for s in sentenize(r["response"])]
+        r["n_tail_sentences"] = len(r["sentences"][-N_TAIL_SENTENCES:])
+
+    tail_sentences = [r["sentences"][-N_TAIL_SENTENCES:] for r in data]
+    tail_sentences = list(itertools.chain(*tail_sentences))
+
+    tail_sentence_emb = model.encode(tail_sentences, convert_to_tensor=True)
+    tail_sentence_norms = tail_sentence_emb.norm(p=2, dim=1, keepdim=True)
+    tail_sentence_emb = tail_sentence_emb.div(tail_sentence_norms)
+
     sentences = [[s.text for s in itertools.islice(sentenize(record["response"]), N_SENTENCES)] for record in data]
 
     for r, s in zip(data, sentences):
@@ -101,17 +166,21 @@ def main():
 
     check_gender = partial(isGenderOK, gen=(row for row in scores))
 
+    fiction_labels = isFictionSentences(tail_sentences, tail_sentence_emb)
+    isFictionRecord = partial(isFiction, gen=(label for label in fiction_labels))
+
     record_info = [{
         "UID": r["UID"],
         "STATUS": 1,
         "WRONG_GENDER": int(not check_gender(r)),
+        "FICTION": int(isFictionRecord(r)),
         "SPEECH": int(isSpeech(r["response"])),
         "FORM": int(isForm(r["response"])),
         "FILENAME": r["filename"]
     } for r in data]
 
     df = pd.DataFrame(record_info)
-    df["STATUS"] = np.uint8(df[["WRONG_GENDER", "SPEECH", "FORM"]].sum(axis=1) == 0)
+    df["STATUS"] = np.uint8(df[["WRONG_GENDER", "SPEECH", "FORM", "FICTION"]].sum(axis=1) == 0)
     df.to_csv(OUTPUT_PATH, index=None)
 
 
