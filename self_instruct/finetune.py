@@ -292,6 +292,15 @@ def train(
         "\n If there's a warning about missing keys above, please disregard :)"
     )
 
+    lora_ckpt_path = '/'.join(checkpoint_name.split('/')[:2])
+    gen_config_filepath = f'{lora_ckpt_path}/generation_config.json'
+    print('generation config file path', gen_config_filepath)
+    if os.path.exists(gen_config_filepath):
+        print('Copy `generation_config.json` to the output_dir')
+        shutil.copyfile(gen_config_filepath, f'{output_dir}/generation_config.json')
+    else:
+        print(f'`generation_config.json` is not copied to the `{output_dir}` folder. '
+              f'You may need to create `generation_config.json` manually')
 
 if __name__ == "__main__":
     fire.Fire(train)

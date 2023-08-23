@@ -2,6 +2,7 @@ OUTPUT_DIR='ru_llama_7b_lora'
 
 docker run --gpus '"device=4,5"' --shm-size 64g -p 7860:7860 --name alpaca \
   -v "${HOME}"/.cache:/root/.cache \
+  -v "${HOME}"/SberMedText/self_instruct/models/:/workspace/models/ \
   -v "${HOME}"/SberMedText/self_instruct/models/"$OUTPUT_DIR":/workspace/models/"$OUTPUT_DIR" \
   -v "${HOME}"/SberMedText/self_instruct/data/:/workspace/data \
   --rm alpaca-lora \

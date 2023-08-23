@@ -7,17 +7,14 @@ from tqdm import tqdm
 import fire
 import torch
 from transformers import AutoTokenizer, GenerationConfig, AutoModelForCausalLM
-from peft import PeftConfig, PeftModel, set_peft_model_state_dict
+from peft import PeftConfig, PeftModel
 
 from utils.utils import read_jsonl
 
 
 def generate_prompt(record, templates):
-    print('templates', len(templates), templates)
-    print('record', record)
     if "input" in record and record["input"]:
         template = random.choice(templates["prompts_input"])
-        print('template', template)
         return template.format(instruction=record["instruction"], input=record["input"])
     template = random.choice(templates["prompts_no_input"])
     return template.format(instruction=record["instruction"])
@@ -53,26 +50,26 @@ def generate_answers(
         torch_dtype=torch.float16
     )
 
-    resume_from_checkpoint = "models/ru_llama_7b_lora/checkpoint-230"
-    if resume_from_checkpoint:
-        # Check the available weights and load them
-        checkpoint_name = os.path.join(
-            resume_from_checkpoint, "pytorch_model.bin"
-        )  # Full checkpoint
-        if not os.path.exists(checkpoint_name):
-            checkpoint_name = os.path.join(
-                resume_from_checkpoint, "adapter_model.bin"
-            )  # only LoRA model - LoRA config above has to fit
-            resume_from_checkpoint = (
-                False  # So the trainer won't try loading its state
-            )
-        # The two files above have a different name depending on how they were saved, but are actually the same.
-        if os.path.exists(checkpoint_name):
-            print(f"Restarting from {checkpoint_name}")
-            adapters_weights = torch.load(checkpoint_name)
-            set_peft_model_state_dict(model, adapters_weights)
-        else:
-            print(f"Checkpoint {checkpoint_name} not found")
+    # resume_from_checkpoint = "models/ru_llama_7b_lora/checkpoint-230"
+    # if resume_from_checkpoint:
+    #     # Check the available weights and load them
+    #     checkpoint_name = os.path.join(
+    #         resume_from_checkpoint, "pytorch_model.bin"
+    #     )  # Full checkpoint
+    #     if not os.path.exists(checkpoint_name):
+    #         checkpoint_name = os.path.join(
+    #             resume_from_checkpoint, "adapter_model.bin"
+    #         )  # only LoRA model - LoRA config above has to fit
+    #         resume_from_checkpoint = (
+    #             False  # So the trainer won't try loading its state
+    #         )
+    #     # The two files above have a different name depending on how they were saved, but are actually the same.
+    #     if os.path.exists(checkpoint_name):
+    #         print(f"Restarting from {checkpoint_name}")
+    #         adapters_weights = torch.load(checkpoint_name)
+    #         set_peft_model_state_dict(model, adapters_weights)
+    #     else:
+    #         print(f"Checkpoint {checkpoint_name} not found")
 
     model.eval()
     if torch.__version__ >= "2" and sys.platform != "win32":
