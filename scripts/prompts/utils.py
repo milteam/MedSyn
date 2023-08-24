@@ -16,8 +16,9 @@ class MedicalRecord:
     marital_state: bool
     smoking: bool
     desease_name: str
-    prompt:str
+    prompt: str
     response: Optional[str] = None
+
 
 def get_gpt_response(prompt: str, gpt_version: str) -> str:
     response = openai.ChatCompletion.create(
@@ -27,8 +28,9 @@ def get_gpt_response(prompt: str, gpt_version: str) -> str:
     return response["choices"][0]["message"]["content"]
 
 
-
-def generate_gpt_records(samples_file: str, offset: int, limit: int, dir: str, gpt: str, sampler):
+def generate_gpt_records(
+    samples_file: str, offset: int, limit: int, dir: str, gpt: str, sampler
+):
     tic = time.perf_counter()
 
     if not os.path.exists(dir):
@@ -78,6 +80,6 @@ def generate_gpt_records(samples_file: str, offset: int, limit: int, dir: str, g
         print(f"Time to generate {limit} samples {toc - tic} seconds")
 
         with open(
-                os.path.join(dir, f"result_{idx - 20}-{idx}.json"), "w", encoding="utf8"
+            os.path.join(dir, f"result_{idx - 20}-{idx}.json"), "w", encoding="utf8"
         ) as f:
             json.dump(res, f, indent=3, ensure_ascii=False)

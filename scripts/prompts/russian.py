@@ -37,15 +37,9 @@ PROMPTS = [
     prompt_diagnostics,
 ]
 
-def get_desase_tamplate(sample: dict) -> MedicalRecord:
-    desease_code = sample["disease"][0]["idc_10"]
-    symptoms = sample["symptoms"]
-    # age = data["age"]
-    gender = sample["gender"]
-    marital_state = sample["family_state"]
-    smoking = sample["smoking"]
 
-    desaese_name = str(sample["disease"][0]["name_ru"]).lower()
+def get_russian_details(gender, marital_state, smoking):
+
     if gender == "male":
         marital = "женатый" if marital_state else "неженатый"
         smoking = "курящий" if smoking else "некурящий"
@@ -57,8 +51,23 @@ def get_desase_tamplate(sample: dict) -> MedicalRecord:
         gender_ru = "женщина"
         conj = "которая"
         # Известно, что пациент - {marital} {smoking} {gender_ru}.
-    # if len(symptoms) > 3:
-    #     symptoms = random.sample(symptoms, random.randint(1,4))
+    return conj, gender_ru, marital, smoking
+
+
+def get_desase_tamplate(sample: dict) -> MedicalRecord:
+    desease_code = sample["disease"][0]["idc_10"]
+    symptoms = sample["symptoms"]
+    # age = data["age"]
+    gender = sample["gender"]
+    marital_state = sample["family_state"]
+    smoking = sample["smoking"]
+
+    desaese_name = str(sample["disease"][0]["name_ru"]).lower()
+
+    conj, gender_ru, marital, smoking = get_russian_details(
+        gender, marital_state, smoking
+    )
+
     return MedicalRecord(
         desease_code=desease_code,
         symptoms=symptoms,

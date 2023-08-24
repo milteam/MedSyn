@@ -3,36 +3,24 @@ import os
 import random
 import re
 import time
-import openai
+
 import click
-from openai.error import ServiceUnavailableError, OpenAIError
+import openai
+from openai.error import OpenAIError, ServiceUnavailableError
+from scripts.prompts.russian import get_russian_details
 
 INSTRUCTION = "Напиши текст анамнеза, составленного врачом по итогам приема пациента."
 
 
-def get_sample(data):
-    uid = data["UID"]
-    desease_code = data["disease"][0]["idc_10"]
-    symptoms = data["symptoms"]
-    # age = data["age"]
-    gender = data["gender"]
-    marital_state = data["family_state"]
-    smoking = data["smoking"]
+def get_alpaca_prompt(sample):
+    symptoms = sample["symptoms"]
+    gender = sample["gender"]
+    marital_state = sample["family_state"]
+    smoking = sample["smoking"]
 
-    desaese_name = str(data["disease"][0]["name_ru"]).lower()
-    if gender == "male":
-        marital = "женатый" if marital_state else "неженатый"
-        smoking = "курящий" if smoking else "некурящий"
-        gender_ru = "мужчина"
-        conj = "который"
-    else:
-        marital = "замужняя" if marital_state else "незамужняя"
-        smoking = "курящая" if smoking else "некурящая"
-        gender_ru = "женщина"
-        conj = "которая"
-        # Известно, что пациент - {marital} {smoking} {gender_ru}.
-    # if len(symptoms) > 3:
-    #     symptoms = random.sample(symptoms, random.randint(1,4))
+    conj, gender_ru, marital, smoking = get_russian_details(
+        gender, marital_state, smoking
+    )
     symptoms = ", ".join(symptoms).lower()
     input = f"Пациент - {marital} {smoking} {gender_ru}, {conj} жалуется на {symptoms}."
 
@@ -56,8 +44,7 @@ def main(output, samples):
         data = json.load(f)
 
         for item in data.values():
-            res.append(get_sample(item))
-
+            res.append(get_alpaca_prompt(item))
 
     with open(output, "w", encoding="utf8") as f:
         json.dump(res, f, indent=3, ensure_ascii=False)
