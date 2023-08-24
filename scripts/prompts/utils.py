@@ -1,14 +1,14 @@
 import json
 import os
 import time
-from dataclasses import dataclass
+import dataclasses
 from typing import Optional
 
 import openai
 from openai import OpenAIError
 
 
-@dataclass
+@dataclasses.dataclass
 class MedicalRecord:
     desease_code: str
     symptoms: list[str]
@@ -82,4 +82,4 @@ def generate_gpt_records(
         with open(
             os.path.join(dir, f"result_{idx - 20}-{idx}.json"), "w", encoding="utf8"
         ) as f:
-            json.dump(res, f, indent=3, ensure_ascii=False)
+            json.dump([dataclasses.asdict(x) for x in res], f, indent=3, ensure_ascii=False)
