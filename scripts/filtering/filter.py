@@ -99,12 +99,13 @@ def isGenderOK(record: SyntheticRecord, gen: Iterable[ArrayLike]):
 
 
 _speech_tokens = ["?", "!", "добрый день", "здравствуй", "спасибо", "пожалуйста", " я ",
-    " расскажи", " давайте", " вас ", " вы ", " мне ", " меня ", " мой ", " мою ",
-    "начнем", "стесняйтесь", "стесняться"]
+    " расскажи", " давайте", " вас ", " вы ", " мне ", " меня ", " мой ", " мою ", " моя ", " моё ", " мое ",
+    " нам ", " нас ", "предлагаю", " прошу", " хорошо,", "с удовольствием", "интересно,", " проведу",
+    "начнем", "стесняйтесь", "стесняться", "извините", "уважаемый", "благодарю", "позвольте"]
 
 
-def isSpeech(s: str) -> bool:
-    return any(token in s.lower() for token in _speech_tokens) or " ваш" in s or " Ваш" in s
+def countSpeechTokens(s: str) -> bool:
+    return sum(s.lower().count(token) for token in _speech_tokens) + s.count(" ваш") + s.count(" Ваш")
 
 
 field_expr = re.compile(r'\[.+\]')
@@ -174,14 +175,19 @@ def main():
         "STATUS": 1,
         "WRONG_GENDER": int(not check_gender(r)),
         "FICTION": int(isFictionRecord(r)),
-        "SPEECH": int(isSpeech(r["response"])),
+        "SPEECH@1": countSpeechTokens(r["response"]),
         "FORM": int(isForm(r["response"])),
         "FILENAME": r["filename"]
     } for r in data]
 
     df = pd.DataFrame(record_info)
-    df["STATUS"] = np.uint8(df[["WRONG_GENDER", "SPEECH", "FORM", "FICTION"]].sum(axis=1) == 0)
-    df.to_csv(OUTPUT_PATH, index=None)
+    df["SPEECH@4"] = np.uint8(df["SPEECH@1"] >= 4)
+    df["SPEECH@1"] = np.uint8(df["SPEECH@1"] >= 1)
+    df["STATUS"] = np.uint8(df[["WRONG_GENDER", "SPEECH@4", "FORM", "FICTION"]].sum(axis=1) == 0)
+
+    ordered_columns = ["UID", "STATUS", "WRONG_GENDER", "FICTION", \
+        "SPEECH@1", "SPEECH@4", "FORM", "FILENAME"]
+    df[ordered_columns].to_csv(OUTPUT_PATH, index=None)
 
 
 if __name__ == "__main__":
