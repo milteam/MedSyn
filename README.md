@@ -20,3 +20,13 @@ python3 ./scripts/sampler/generate.py
 * `data/MESH_ICD10_Mapping.csv` - [source](https://github.com/kush02/Automated-ICD10-Codes-Assignment/tree/master)
 
 * `data/symptoms-DO.tsv` - [source](https://think-lab.github.io/d/52/)
+
+## Synthetic Anamnesis Filtering
+
+```sh
+pip install -q -r ./scripts/filtering/requirements.txt
+
+./scripts/filtering/filter.py \
+    --input-folder 'folder-template-containing-json-files-with-synthetic-records/results-*/*' \
+    --output-path ./filtered.csv
+```
