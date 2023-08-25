@@ -113,7 +113,7 @@ def generate_data(
     data_name = (
         "train_v1_synt_only_anam.jsonl"
         if synthetic_only
-        else f"train_v1_aug_{ratio}_cons_anam_4_filt_{int(filtration)}.jsonl"
+        else f"train_v1_aug_{ratio}_cons_anam_filt_{int(filtration)}.jsonl"
     )
 
     train_codes = list(train["code"].unique())
