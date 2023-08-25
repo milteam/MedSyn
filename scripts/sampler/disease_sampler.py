@@ -7,13 +7,20 @@ import pandas as pd
 class DiseaseSampler:
     def __init__(self, cfg: Dict) -> None:
         self.diseases = pd.read_csv(cfg["main_df_diseases_data"])
+        self.cfg = cfg
         self.prepare_df()
         self.gender_scpec_or_general = cfg["gender_scpec_or_general"]
         self.prepare_gender_probs()
-        self.cfg = cfg
+
+        self.dummy_symptoms = ["Вес при рождении", "кома", "Вес тела", "Вес плода"]
 
     def prepare_df(self) -> None:
-        self.diseases = self.diseases.dropna(subset=["symptoms"], axis=0)
+        if self.cfg["lang"] == "eng":
+            self.diseases = self.diseases.dropna(subset=["symptoms"], axis=0)
+        elif self.cfg["lang"] == "ru":
+            self.diseases = self.diseases.dropna(
+                subset=["symptoms_ru", "symptoms_ru_no_stat"], how="all"
+            )
 
     def prepare_gender_probs(self) -> None:
         self.icd_codes_male = self.diseases.query("gender == 'male'")["icd_10"]
@@ -52,8 +59,9 @@ class DiseaseSampler:
             sample = np.random.choice(self.icd_codes_female, p=self.icd_codes_female_p)
         return sample
 
-    def sample_symptoms(self, data: pd.DataFrame) -> Dict:
-        symptoms_name = data["symptoms"].values[0]
+    def sample_symptoms_with_stats(
+        self, data: pd.DataFrame, symptoms_name: List
+    ) -> Dict:
         symptoms_tfidf = data["sympotoms_tf_idfs"].values[0]
         symptoms_name = [
             s_name.replace(" '", "").replace("'", "")
@@ -75,6 +83,37 @@ class DiseaseSampler:
         symptoms = np.random.choice(
             symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
         )
+
+        if self.cfg["lang"] == "ru":
+            symptoms = list(
+                set([np.random.choice(sympt.split(",")).strip() for sympt in symptoms])
+            )
+
+        return symptoms
+
+    def sample_symptoms_without_stats(self, symptoms_name: str) -> List:
+        symptoms = [s.lower().strip() for s in symptoms_name.split(",")]
+        n_symptoms = min(
+            len(symptoms), np.random.randint(1, self.cfg["max_symptoms"])
+        )
+        symptoms = np.random.choice(symptoms, size=n_symptoms, replace=False)
+        return symptoms
+
+    def sample_symptoms(self, data: pd.DataFrame) -> Dict:
+        if self.cfg["lang"] == "eng":
+            symptoms_name = data["symptoms"].values[0]
+            symptoms = self.sample_symptoms_with_stats(data, symptoms_name)
+
+        elif self.cfg["lang"] == "ru":
+            symptoms_name = data["symptoms_ru"].values[0]
+            if symptoms_name is not np.nan:
+                symptoms = self.sample_symptoms_with_stats(data, symptoms_name)
+            else:
+                symptoms_name = data["symptoms_ru_no_stat"].values[0]
+                symptoms = self.sample_symptoms_without_stats(symptoms_name)
+
+        symptoms = [s for s in symptoms if s not in self.dummy_symptoms]
+
         return symptoms
 
     def get_sample(self, gender: str) -> Dict:
@@ -90,6 +129,7 @@ class DiseaseSampler:
                 "DOID": doid,
                 "MESH_ID": mesh_id,
                 "name": data["Name"].values[0],
+                "name_ru": data["names_ru"].values[0],
                 "descriptions": data["Descriptions"].values[0],
             },
             "symptoms": list(symptoms),

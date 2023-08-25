@@ -257,6 +257,79 @@ def add_symptoms_do(
     return main_df
 
 
+def add_diseases_ru(
+    main_df: pd.DataFrame, wiki_ru: pd.DataFrame, mkb_10: pd.DataFrame
+) -> pd.DataFrame:
+    names_ru = []
+    descrs_ru = []
+
+    for idx in range(len(main_df)):
+        icd_10 = main_df.iloc[idx]["icd_10"]
+        ru_name = mkb_10.query("mkb_cod == @icd_10")["mkb_name"].values
+        assert ru_name.shape[0] < 2
+        ru_name = ru_name[0] if ru_name.shape[0] == 1 else None
+        ru_descr = wiki_ru.query("МКБ_10 == @icd_10")["Симптомы"].values
+        ru_descr = list(ru_descr) if ru_descr.shape[0] > 1 else None
+
+        names_ru.append(ru_name)
+        descrs_ru.append(ru_descr)
+
+    main_df["names_ru"] = names_ru
+    main_df["descriptions_ru"] = descrs_ru
+    return main_df
+
+
+def add_symptoms_ru(
+    main_df: pd.DataFrame, symptoms_mapping_df: pd.DataFrame
+) -> pd.DataFrame:
+    symptoms_mapping = {}
+    for idx in range(len(symptoms_mapping_df)):
+        symp_eng = symptoms_mapping_df.iloc[idx]["symp_eng"]
+        symp_ru = symptoms_mapping_df.iloc[idx]["symp_ru"]
+        symptoms_mapping[symp_eng] = symp_ru
+
+    symptoms_ru = []
+
+    for idx in range(len(main_df)):
+        symptoms_eng = main_df.iloc[idx]["symptoms"]
+        if symptoms_eng is not np.nan:
+            symptoms_ru.append(
+                [symptoms_mapping[symp_eng] for symp_eng in symptoms_eng]
+            )
+        else:
+            symptoms_ru.append(np.nan)
+    main_df["symptoms_ru"] = symptoms_ru
+    return main_df
+
+
+def add_symptoms_ru_no_stats(
+    main_df: pd.DataFrame, ru_symp: pd.DataFrame
+) -> pd.DataFrame:
+    main_df = main_df.merge(ru_symp[["icd_10", "symptoms_ru_no_stat"]], on="icd_10")
+    return main_df
+
+
+def remove_duplicates(main_df: pd.DataFrame) -> pd.DataFrame:
+    dup_codes = main_df[main_df["icd_10"].duplicated()]["icd_10"]
+    for code in dup_codes:
+        dup_data = main_df.query("icd_10 == @code")
+        assert dup_data.shape[0] == 2
+        idxs = dup_data.index
+        if not isinstance(dup_data.loc[idxs[0]]["symptoms_ru"], str):
+            main_df = main_df.drop(index=idxs[0])
+        else:
+            main_df = main_df.drop(index=idxs[1])
+    return main_df
+
+
+def fill_probs(main_df: pd.DataFrame) -> pd.DataFrame:
+    main_df["probs"] = main_df["probs"].fillna(
+        (1 - main_df["probs"].sum()) / len(main_df[main_df["probs"].isna()]["icd_10"])
+    )
+    assert abs(1 - main_df["probs"].sum()) < 0.01
+    return main_df
+
+
 def prepare_data(cfg: Dict) -> None:
     main_df = pd.read_csv(cfg["main_df"])
     mesh2icd10_mapping = pd.read_csv(cfg["mesh2icd"])
@@ -269,12 +342,25 @@ def prepare_data(cfg: Dict) -> None:
     symptom_mesh = pd.read_csv(cfg["mesh_disease_symp_path"], sep="\t")
     symptom_DO = pd.read_csv(cfg["symptoms_DO"], sep="\t")
 
+    mkb_10 = pd.read_csv(cfg["mkb_10_ru"])
+    wiki_ru = pd.read_csv(cfg["wiki_dd"])
+    symptoms_mapping_df = pd.read_csv(cfg["symptoms_ru"])
+
+    ru_symp = pd.read_csv(cfg["symp_ru_no_stats"])
+
     main_df = add_mesh_codes(main_df, mesh2icd10_mapping)
     main_df = add_probabilities(main_df, codes_and_probs)
     main_df = add_gender(main_df, gender_split)
     main_df = add_diseases(main_df, disease_df)
     main_df = add_symptoms(main_df, disease_symptom_rel, symptom_mesh)
     main_df = add_symptoms_do(main_df, symptom_DO, symptom_mesh)
+    main_df = add_diseases_ru(main_df, wiki_ru, mkb_10)
+    main_df = add_symptoms_ru(main_df, symptoms_mapping_df)
+    main_df = add_symptoms_ru_no_stats(main_df, ru_symp)
+
+    main_df = main_df.dropna(subset=["icd_10"])
+    main_df = remove_duplicates(main_df)
+    main_df = fill_probs(main_df)
 
     main_df.to_csv("./data/main_proc.csv", index=False)
 

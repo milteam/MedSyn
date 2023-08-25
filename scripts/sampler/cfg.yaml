@@ -1,9 +1,11 @@
-seed: 42
+seed: 10
 
-n_samples: 20 # target number of samples to generate
-max_iters: 1000 # max iters for generation (some diseases from top does not match with database)
+lang: "ru"
 
-max_diseases: 2 # max numer of diseases per person
+n_samples: 500 # target number of samples to generate
+max_iters: 6000 # max iters for generation (some diseases from top does not match with database)
+
+max_diseases: 1 # max numer of diseases per person
 max_symptoms: 5 # max numer of symptoms per disease
 max_side_effects: 3 # mux number of side effects from the drug
 
@@ -14,6 +16,7 @@ gender_scpec_or_general: # probability to sample gender specific or general dise
   - 0.9
 
 icd_codes: "./data/codes/codes.csv"
+max_icd_depth: 2  # use diseases with secondary code of max_icd_depth length, for ex. A00.0 - length 1, A01.09 - length 2, etc.
 icd_gender_split_path: "./data/codes/icd_gender_split.json"
 top_ICD10_codes_path: "./data/codes/top_ICD10_codes_percent.txt"
 icd_codes_processed: "./data/codes/codes_proc.csv"
@@ -37,3 +40,8 @@ main_df: "./data/main.csv"
 mesh2icd: "./data/MESH_ICD10_Mapping.csv"
 symptoms_DO: "./data/symptoms-DO.tsv"
 main_df_diseases_data: "./data/main_proc.csv"
+
+mkb_10_ru: "data/eng_to_ru/spr_mkb10.csv"
+wiki_dd: "data/eng_to_ru/wiki_disease_ru.csv"
+symptoms_ru: "data/eng_to_ru/symptoms_eng_ru.csv"
+symp_ru_no_stats: "data/eng_to_ru/icd_symp_ru.csv"

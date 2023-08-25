@@ -2,6 +2,7 @@ from typing import Dict, Tuple, List
 
 import json
 import random
+import shortuuid
 import numpy as np
 import pandas as pd
 
@@ -172,54 +173,37 @@ class DemographicSampler:
         }
 
 
-class Symptoms:
-    def __init__(self, disease_symptom_rel_path: str, symptom_mesh_path: str) -> None:
-        self.disease_symptom_rel = pd.read_csv(disease_symptom_rel_path)
-        self.symptom_mesh = pd.read_csv(symptom_mesh_path, sep="\t")
-        self.prepare_df()
+class SmokingSampler:
+    def __init__(self) -> None:
+        male_p = 34.6 / 100
+        female_p = 8.3 / 100
+        self.male_p = [1 - male_p, male_p]
+        self.female_p = [1 - female_p, female_p]
+        self.age_threshold = 16
 
-    def prepare_df(self):
-        clmns = [clmn.replace(" ", "_") for clmn in self.symptom_mesh.columns]
-        self.symptom_mesh.columns = clmns
-
-    def get_symptoms(self, disease: Dict) -> Dict:
-        do_id = disease["DOID"]
-        mesh_id = disease["MESH_ID"]
-        symptoms = self.disease_symptom_rel.query("Disease == @do_id")["Symptom"].values
-
-        symptoms_data = {}
-        for symptom in symptoms:
-            s_id = symptom.split(":")[-1]
-            symptom_term = self.symptom_mesh.query("MeSH_Symptom_ID == @s_id")
-            symptom_term = symptom_term.query("MeSH_Disease_ID == @mesh_id")
-
-            for idx in range(symptom_term.shape[0]):
-                symptoms_data[symptom] = {
-                    "Term": symptom_term.iloc[idx]["MeSH_Symptom_Term"],
-                    "TFIDF": symptom_term.iloc[idx]["TFIDF_score"],
-                }
-
-        return symptoms_data
+    def get_sample(self, sample: Dict) -> int:
+        gender = sample["gender"]
+        age = sample["age"]
+        if age < self.age_threshold:
+            return 0
+        if gender == "male":
+            return np.random.choice([0, 1], p=self.male_p)
+        if gender == "female":
+            return np.random.choice([0, 1], p=self.female_p)
 
 
 class Sampler:
     def __init__(self, cfg: Dict) -> None:
         self.cfg = cfg
         self.set_seed(cfg["seed"])
-        # gender_split = self.load_gender_split()
+
         self.demographic_sampler = DemographicSampler(
             cfg["edge_gender_pyramyd_path"],
             cfg["family_status_path"],
             cfg["ethnic_groups_path"],
             cfg["min_age"],
         )
-        # self.icd_sampler = ICDCodeSampler(
-        #     cfg["icd_codes_processed"], gender_split, cfg["gender_scpec_or_general"]
-        # )
         self.disease_sampler = DiseaseSampler(cfg)
-        # self.symptoms_sampler = Symptoms(
-        #     cfg["disease_symptom_relation_path"], cfg["mesh_disease_symp_path"]
-        # )
         self.drug_sampler = DrugSampler(
             cfg["drug_disease_rel_path"],
             cfg["drugbank_path"],
@@ -228,6 +212,7 @@ class Sampler:
             cfg["meddra_freq_path"],
             cfg["max_side_effects"],
         )
+        self.smoking_sampler = SmokingSampler()
 
     @staticmethod
     def set_seed(seed) -> None:
@@ -243,43 +228,18 @@ class Sampler:
             icd_gender_split_path = json.load(f)
             return icd_gender_split_path
 
-    # def get_data_for_icd(self, icd_code: str) -> Dict:
-    #     data = {}
-    #     disease_sample = self.disease_sampler.get_data_by_icd(icd_code)
-    #     if disease_sample:
-    #         for disease_name, disease_data in disease_sample.items():
-    #             symptoms = self.symptoms_sampler.get_symptoms(disease_data)
-    #             if symptoms:
-    #                 n_symptoms = min(
-    #                     len(symptoms), np.random.randint(1, self.cfg["max_symptoms"])
-    #                 )
-    #                 symptoms_name = [symp["Term"] for symp in symptoms.values()]
-    #                 symptoms_tfidf = np.array(
-    #                     [symp["TFIDF"] for symp in symptoms.values()]
-    #                 )
-    #                 symptoms_scores = self.softmax(symptoms_tfidf)
-    #                 symptoms = np.random.choice(
-    #                     symptoms_name, p=symptoms_scores, size=n_symptoms, replace=False
-    #                 )
-
-    #                 data = {
-    #                     "icd_code": icd_code,
-    #                     "disease": disease_data,
-    #                     "symptoms": symptoms,
-    #                 }
-    #     return data
-
     def sample_drug_and_se(self, disease_doid: str):
         return self.drug_sampler.get_sample(disease_doid)
 
     def get_sample(self) -> Dict:
         sample = self.demographic_sampler.get_sample()
+        smoke = self.smoking_sampler.get_sample(sample)
+        sample["smoking"] = int(smoke)
         sample["disease"] = []
         sample["symptoms"] = []
 
         n_diseases = np.random.randint(1, self.cfg["max_diseases"] + 1)
         for _ in range(n_diseases):
-            # disease_icd = self.icd_sampler.get_sample(sample["gender"])
             sample_ = self.disease_sampler.get_sample(sample["gender"])
             disease_info = sample_["disease"]
             disease_info["idc_10"] = disease_info["icd_code"]
@@ -313,6 +273,8 @@ class Sampler:
             sample = self.get_sample()
             if sample["disease"]:
                 samples[idx] = sample
+                UID = shortuuid.uuid()
+                samples["UID"] = UID
                 idx += 1
 
             if idx > self.cfg["n_samples"]:
