@@ -19,7 +19,7 @@ def get_sample(data: Dict) -> Dict:
     smoking = data["smoking"]
 
     if gender == "male":
-        marital = "замужний" if marital_state else "незамужний"
+        marital = "женатый" if marital_state else "неженатый"
         smoking = "курящий" if smoking else "некурящий"
         gender_ru = "мужчина"
         conj = "который"
