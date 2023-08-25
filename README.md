@@ -39,4 +39,15 @@ scrapy crawl meds -O ../../data/wikimed/meds.json
 
 # Parse meds data to csv table:
 python3 ./parsing/wikimed/parse_meds.py
+
+=======
+
+## Synthetic Anamnesis Filtering
+
+```sh
+pip install -q -r ./scripts/filtering/requirements.txt
+
+./scripts/filtering/filter.py \
+    --input-folder 'folder-template-containing-json-files-with-synthetic-records/results-*/*' \
+    --output-path ./filtered.csv
 ```

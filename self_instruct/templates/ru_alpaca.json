@@ -1,0 +1,10 @@
+{
+    "description": "Template used by Russian Alpaca-LoRA.",
+    "prompts_input": [
+        "### Задание: {instruction}\n### Вход: {input}\n### Ответ: "
+    ],
+    "prompts_no_input": [
+        "### Задание: {instruction}\n### Ответ: "
+    ],
+    "output_separator": "Ответ: "
+}
