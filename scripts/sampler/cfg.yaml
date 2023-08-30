@@ -1,8 +1,8 @@
-seed: 10
+seed: 50
 
 lang: "ru"
 
-n_samples: 500 # target number of samples to generate
+n_samples: 1000 # target number of samples to generate
 max_iters: 6000 # max iters for generation (some diseases from top does not match with database)
 
 max_diseases: 1 # max numer of diseases per person
@@ -12,8 +12,8 @@ max_side_effects: 3 # mux number of side effects from the drug
 symptoms_temperature: 10 # temperature to regulate softmax from tf-idf for symptoms sampling
 min_age: 9 # min person age to sample
 gender_scpec_or_general: # probability to sample gender specific or general diseases
-  - 0.1
-  - 0.9
+  - 0.15
+  - 0.85
 
 icd_codes: "./data/codes/codes.csv"
 max_icd_depth: 2  # use diseases with secondary code of max_icd_depth length, for ex. A00.0 - length 1, A01.09 - length 2, etc.
