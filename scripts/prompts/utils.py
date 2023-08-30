@@ -51,7 +51,7 @@ def generate_gpt_records(
                         "w",
                         encoding="utf8",
                     ) as f:
-                        json.dump(res, f, indent=3, ensure_ascii=False)
+                        json.dump([dataclasses.asdict(x) for x in res], f, indent=3, ensure_ascii=False)
                         res = []
 
                 print(
