@@ -48,7 +48,7 @@ model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 # Read the AllNLI.tsv.gz file and create the training dataset
 logging.info("Read AllNLI train dataset")
-
+LABELS = {'contradiction': 0, 'entailment': 1, 'neutral': 2}
 def add_to_samples(sent1, sent2, label):
     if sent1 not in train_data:
         train_data[sent1] = {'contradiction': set(), 'entailment': set(), 'neutral': set()}
@@ -92,7 +92,7 @@ dev_samples = []
 with open("data/dev_v1.jsonl") as f:
     for row in f.readlines():
         row =json.loads(row)
-        dev_samples.append(InputExample(texts=[row['ru_sentence1'], row['ru_sentence2']], label=row["gold_label"]))
+        dev_samples.append(InputExample(texts=[row['ru_sentence1'], row['ru_sentence2']], label=LABELS[row["gold_label"]]))
 
 dev_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(dev_samples, batch_size=train_batch_size, name='sts-dev')
 
