@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import torch
 from datasets import load_dataset, load_metric
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DataCollatorWithPadding, TrainingArguments, \
     Trainer
@@ -7,6 +8,7 @@ import numpy as np
 
 
 BATCH_SIZE = 64
+torch.cuda.set_device(5)
 tokenizer = AutoTokenizer.from_pretrained('DeepPavlov/rubert-base-cased')
 
 sep_token = tokenizer.sep_token
