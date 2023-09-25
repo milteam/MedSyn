@@ -79,7 +79,7 @@ if __name__ == '__main__':
                     "pairID": str(uuid.uuid4())})
 
     with open("data/train_v1.jsonl") as f:
-        lines = []#f.readlines()
+        lines = f.readlines()
     with open("train_v1.jsonl", "w") as f:
         f.writelines(lines)
         f.writelines([f"{json.dumps(item, ensure_ascii=False)}\n" for item in res])

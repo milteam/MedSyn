@@ -5,10 +5,12 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Data
     Trainer
 import numpy as np
 
+model_name = "xlm-roberta-base"
+#model_name = 'DeepPavlov/rubert-base-cased'
 
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 
-tokenizer = AutoTokenizer.from_pretrained('DeepPavlov/rubert-base-cased')
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 sep_token = tokenizer.sep_token
 cls_token = tokenizer.cls_token
@@ -147,7 +149,7 @@ def convert_to_int(ids):
 dataset = load_dataset('csv', data_files={'train': "train_v1.csv",
                                         'test': 'dev_v1.csv'})
 
-model = AutoModelForSequenceClassification.from_pretrained('DeepPavlov/rubert-base-cased', num_labels=3)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
 #model.config.problem_type = "multi_label_classification"
 def encode(examples):
     return tokenizer(examples['sequence'], truncation=True, padding='max_length')
