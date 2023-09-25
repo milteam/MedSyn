@@ -6,7 +6,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Data
 import numpy as np
 
 # model_name = "xlm-roberta-base" #dont work
-model_name = "cointegrated/rut5-base-multitask"
+model_name = "DeepPavlov/xlm-roberta-large-en-ru"
 #model_name = 'DeepPavlov/rubert-base-cased'
 
 BATCH_SIZE = 32
