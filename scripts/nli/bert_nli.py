@@ -13,8 +13,8 @@ BATCH_SIZE = 32
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-sep_token = tokenizer.sep_token
-cls_token = tokenizer.cls_token
+sep_token = tokenizer.sep_token or tokenizer.eos_token
+cls_token = tokenizer.cls_token or ""
 pad_token = tokenizer.pad_token
 unk_token = tokenizer.unk_token
 
