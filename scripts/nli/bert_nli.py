@@ -9,7 +9,7 @@ import numpy as np
 model_name = "DeepPavlov/xlm-roberta-large-en-ru"
 #model_name = 'DeepPavlov/rubert-base-cased'
 
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
