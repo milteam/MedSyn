@@ -158,7 +158,7 @@ dataset = dataset.map(encode, batched=True)
 
 dataset = dataset.map(lambda examples: {'labels': examples['gold_label']}, batched=True)
 
-dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'labels'])
+dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
 data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 training_args = TrainingArguments("test-trainer",
                                   evaluation_strategy="epoch",
