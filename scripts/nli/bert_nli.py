@@ -157,8 +157,8 @@ def encode(examples):
 
 dataset = dataset.map(encode, batched=True)
 
-dataset = dataset.map(lambda examples: {'labels': examples['gold_label']}, batched=True)
-dataset.set_format(type='torch', columns=['input_ids', 'labels'])
+dataset = dataset.map(lambda examples: {'label': examples['gold_label']}, batched=True)
+dataset.set_format('torch', columns=['input_ids', 'attention_mask', 'label'])
 
 print(dataset['train'][0])
 print(dataset['test'][0])
@@ -171,7 +171,6 @@ training_args = TrainingArguments("test-trainer",
                                   per_device_eval_batch_size=BATCH_SIZE,
                                   warmup_steps=500,
                                   weight_decay=0.01,
-                                    learning_rate=1e-3,
                                   logging_dir="bert_results/logs",
                                   logging_strategy="epoch"
                                   )
