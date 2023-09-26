@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import torch
 from datasets import load_dataset, load_metric
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DataCollatorWithPadding, TrainingArguments, \
     Trainer
@@ -30,6 +31,7 @@ print(sep_token_idx, cls_token_idx, pad_token_idx, unk_token_idx)
 max_input_length = 256
 max_sentence_length = 128
 
+torch.seed()
 
 def trim_sentence(sentence):
   # splitting the sentence
@@ -60,11 +62,12 @@ def create_csv(source, target):
 
 
     df = df[['gold_label', 'sequence']]
+    df = df.head(32)
     df.to_csv(target, index=False)
 
 
 create_csv("data/train_v1.jsonl", "train_v1.csv")
-create_csv("data/dev_v1.jsonl", "dev_v1.csv")
+create_csv("data/train_v1.jsonl", "dev_v1.csv")
 
 # In[ ]:
 dataset = load_dataset('csv', data_files={'train': "train_v1.csv",
@@ -73,7 +76,7 @@ dataset = load_dataset('csv', data_files={'train': "train_v1.csv",
 model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
 
 def encode(examples):
-    return tokenizer(examples['sequence'], truncation=True, padding='max_length')
+    return tokenizer(examples['sequence'], truncation=True, padding=True, return_tensors="pt")
 
 
 dataset = dataset.map(encode, batched=True)
