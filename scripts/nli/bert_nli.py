@@ -66,7 +66,7 @@ def create_csv(source, target):
 
 
 create_csv("data/train_v1.jsonl", "train_v1.csv")
-create_csv("data/train_v1.jsonl", "dev_v1.csv")
+create_csv("data/dev_v1.jsonl", "dev_v1.csv")
 
 # In[ ]:
 dataset = load_dataset('csv', data_files={'train': "train_v1.csv",
@@ -84,8 +84,8 @@ dataset = dataset.map(encode, batched=True)
 dataset = dataset.map(lambda examples: {'label': examples['gold_label']}, batched=True)
 dataset.set_format('torch', columns=['input_ids', 'attention_mask', 'sequence', 'label'])
 
-print(dataset['train'][:10])
-print(dataset['test'][:10])
+print(dataset['train'])
+print(dataset['test'])
 data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 training_args = TrainingArguments("test-trainer",
                                   evaluation_strategy="epoch",
