@@ -55,7 +55,7 @@ def create_csv(source, target):
 
     # df['t_sentence1'] = cls_token + ' ' + df['sentence1'] + ' ' + sep_token + ' '
     # df['t_sentence2'] = cls_token + ' ' + df['sentence2'] + ' ' + sep_token + ' '
-    df['sequence'] = df['sentence1'] + sep_token + df['sentence2']
+    df['sequence'] = df['sentence1'] + ' относится к ' + df['sentence2']
     df['gold_label'] = df['gold_label'].apply(lambda x: LABELS[x])
 
 
