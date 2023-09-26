@@ -13,8 +13,8 @@ BATCH_SIZE = 16
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-sep_token = tokenizer.sep_token or tokenizer.eos_token
-cls_token = tokenizer.cls_token or ""
+sep_token = tokenizer.sep_token #or tokenizer.eos_token
+cls_token = tokenizer.cls_token #or ""
 pad_token = tokenizer.pad_token
 unk_token = tokenizer.unk_token
 
@@ -158,8 +158,10 @@ def encode(examples):
 dataset = dataset.map(encode, batched=True)
 
 dataset = dataset.map(lambda examples: {'labels': examples['gold_label']}, batched=True)
+dataset.set_format(type='torch', columns=['input_ids', 'labels'])
 
-dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
+print(dataset['train'][0])
+print(dataset['test'][0])
 data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 training_args = TrainingArguments("test-trainer",
                                   evaluation_strategy="epoch",
