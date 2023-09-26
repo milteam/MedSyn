@@ -6,8 +6,8 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Data
     Trainer
 import numpy as np
 
-model_name = "xlm-roberta-base" #dont work№ model_name = "DeepPavlov/xlm-roberta-large-en-ru"
-#model_name = 'DeepPavlov/rubert-base-cased'
+#model_name = "xlm-roberta-base" #dont work№ model_name = "DeepPavlov/xlm-roberta-large-en-ru"
+model_name = 'DeepPavlov/rubert-base-cased'
 
 BATCH_SIZE = 16
 
