@@ -171,6 +171,7 @@ training_args = TrainingArguments("test-trainer",
                                   per_device_eval_batch_size=BATCH_SIZE,
                                   warmup_steps=500,
                                   weight_decay=0.01,
+                                    learning_rate=1e-3,
                                   logging_dir="bert_results/logs",
                                   logging_strategy="epoch"
                                   )
@@ -179,6 +180,7 @@ metric = load_metric('accuracy')
 
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
+    print(predictions)
     predictions = np.argmax(predictions, axis=1)
     return metric.compute(predictions=predictions, references=labels)
 
