@@ -61,7 +61,7 @@ def create_csv(source, target):
 
 
     df = df[['gold_label', 'sequence']]
-    df = df.head(32)
+    #df = df.head(32)
     df.to_csv(target, index=False)
 
 
