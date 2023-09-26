@@ -93,9 +93,8 @@ training_args = TrainingArguments("test-trainer",
                                   num_train_epochs=50,
                                   per_device_train_batch_size=BATCH_SIZE,
                                   per_device_eval_batch_size=BATCH_SIZE,
-                                  warmup_steps=500,
-                                  weight_decay=0.01,
-                                  learning_rate=1e-02,
+                                  # warmup_steps=500,
+                                  # weight_decay=0.01,
                                   logging_dir="bert_results/logs",
                                   logging_strategy="epoch"
                                   )
