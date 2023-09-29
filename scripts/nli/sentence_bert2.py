@@ -36,7 +36,7 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
 model_name =  'DeepPavlov/xlm-roberta-large-en-ru'
 
 # Read the dataset
-train_batch_size = 64
+train_batch_size = 16
 
 
 model_save_path = 'output/training_nli_'+model_name.replace("/", "-")+'-'+datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
