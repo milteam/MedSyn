@@ -33,7 +33,7 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
 #Check if dataset exsist. If not, download and extract  it
 
 #You can specify any huggingface/transformers pre-trained model here, for example, bert-base-uncased, roberta-base, xlm-roberta-base
-model_name =  'DeepPavlov/rubert-base-cased'
+model_name =  'DeepPavlov/xlm-roberta-large-en-ru'
 
 # Read the dataset
 train_batch_size = 64
