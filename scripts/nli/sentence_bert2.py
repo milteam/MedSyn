@@ -86,8 +86,8 @@ with open("data/dev_v1.jsonl") as f:
 
 dev_dataloader = DataLoader(dev_samples, shuffle=True, batch_size=train_batch_size)
 
-dev_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(dev_samples, batch_size=train_batch_size, name='sts-dev')
-dev_evaluator = LabelAccuracyEvaluator(dev_dataloader)
+#dev_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(dev_samples, batch_size=train_batch_size, name='sts-dev')
+dev_evaluator = LabelAccuracyEvaluator(dev_dataloader, softmax_model=train_loss)
 # Configure the training
 num_epochs = 50
 
