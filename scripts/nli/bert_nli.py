@@ -121,7 +121,7 @@ trainer = Trainer(
 
 trainer.train()
 model.eval()
-predictions, labels = trainer.predict(dataset["test"])
+predictions = trainer.predict(dataset["test"])
 predictions = np.argmax(predictions, axis=1)
 test_df["predictions"] = predictions
 test_df.to_csv("predictions.csv", index=False)
