@@ -63,10 +63,10 @@ def create_csv(source, target):
     df = df[['gold_label', 'sequence']]
     #df = df.head(32)
     df.to_csv(target, index=False)
-
+    return df
 
 create_csv("data/train_v1.jsonl", "train_v1.csv")
-create_csv("data/dev_v1.jsonl", "dev_v1.csv")
+test_df = create_csv("data/dev_v1.jsonl", "dev_v1.csv")
 
 # In[ ]:
 dataset = load_dataset('csv', data_files={'train': "train_v1.csv",
@@ -90,7 +90,7 @@ data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 training_args = TrainingArguments("test-trainer",
                                   evaluation_strategy="epoch",
                                   save_strategy="epoch",
-                                  num_train_epochs=50,
+                                  num_train_epochs=10,
                                   per_device_train_batch_size=BATCH_SIZE,
                                   per_device_eval_batch_size=BATCH_SIZE,
                                   # warmup_steps=500,
@@ -104,8 +104,6 @@ metric = load_metric('accuracy')
 
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
-    print(predictions)
-    print(labels)
     predictions = np.argmax(predictions, axis=1)
     return metric.compute(predictions=predictions, references=labels)
 
@@ -122,4 +120,8 @@ trainer = Trainer(
 )
 
 trainer.train()
-
+model.eval()
+predictions, labels = trainer.predict(dataset["test"])
+predictions = np.argmax(predictions, axis=1)
+test_df["predictions"] = predictions
+test_df.to_csv("predictions.csv", index=False)
