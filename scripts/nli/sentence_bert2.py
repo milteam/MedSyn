@@ -100,7 +100,7 @@ logging.info("Warmup-steps: {}".format(warmup_steps))
 model.fit(train_objectives=[(train_dataloader, train_loss)],
           evaluator=dev_evaluator,
           epochs=num_epochs,
-          evaluation_steps=200,
+          evaluation_steps=1700,
           warmup_steps=warmup_steps,
           output_path=model_save_path
           )
