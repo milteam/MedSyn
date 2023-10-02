@@ -90,7 +90,7 @@ data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 training_args = TrainingArguments("test-trainer",
                                   evaluation_strategy="epoch",
                                   save_strategy="epoch",
-                                  num_train_epochs=1,
+                                  num_train_epochs=10,
                                   per_device_train_batch_size=BATCH_SIZE,
                                   per_device_eval_batch_size=BATCH_SIZE,
                                   # warmup_steps=500,
@@ -120,12 +120,12 @@ trainer = Trainer(
 
 )
 
-model.eval()
-predictions = trainer.predict(dataset["test"])
-print(predictions)
-predictions = np.argmax(predictions.predictions, axis=-1)
-test_df["predictions"] = predictions
-test_df.to_csv("predictions.csv", index=False)
+# model.eval()
+# predictions = trainer.predict(dataset["test"])
+# print(predictions)
+# predictions = np.argmax(predictions.predictions, axis=-1)
+# test_df["predictions"] = predictions
+# test_df.to_csv("predictions.csv", index=False)
 
 trainer.train()
 model.eval()
