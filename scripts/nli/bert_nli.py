@@ -123,7 +123,7 @@ trainer = Trainer(
 model.eval()
 predictions = trainer.predict(dataset["test"])
 print(predictions)
-predictions = np.argmax(predictions.predictions, axis=0)
+predictions = np.argmax(predictions.predictions, axis=-1)
 test_df["predictions"] = predictions
 test_df.to_csv("predictions.csv", index=False)
 
@@ -131,6 +131,6 @@ trainer.train()
 model.eval()
 predictions = trainer.predict(dataset["test"])
 print(predictions)
-predictions = np.argmax(predictions.predictions, axis=0)
+predictions = np.argmax(predictions.predictions, axis=-1)
 test_df["predictions"] = predictions
 test_df.to_csv("predictions.csv", index=False)
