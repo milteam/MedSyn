@@ -108,6 +108,7 @@ def compute_metrics(eval_pred):
     return metric.compute(predictions=predictions, references=labels)
 
 
+
 trainer = Trainer(
     model,
     training_args,
@@ -119,10 +120,17 @@ trainer = Trainer(
 
 )
 
+model.eval()
+predictions = trainer.predict(dataset["test"])
+print(predictions)
+predictions = np.argmax(predictions.predictions, axis=0)
+test_df["predictions"] = predictions
+test_df.to_csv("predictions.csv", index=False)
+
 trainer.train()
 model.eval()
 predictions = trainer.predict(dataset["test"])
-# print(predictions)
-# predictions = predictions.label_ids
-test_df["predictions"] = predictions.label_ids
+print(predictions)
+predictions = np.argmax(predictions.predictions, axis=0)
+test_df["predictions"] = predictions
 test_df.to_csv("predictions.csv", index=False)
