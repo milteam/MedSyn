@@ -71,19 +71,17 @@ def get_sample_by_continuation(
 
     if gender == "male":
         gender_ru = "мужчина"
-        conj = "который"
     else:
         gender_ru = "женщина"
-        conj = "которая"
 
     output = text.replace("\n", " ")
     output = re.sub(" +", " ", output).split(" ")
     pre_out = " ".join(output[len(output) // 2 :])
     output_sample = " ".join(output[: len(output) // 2])
 
-    input = f"Пациент - {gender_ru} в возрасте {age} лет. Начало анамнеза: {pre_out}"
+    input = f"Пациент - {gender_ru} в возрасте {age} лет. Начало анамнеза: {output_sample}"
 
-    sample = {"instruction": instruction, "input": input, "output": output_sample}
+    sample = {"instruction": instruction, "input": input, "output": pre_out}
     return sample
 
 
