@@ -11,7 +11,12 @@ import json
 import click
 
 
-INSTRUCTIONS = ["Допиши анамнез", "Продолжи анамнез"]
+INSTRUCTIONS = [
+    "Допиши анамнез",
+    "Продолжи анамнез",
+    "Закончи анамнез",
+    "Напиши продолжение анамнеза",
+]
 
 
 def get_sample_by_continuation(text: str, ratio: int = 2) -> Dict:
