@@ -5,13 +5,11 @@ from typing import List, Dict
 import fire
 from tqdm import tqdm
 
+from utils import get_filepaths
+
 
 def parse(root_dir: str) -> List[Dict]:
-    filepaths = list()
-
-    for path, subdirs, files in os.walk(root_dir):
-        for name in files:
-            filepaths.append(os.path.join(path, name))
+    filepaths = get_filepaths(root_dir)
 
     all_data = list()
     for filepath in filepaths:
