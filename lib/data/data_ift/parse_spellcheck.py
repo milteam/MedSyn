@@ -4,7 +4,7 @@ import os
 import fire
 from tqdm import tqdm
 
-from utils import parse
+from utils import parse, get_filepaths
 
 
 def generate_data(
@@ -14,17 +14,22 @@ def generate_data(
 ) -> None:
     os.makedirs(results_dir, exist_ok=True)
 
-    data = parse(samples_path)
-
     prompt = "Ты хорошо знаешь русский язык. Исправь орфографические и грамматические ошибки в тексте."
-    with open(os.path.join(results_dir, result_name), "w", encoding="utf-8") as w:
-        for row in tqdm(data):
-            instruction = {
-                "instruction": prompt,
-                "input": row["source"],
-                "output": row["correction"],
-            }
-            w.write(json.dumps(instruction, ensure_ascii=False) + "\n")
+
+    filepaths = get_filepaths(samples_path)
+    for filepath in filepaths:
+        filename = filepath.split('\\')[-2]
+        data = parse(os.path.join(samples_path, filename))
+
+        with open(os.path.join(results_dir, f'{filename.lower()}_{result_name}'),
+                  "w", encoding="utf-8") as w:
+            for row in tqdm(data):
+                instruction = {
+                    "instruction": prompt,
+                    "input": row["source"],
+                    "output": row["correction"],
+                }
+                w.write(json.dumps(instruction, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":
