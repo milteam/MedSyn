@@ -33,13 +33,15 @@ def create_csv(source, target, labels=None):
         for row in f.readlines():
             df.append(json.loads(row))
 
+    df = pd.DataFrame(df)
+
     if not labels:
         labels = {label: idx for idx, label in enumerate(df["code"].unique())}
 
     df['code'] = df['code'].apply(lambda x: labels[x])
     df["sequence"] = df["symptoms"]
 
-    df = df[['gold_label', 'sequence']]
+    df = df[['code', 'sequence']]
     #df = df.head(32)
     df.to_csv(target, index=False)
     return df, labels
