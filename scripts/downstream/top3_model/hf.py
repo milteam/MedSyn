@@ -11,7 +11,7 @@ import numpy as np
 BATCH_SIZE = 64
 
 
-max_input_length = 256
+max_input_length = 512
 
 
 
@@ -59,7 +59,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     tokenizer = AutoTokenizer.from_pretrained(bert)
 
     def encode(examples):
-        return tokenizer(examples['sequence'], truncation=True, padding=True, return_tensors="pt")
+        return tokenizer(examples['sequence'], truncation=True, padding=True, return_tensors="pt", max_length=max_input_length)
 
 
     dataset = dataset.map(encode, batched=True)
@@ -79,7 +79,8 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
                                       # weight_decay=0.01,
                                       logging_dir="bert_results/logs",
                                       logging_strategy="epoch",
-                                      load_best_model_at_end=True
+                                      load_best_model_at_end=True,
+                                      report_to="none"
                                       )
 
 
