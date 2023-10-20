@@ -38,22 +38,24 @@ def generate_data_for_type(
 
     wikimed = pd.read_csv(wikimed_path)
 
-    result = []
+    result = list()
+    instr_text = f"Максимально подробно опиши {'заболевание' if 'diseases' in result_name else 'лекарственное средство'}."
     for idx in wikimed.index:
         row = wikimed.loc[idx]
+        name = row['Рубрика'] if 'diseases' in result_name else row['Название']
 
         description = []
         for instruction_type in questions.keys():
             if row[[instruction_type]].notna().bool():
                 description.append(
-                    f"{questions[instruction_type]} {row['Рубрика']}? {row[instruction_type]}.")
+                    f"{questions[instruction_type]} {name}? {row[instruction_type]}.")
         if len(description) <= 1:
             continue
         random.shuffle(description)
 
         instruction = {
-            "instruction": "Максимально подробно опиши заболевание.",
-            "input": row['Рубрика'],
+            "instruction": instr_text,
+            "input": name,
             "output": description,
         }
         result.append(instruction)
