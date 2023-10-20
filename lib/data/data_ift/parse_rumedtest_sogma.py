@@ -48,22 +48,24 @@ def generate_data(
         .sample(frac=1, random_state=42, ignore_index=True) \
         .reset_index(drop=True)  # keep only 1-line questions, drop option 6(unused)
 
-    instr_template = """Ты являешься профессиональным врачом. Тебе нужно пройти тест и ответить, какое утверждение является верным. В ответе обязательно напиши один правильный вариант.
+    instr_template = "Ты являешься профессиональным врачом. Тебе нужно пройти тест и ответить, какое утверждение является верным. В ответе обязательно напиши один правильный вариант."
+    inpt = """
 1. {0} {1}. 
 2. {0} {2}. 
 3. {0} {3}. 
 4. {0} {4}. 
 5. {0} {5}."""
-    output_template = "Ответ: {0}. {1} {2}"
+    output_template = "Ответ: {0}. {1} {2}."
     with open(os.path.join(results_dir, result_name), "w", encoding="utf-8") as w:
         for i in tqdm(range(0, len(dfa))):
             row = dfa.iloc[i]
-            q = instr_template.format(*row[['question', '1', '2', '3', '4', '5']])
+            q = inpt.format(*row[['question', '1', '2', '3', '4', '5']])
             a = int(row[['correct']])
             if a == 0:
                 continue
             qa = {
-                "instruction": q,
+                "instruction": instr_template,
+                "input": q,
                 "correct": a,
                 "output": output_template.format(a, *row[['question', str(a)]]),
             }
