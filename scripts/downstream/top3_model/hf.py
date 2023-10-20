@@ -8,7 +8,7 @@ import numpy as np
 
 #model_name = "xlm-roberta-base" #dont work№ model_name = "DeepPavlov/xlm-roberta-large-en-ru"
 
-BATCH_SIZE = 64
+BATCH_SIZE = 16
 
 
 max_input_length = 512
