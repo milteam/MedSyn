@@ -16,7 +16,31 @@ INSTRUCTIONS = [
     "Ты являешься врачом. Напиши анамнез, составленный со слов пациента.",
 ]
 
+INSTRUCTIONS_2 = [
+    "Допиши анамнез",
+    "Продолжи анамнез",
+    "Закончи анамнез",
+    "Напиши продолжение анамнеза",
+    "Напиши продолжение",
+]
+
 PRE = ["Пациент жалуется на", "Пациент обратился с", "Жалоба пациента на"]
+
+
+def get_sample_by_continuation(symptoms: str, anamnesis: str, ratio: int = 2) -> Dict:
+    instruction = random.choice(INSTRUCTIONS_2)
+
+    symptoms = symptoms.replace("\n", " ")
+    anamnesis = anamnesis.replace("\n", " ")
+
+    output = symptoms + " " + anamnesis
+
+    output = re.sub(" +", " ", output).split(" ")
+    pre = " ".join(output[: len(output) // ratio])
+    post = " ".join(output[len(output) // ratio :])
+
+    sample = {"instruction": instruction, "input": pre, "output": post}
+    return sample
 
 
 def get_sample(symptoms: str, anamnesis: str) -> Dict:
@@ -50,6 +74,15 @@ def generate_data(results_dir: str, result_name: str, samples_path: str) -> None
         anamnesis = samples.loc[idx]["anamnesis"]
 
         new_sample = get_sample(symptoms, anamnesis)
+        result.append(new_sample)
+
+        new_sample = get_sample_by_continuation(symptoms, anamnesis, ratio=2)
+        result.append(new_sample)
+
+        new_sample = get_sample_by_continuation(symptoms, anamnesis, ratio=3)
+        result.append(new_sample)
+
+        new_sample = get_sample_by_continuation(symptoms, anamnesis, ratio=4)
         result.append(new_sample)
 
     with open(os.path.join(results_dir, result_name), "w", encoding="utf8") as f:
