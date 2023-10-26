@@ -14,36 +14,72 @@ BATCH_SIZE = 16
 
 max_input_length = 512
 
-class T5SequenceClassification(nn.Module):
+class SequenceClassification(nn.Module):
     def __init__(self, pretrained_model_name, num_labels):
-        super(T5SequenceClassification, self).__init__()
+        super(SequenceClassification, self).__init__()
         if "T5" in pretrained_model_name:
             MODEL = T5EncoderModel
         else:
             MODEL = AutoModel
-        self.t5_model = MODEL.from_pretrained(pretrained_model_name)
+        self.model = MODEL.from_pretrained(pretrained_model_name)
         self.dropout = nn.Dropout(0.1)
-        self.classifier = nn.Linear(self.t5_model.config.hidden_size, num_labels)
+        self.classifier = nn.Linear(self.model.config.hidden_size, num_labels)
+        self.loss = nn.CrossEntropyLoss()
 
-    def forward(self, input_ids, attention_mask, **kwargs):
-        outputs = self.t5_model(input_ids=input_ids, attention_mask=attention_mask)
+    def forward(self, input_ids, attention_mask, labels, return_output=True, **kwargs):
+        outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = outputs.last_hidden_state[:, 0]  # Use the [CLS] token representation
         pooled_output = self.dropout(pooled_output)
         logits = self.classifier(pooled_output)
-        return logits
+        loss = self.loss(logits, labels)
+        if return_output:
+            return loss, logits
+        else:
+            return loss
 
-class CustomT5Trainer(Trainer):
-    def __init__(self, *args, **kwargs):
-        super(CustomT5Trainer, self).__init__(*args, **kwargs)
-        self.loss_fn = torch.nn.CrossEntropyLoss()
-
-    def compute_loss(self, model, inputs):
-        labels = inputs.pop("labels")
-        outputs = model(**inputs)
-        logits = outputs
-        loss = self.loss_fn(logits, labels)
-        return loss
-
+# class CustomT5Trainer(Trainer):
+#     def __init__(self, *args, **kwargs):
+#         super(CustomT5Trainer, self).__init__(*args, **kwargs)
+#         self.loss_fn = torch.nn.CrossEntropyLoss()
+#
+#     def compute_loss(self, model, inputs):
+#         labels = inputs.pop("labels")
+#         outputs = model(**inputs)
+#         logits = outputs
+#         loss = self.loss_fn(logits, labels)
+#         return loss
+#
+#     def compute_loss(self, model, inputs, return_outputs=False):
+#         """
+#         How the loss is computed by Trainer. By default, all models return the loss in the first element.
+#
+#         Subclass and override for custom behavior.
+#         """
+#         if self.label_smoother is not None and "labels" in inputs:
+#             labels = inputs.pop("labels")
+#         else:
+#             labels = None
+#         outputs = model(**inputs)
+#         # Save past state if it exists
+#         # TODO: this needs to be fixed and made cleaner later.
+#         if self.args.past_index >= 0:
+#             self._past = outputs[self.args.past_index]
+#
+#         if labels is not None:
+#             if unwrap_model(model)._get_name() in MODEL_FOR_CAUSAL_LM_MAPPING_NAMES.values():
+#                 loss = self.label_smoother(outputs, labels, shift_labels=True)
+#             else:
+#                 loss = self.label_smoother(outputs, labels)
+#         else:
+#             if isinstance(outputs, dict) and "loss" not in outputs:
+#                 raise ValueError(
+#                     "The model did not return a loss from the inputs, only the following keys: "
+#                     f"{','.join(outputs.keys())}. For reference, the inputs it received are {','.join(inputs.keys())}."
+#                 )
+#             # We don't use .loss here since the model may return tuples instead of ModelOutput.
+#             loss = outputs["loss"] if isinstance(outputs, dict) else outputs[0]
+#
+#         return (loss, outputs) if return_outputs else loss
 
 LABELS = {"neutral": 0, "entailment": 1, "contradiction": 2}
 
@@ -84,7 +120,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     dataset = load_dataset('csv', data_files={'train': "train.csv",
                                             'test': 'dev.csv'})
 
-    model = T5SequenceClassification(bert, num_labels=len(labels))
+    model = SequenceClassification(bert, num_labels=len(labels))
     tokenizer = AutoTokenizer.from_pretrained(bert)
 
     def encode(examples):
@@ -116,7 +152,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
 
 
 
-    trainer = CustomT5Trainer(
+    trainer = Trainer(
         model,
         training_args,
         train_dataset=dataset["train"],
