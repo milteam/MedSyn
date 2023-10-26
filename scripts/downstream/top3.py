@@ -1,7 +1,7 @@
 import click
 import torch
 
-from scripts.downstream.top3_model.hf import train_huggingface
+from scripts.downstream.top3_model.cst_hf import train_huggingface
 
 
 @click.command()
