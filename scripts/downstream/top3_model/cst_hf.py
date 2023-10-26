@@ -25,12 +25,24 @@ class T5SequenceClassification(nn.Module):
         self.dropout = nn.Dropout(0.1)
         self.classifier = nn.Linear(self.t5_model.config.hidden_size, num_labels)
 
-    def forward(self, input_ids, attention_mask):
+    def forward(self, input_ids, attention_mask, **kwargs):
         outputs = self.t5_model(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = outputs.last_hidden_state[:, 0]  # Use the [CLS] token representation
         pooled_output = self.dropout(pooled_output)
         logits = self.classifier(pooled_output)
         return logits
+
+class CustomT5Trainer(Trainer):
+    def __init__(self, *args, **kwargs):
+        super(CustomT5Trainer, self).__init__(*args, **kwargs)
+        self.loss_fn = torch.nn.CrossEntropyLoss()
+
+    def compute_loss(self, model, inputs):
+        labels = inputs.pop("labels")
+        outputs = model(**inputs)
+        logits = outputs
+        loss = self.loss_fn(logits, labels)
+        return loss
 
 
 LABELS = {"neutral": 0, "entailment": 1, "contradiction": 2}
@@ -72,7 +84,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     dataset = load_dataset('csv', data_files={'train': "train.csv",
                                             'test': 'dev.csv'})
 
-    model = AutoModelForSequenceClassification.from_pretrained(bert, num_labels=len(labels))
+    model = T5SequenceClassification(bert, num_labels=len(labels))
     tokenizer = AutoTokenizer.from_pretrained(bert)
 
     def encode(examples):
@@ -104,7 +116,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
 
 
 
-    trainer = Trainer(
+    trainer = CustomT5Trainer(
         model,
         training_args,
         train_dataset=dataset["train"],
