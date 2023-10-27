@@ -14,6 +14,7 @@
 * `spr_mkb10.csv` - []()
 * `wiki_disease_ru.csv` - parsed from [wikipedia](https://www.wikipedia.org/)
 * `symptoms_eng_ru.csv` - []()
+* `medical_qa_ru_data.csv` - https://huggingface.co/datasets/blinoff/medical_qa_ru_data
 
 
 

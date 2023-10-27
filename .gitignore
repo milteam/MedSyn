@@ -46,3 +46,4 @@ env/
 /results
 /data/benchmarks
 /data/wikimed
+/data/data_raw/medical_qa_ru_data.csv
