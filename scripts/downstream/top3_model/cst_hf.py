@@ -9,7 +9,7 @@ import numpy as np
 
 #model_name = "xlm-roberta-base" #dont work№ model_name = "DeepPavlov/xlm-roberta-large-en-ru"
 
-BATCH_SIZE = 16
+BATCH_SIZE = 8
 
 
 max_input_length = 512
@@ -136,7 +136,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
     training_args = TrainingArguments("test-trainer",
                                       evaluation_strategy="epoch",
-                                      save_strategy="epoch",
+                                      save_strategy="no",
                                       num_train_epochs=epochs,
                                       per_device_train_batch_size=BATCH_SIZE,
                                       per_device_eval_batch_size=BATCH_SIZE,
