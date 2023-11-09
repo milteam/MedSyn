@@ -69,7 +69,7 @@ def generate_data(
                 "correct": a,
                 "output": output_template.format(a, *row[['question', str(a)]]),
             }
-            w.write(json.dumps(qa, ensure_ascii=False).strip() + "\n")
+            w.write(json.dumps(qa, ensure_ascii=False, indent=3).strip() + "\n")
 
 
 if __name__ == "__main__":

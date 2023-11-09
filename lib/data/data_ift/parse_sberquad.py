@@ -47,7 +47,7 @@ def generate_data(
                 "input": f'Контекст: {row["context"]}\nВопрос:{row["question"]}',
                 "output": f'Ответ: {row["answer_text"]}.',
             }
-            w.write(json.dumps(instruction, ensure_ascii=False) + "\n")
+            w.write(json.dumps(instruction, ensure_ascii=False, indent=3) + "\n")
 
 
 if __name__ == "__main__":

@@ -4,38 +4,45 @@ from typing import Dict
 
 import os
 import re
+import random
 from tqdm import tqdm
 import pandas as pd
 import json
 import click
 
 
-def get_sample(term: str, desc: str) -> Dict:
-    instruction = "Напиши развернутое определение термина."
+PRE = [
+    "",
+    "Ты являешься врачом.",
+    "Твоя профессия - врач.",
+    "Ты обладаешь квалификацией профессионального медика.",
+    "Ты - специалист в области медицины.",
+    "Ты являешься квалифицированным медицинским работником.",
+]
 
-    input = f"Термин - {term}".strip()
+
+INSTRUCTIONS_1 = [
+    "Напиши развернутое определение термина.",
+    "Сформулируй подробное описание данного термина.",
+    "Предоставь развёрнутое определение этого понятия.",
+    "Изложи детальное объяснение термина.",
+    "Опиши термин в полном и расширенном виде.",
+    "Дай углублённое и полное определение этому слову.",
+]
+
+
+def get_sample(term: str, desc: str) -> Dict:
+    instruction = random.choice(INSTRUCTIONS_1)
+    pre = random.choice(PRE)
+    instruction = pre + " " + instruction if pre else instruction
+
+    input = term.strip()
     input = re.sub(r"(?<=\D)\d$", "", input)
 
     desc = desc.strip()
     desc = re.sub(r"(?<=\D)\d$", "", desc)
 
     sample = {"instruction": instruction, "input": input, "output": desc}
-    return sample
-
-
-def get_sample_by_continuation(desc: str) -> Dict:
-    instruction = f"Допиши определение термина."
-
-    desc = desc.split(" ")
-    pre_out = " ".join(desc[: len(desc) // 2]).strip()
-    pre_out = re.sub(",+", ",", pre_out)
-    pre_out = re.sub(r"(?<=\D)\d$", "", pre_out)
-
-    output_sample = " ".join(desc[len(desc) // 2 :]).strip()
-    output_sample = re.sub(",+", ",", output_sample)
-    output_sample = re.sub(r"(?<=\D)\d$", "", output_sample)
-
-    sample = {"instruction": instruction, "input": pre_out, "output": output_sample}
     return sample
 
 
@@ -56,8 +63,7 @@ def generate_data(results_dir: str, result_name: str, samples_path: str) -> None
         new_sample = get_sample(term, desc)
         result.append(new_sample)
 
-        new_sample = get_sample_by_continuation(desc)
-        result.append(new_sample)
+    print(f"{len(result)} samples generated.")
 
     with open(os.path.join(results_dir, result_name), "w", encoding="utf8") as f:
         json.dump(result, f, indent=3, ensure_ascii=False)
