@@ -120,7 +120,7 @@ INSTRUCTIONS_DRG_RU = {
         "Изложи ситуации или состояния, при которых вещество назначается.",
         "Перечисли условия, для лечения которых предписывается это вещество.",
         "Дай описание клинических сценариев, где использование вещества показано.",
-        "Проиллюстрируй области применения вещества в медицинской практике."
+        "Проиллюстрируй области применения вещества в медицинской практике.",
     ],
     "Противопоказания": [
         "Перечисли противопоказания вещества",
@@ -228,12 +228,12 @@ def get_drug_sample(data: pd.Series, instruction_type: str) -> Dict:
     pre = random.choice(PRE)
     instruction = random.choice(INSTRUCTIONS_DRG_RU[instruction_type])
     instruction = pre + " " + instruction if pre else instruction
-    
+
     output = data[instruction_type]
     output = output.replace("\n", " ")
 
     # Remove IDC codes:
-    output = re.sub(r'\b[A-Z]\d+(?:\.\d+)?\*?\b', '', output).strip()
+    output = re.sub(r"\b[A-Z]\d+(?:\.\d+)?\*?\b", "", output).strip()
 
     sample = {"instruction": instruction, "input": input, "output": output}
     return sample
