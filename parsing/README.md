@@ -15,3 +15,9 @@ scrapy crawl meds -O ../../data/wikimed/meds.json
 # Parse meds data to csv table:
 python3 ./parsing/wikimed/parse_meds.py
 ```
+
+
+scrapy crawl symptoms -O ../../data/msd/symptoms.json
+
+scrapy crawl diseases -O ../../data/msd/diseases.json
+
