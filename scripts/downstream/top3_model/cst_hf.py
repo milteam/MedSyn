@@ -134,7 +134,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     dataset.set_format('torch', columns=['input_ids', 'attention_mask', 'sequence', 'label'])
 
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
-    training_args = TrainingArguments("test-trainer",
+    training_args = TrainingArguments(checkpoint,
                                       evaluation_strategy="epoch",
                                       save_strategy="epoch",
                                       save_total_limit=2,
