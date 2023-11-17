@@ -84,12 +84,16 @@ class SequenceClassification(nn.Module):
 LABELS = {"neutral": 0, "entailment": 1, "contradiction": 2}
 
 top_k = 3
+accuracy = load_metric('accuracy')
+
 
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
     preds = np.argsort(-predictions)[:,0:top_k]
+    top1 = np.argmax(predictions, axis=1)
+
     acc_at_k = sum([l in p for l, p in zip(labels, preds)])/len(labels)
-    return {'acc_at_k': acc_at_k}
+    return {'acc_at_3': acc_at_k, "acc_at_1": accuracy.compute(top1, labels)}
 
 # In[ ]:
 def create_csv(source, target, labels=None):
@@ -114,7 +118,7 @@ def create_csv(source, target, labels=None):
 def train_huggingface(train, val, pred, checkpoint, bert, epochs):
 
     _, labels = create_csv(train, "train.csv")
-    test_df = create_csv(val, "dev.csv", labels)
+    test_df, _ = create_csv(val, "dev.csv", labels)
 
     # In[ ]:
     dataset = load_dataset('csv', data_files={'train': "train.csv",
@@ -176,7 +180,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
 
 def predict_huggingface(val, pred, checkpoint):
 
-    test_df = create_csv(val, "dev.csv")
+    test_df, _ = create_csv(val, "dev.csv")
 
     # In[ ]:
     dataset = load_dataset('csv', data_files={
