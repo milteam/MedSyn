@@ -201,7 +201,6 @@ def predict_huggingface(val, pred, checkpoint):
 
     model.eval()
     predictions = model.predict(dataset["test"])
-    print(predictions)
     predictions = np.argmax(predictions.predictions, axis=-1)
     test_df["predictions"] = predictions
-    test_df.to_csv("predictions.csv", index=False)
+    test_df.to_csv(pred, index=False)
