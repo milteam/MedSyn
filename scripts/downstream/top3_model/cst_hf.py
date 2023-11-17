@@ -93,7 +93,7 @@ def compute_metrics(eval_pred):
     top1 = np.argmax(predictions, axis=1)
 
     acc_at_k = sum([l in p for l, p in zip(labels, preds)])/len(labels)
-    return {'acc_at_3': acc_at_k, "acc_at_1": accuracy.compute(top1, labels)}
+    return {'acc_at_3': acc_at_k, "acc_at_1": accuracy.compute(predictions=top1, references=labels)}
 
 # In[ ]:
 def create_csv(source, target, labels=None):
