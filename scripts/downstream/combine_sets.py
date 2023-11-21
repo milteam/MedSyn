@@ -49,7 +49,7 @@ def combine_all_gpt4():
     train = "scripts/downstream/data/RuMedTop3/train_v1_symp_anam.jsonl"
     upsample = "scripts/downstream/data/RuMedTop3/gpt4_train.jsonl"
 
-    proportions = [[0.5, 0], [0.75, 0], [0.5, 0.5], [0.5, 1], [1, 0.25], [1, 0.5], [1, 1]]
+    proportions = [[0.5, 0], [0.75, 0], [1, 0 ], [0.5, 0.5], [0.5, 1], [1, 0.25], [1, 0.5], [1, 1]]
 
     for pt, pu in proportions:
         combine(train, pt, upsample, pu, f"scripts/downstream/data/RuMedTop3/gpt4/sa{int(pt*100)}_gpt{int(pu*100)}.jsonl")
