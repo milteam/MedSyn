@@ -79,7 +79,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     dataset.set_format('torch', columns=['input_ids', 'attention_mask', 'sequence', 'label'])
 
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
-    training_args = TrainingArguments("test-trainer",
+    training_args = TrainingArguments(checkpoint,
                                       evaluation_strategy="epoch",
                                       save_strategy="epoch",
                                       num_train_epochs=epochs,
@@ -149,4 +149,4 @@ def predict_huggingface(val, pred, checkpoint):
     print(predictions)
     predictions = np.argmax(predictions.predictions, axis=-1)
     test_df["predictions"] = predictions
-    test_df.to_csv("predictions.csv", index=False)
+    test_df.to_csv(pred, index=False)
