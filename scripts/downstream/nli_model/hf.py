@@ -89,7 +89,8 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
                                       # weight_decay=0.01,
                                       logging_dir="bert_results/logs",
                                       logging_strategy="epoch",
-                                      load_best_model_at_end=True
+                                      load_best_model_at_end=True,
+                                      report_to="none"
                                       )
 
 
