@@ -83,17 +83,20 @@ class SequenceClassification(nn.Module):
 
 LABELS = {"neutral": 0, "entailment": 1, "contradiction": 2}
 
-top_k = 3
 accuracy = load_metric('accuracy')
 
 
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
-    preds = np.argsort(-predictions)[:,0:top_k]
+    preds_3 = np.argsort(-predictions)[:,0:3]
+    preds_5 = np.argsort(-predictions)[:,0:5]
+
     top1 = np.argmax(predictions, axis=1)
 
-    acc_at_k = sum([l in p for l, p in zip(labels, preds)])/len(labels)
-    return {'acc_at_3': acc_at_k, "acc_at_1": accuracy.compute(predictions=top1, references=labels)}
+    acc_at_3 = sum([l in p for l, p in zip(labels, preds_3)])/len(labels)
+    acc_at_5 = sum([l in p for l, p in zip(labels, preds_5)])/len(labels)
+
+    return {'acc_at_3': acc_at_3, 'acc_at_5': acc_at_5, "acc_at_1": accuracy.compute(predictions=top1, references=labels)}
 
 # In[ ]:
 def create_csv(source, target, labels=None):
