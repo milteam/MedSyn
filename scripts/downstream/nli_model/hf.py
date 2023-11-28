@@ -82,6 +82,7 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     training_args = TrainingArguments(checkpoint,
                                       evaluation_strategy="epoch",
                                       save_strategy="epoch",
+                                      save_total_limit=2,
                                       num_train_epochs=epochs,
                                       per_device_train_batch_size=BATCH_SIZE,
                                       per_device_eval_batch_size=BATCH_SIZE,
