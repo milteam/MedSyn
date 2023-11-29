@@ -119,7 +119,6 @@ def train_huggingface(train, val, pred, checkpoint, bert, epochs):
     trainer.train()
     model.eval()
     predictions = trainer.predict(dataset["test"])
-    print(predictions)
     predictions = np.argmax(predictions.predictions, axis=-1)
     test_df["predictions"] = predictions
     test_df.to_csv(pred, index=False)
