@@ -12,8 +12,8 @@ with open('scripts/downstream/data/RuMedNLI/train_ru_llama2_7b_ckpt_3.jsonl', 'w
                 continue
             f.write(json.dumps(
                     {"idx": str(uuid.uuid4()),
-                     "ru_sentence_1": row["input"],
-                     "ru_sentence_2": row["answer"],
+                     "ru_sentence1": row["input"],
+                     "ru_sentence2": row["answer"],
                      "gold_label": row["gold_label"]}, ensure_ascii=False
                 ))
             f.write("\n")
