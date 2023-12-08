@@ -1,10 +1,11 @@
 import os
+import random
+import shutil
 from typing import List
 
 import fire
 import torch
 import transformers
-from datasets import load_dataset
 from peft import (
     LoraConfig,
     get_peft_model,
@@ -13,8 +14,10 @@ from peft import (
 from transformers import AutoModelForCausalLM, DataCollatorForSeq2Seq, DataCollatorForTokenClassification
 from transformers import AutoTokenizer
 
-from utils.dataset import InstructDataset, ChatDataset
-from utils.utils import fix_tokenizer, fix_model, set_random_seed
+from utils.dataset import InstructDataset
+from utils.utils import fix_tokenizer, fix_model, set_random_seed, read_jsonl
+
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 def train(
@@ -27,10 +30,9 @@ def train(
         source_field: str = "input",  # in the template
         target_field: str = "output",  # in the template
         model_type: str = "causal",  # "causal" or "seq2seq"
-        mode: str = "instruct",  # "instruct" or "chat"
         max_source_tokens_count: int = 256,
         max_target_tokens_count: int = 512,
-        max_tokens_count: int = 2000,
+        max_tokens_count: int = 2048,
         train_sample_rate: float = 1.0,
         val_sample_rate: float = 1.0,
         only_target_loss: bool = True,
@@ -42,6 +44,7 @@ def train(
         val_set_size: int = 2000,
         warmup_steps: int = 100,
         seed: int = 42,
+        save_steps: int = 450,
         # lora hyperparams
         lora_r: int = 8,
         lora_alpha: int = 16,
@@ -126,9 +129,7 @@ def train(
 
     # Default model generation params
     model.config.num_beams = 5
-    if mode == "instruct":
-        max_tokens_count = max_target_tokens_count + max_source_tokens_count + 1
-    model.config.max_length = max_tokens_count if model_type == "causal" else max_target_tokens_count
+    model.config.max_length = max_tokens_count
 
     config = LoraConfig(
         r=lora_r,
@@ -139,11 +140,11 @@ def train(
         task_type="CAUSAL_LM",
     )
     model = get_peft_model(model, config)
+    model.print_trainable_parameters()  # Be more transparent about the % of trainable params.
 
-    if data_path.endswith(".json") or data_path.endswith(".jsonl"):
-        data = load_dataset("json", data_files=data_path)
-    else:
-        data = load_dataset(data_path)
+    data = read_jsonl(data_path)
+    random.shuffle(data)
+    print(data[0])
 
     if resume_from_checkpoint:
         # Check the available weights and load them
@@ -159,91 +160,55 @@ def train(
             )
         # The two files above have a different name depending on how they were saved, but are actually the same.
         if os.path.exists(checkpoint_name):
-            print(f"Restarting from {checkpoint_name}")
+            print(f"\nRestarting from {checkpoint_name}\n")
             adapters_weights = torch.load(checkpoint_name)
             set_peft_model_state_dict(model, adapters_weights)
         else:
-            print(f"Checkpoint {checkpoint_name} not found")
+            print(f"\nCheckpoint {checkpoint_name} not found\n")
 
-    model.print_trainable_parameters()  # Be more transparent about the % of trainable params.
+    if val_set_size > 0:
+        border = int(0.95 * len(data))
+        train_records = data[:border]
+        val_records = data[border:]
 
-    if mode == "instruct":
-        if val_set_size > 0:
-            train_val = data["train"].train_test_split(
-                test_size=val_set_size, shuffle=True, seed=seed
-            )
-            train_data = InstructDataset(
-                train_val["train"],
-                tokenizer,
-                max_source_tokens_count=max_source_tokens_count,
-                max_target_tokens_count=max_target_tokens_count,
-                sample_rate=train_sample_rate,
-                input_type=model_type,
-                template_path=template_path,
-                target_field=target_field,
-                source_field=source_field,
-                only_target_loss=only_target_loss
-            )
-            val_data = InstructDataset(
-                train_val["test"],
-                tokenizer,
-                max_source_tokens_count=max_source_tokens_count,
-                max_target_tokens_count=max_target_tokens_count,
-                sample_rate=val_sample_rate,
-                input_type=model_type,
-                template_path=template_path,
-                target_field=target_field,
-                source_field=source_field,
-                only_target_loss=only_target_loss
-            )
-        else:
-            train_data = InstructDataset(
-                data["train"],
-                tokenizer,
-                max_source_tokens_count=max_source_tokens_count,
-                max_target_tokens_count=max_target_tokens_count,
-                sample_rate=train_sample_rate,
-                input_type=model_type,
-                template_path=template_path,
-                target_field=target_field,
-                source_field=source_field,
-                only_target_loss=only_target_loss
-            )
-            val_data = None
-    elif mode == "chat":
-        if val_set_size > 0:
-            train_val = data["train"].train_test_split(
-                test_size=val_set_size, shuffle=True, seed=seed
-            )
-            train_data = ChatDataset(
-                train_val["train"],
-                tokenizer,
-                max_tokens_count=max_tokens_count,
-                sample_rate=train_sample_rate,
-                template_path=template_path,
-                only_target_loss=only_target_loss
-            )
-
-            val_data = ChatDataset(
-                train_val["test"],
-                tokenizer,
-                max_tokens_count=max_tokens_count,
-                sample_rate=train_sample_rate,
-                template_path=template_path,
-                only_target_loss=only_target_loss
-            )
-        else:
-            train_data = ChatDataset(
-                data["train"],
-                tokenizer,
-                max_tokens_count=max_tokens_count,
-                sample_rate=train_sample_rate,
-                template_path=template_path,
-                only_target_loss=only_target_loss
-            )
-            val_data = None
+        train_data = InstructDataset(
+            train_records,
+            tokenizer,
+            max_source_tokens_count=max_source_tokens_count,
+            max_target_tokens_count=max_target_tokens_count,
+            sample_rate=train_sample_rate,
+            input_type=model_type,
+            template_path=template_path,
+            target_field=target_field,
+            source_field=source_field,
+            only_target_loss=only_target_loss
+        )
+        val_data = InstructDataset(
+            val_records,
+            tokenizer,
+            max_source_tokens_count=max_source_tokens_count,
+            max_target_tokens_count=max_target_tokens_count,
+            sample_rate=val_sample_rate,
+            input_type=model_type,
+            template_path=template_path,
+            target_field=target_field,
+            source_field=source_field,
+            only_target_loss=only_target_loss
+        )
     else:
-        assert False
+        train_data = InstructDataset(
+            data,
+            tokenizer,
+            max_source_tokens_count=max_source_tokens_count,
+            max_target_tokens_count=max_target_tokens_count,
+            sample_rate=train_sample_rate,
+            input_type=model_type,
+            template_path=template_path,
+            target_field=target_field,
+            source_field=source_field,
+            only_target_loss=only_target_loss
+        )
+        val_data = None
 
     if not ddp and torch.cuda.device_count() > 1:
         # keeps Trainer from trying its own DataParallelism when more than 1 gpu is available
@@ -260,6 +225,7 @@ def train(
         train_dataset=train_data,
         eval_dataset=val_data,
         args=transformers.TrainingArguments(
+            lr_scheduler_type="cosine",
             per_device_train_batch_size=micro_batch_size,
             gradient_accumulation_steps=gradient_accumulation_steps,
             warmup_steps=warmup_steps,
@@ -269,11 +235,11 @@ def train(
             logging_steps=10,
             optim="adamw_torch",
             evaluation_strategy="steps" if val_set_size > 0 else "no",
-            save_strategy="steps",
-            eval_steps=10 if val_set_size > 0 else None,
-            save_steps=10,
+            save_strategy="epoch",
+            eval_steps=save_steps if val_set_size > 0 else None,
+            save_steps=save_steps,
             output_dir=output_dir,
-            save_total_limit=3,
+            save_total_limit=10,
             load_best_model_at_end=True if val_set_size > 0 else False,
             ddp_find_unused_parameters=False if ddp else None,
             group_by_length=group_by_length,
@@ -292,15 +258,17 @@ def train(
         "\n If there's a warning about missing keys above, please disregard :)"
     )
 
-    lora_ckpt_path = '/'.join(checkpoint_name.split('/')[:2])
-    gen_config_filepath = f'{lora_ckpt_path}/generation_config.json'
-    print('generation config file path', gen_config_filepath)
-    if os.path.exists(gen_config_filepath):
-        print('Copy `generation_config.json` to the output_dir')
-        shutil.copyfile(gen_config_filepath, f'{output_dir}/generation_config.json')
-    else:
-        print(f'`generation_config.json` is not copied to the `{output_dir}` folder. '
-              f'You may need to create `generation_config.json` manually')
+    if checkpoint_name is not None:
+        lora_ckpt_path = '/'.join(checkpoint_name.split('/')[:2])
+        gen_config_filepath = f'{lora_ckpt_path}/generation_config.json'
+        print('generation config file path', gen_config_filepath)
+        if os.path.exists(gen_config_filepath):
+            print('Copy `generation_config.json` to the output_dir')
+            shutil.copyfile(gen_config_filepath, f'{output_dir}/generation_config.json')
+        else:
+            print(f'`generation_config.json` is not copied to the `{output_dir}` folder. '
+                  f'You may need to create `generation_config.json` manually')
+
 
 if __name__ == "__main__":
     fire.Fire(train)
