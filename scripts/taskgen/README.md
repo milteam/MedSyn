@@ -27,3 +27,11 @@ docker run -it --rm -v $MEDTEXT:/data medtext/taskgen python make_taskgen.py \
     --symptoms-filepath /data/rumedtop3_wikimed_symptoms_equipped_with_rumedprime.json \
     --output-folder /data
 ```
+
+Генерация GPT4 по заданию:
+
+```sh
+docker run -it --rm -v $MEDTEXT:/data medtext/taskgen python generate_anamneses.py \
+    --taskgen-path $MEDTEXT/sampled_taskgen.csv \
+    --output-folder /data/.gpt4-results
+```

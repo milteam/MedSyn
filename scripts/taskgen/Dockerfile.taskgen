@@ -10,3 +10,4 @@ RUN pip3 install -r requirements.txt
 COPY filter_wikimed.py /
 COPY extract_symptoms.py /
 COPY make_taskgen.py /
+COPY generate_anamneses.py /
