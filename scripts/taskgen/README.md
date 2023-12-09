@@ -11,6 +11,13 @@ docker run --rm -v $MEDTEXT:/data medtext/taskgen python filter_wikimed.py \
     --output-filepath /data/rumedtop3_wikimed_manifestations.csv
 ```
 
+Извлечение симптомов с помощью ChatGPT:
+```sh
+docker run --rm -v $MEDTEXT:/data medtext/taskgen python extract_symptoms.py \
+    --input-filepath /data/rumedtop3_wikimed_manifestations.csv \
+    --output-folder /data/.extracted_symptoms \
+```
+
 Создание задания на генерацию:
 
 ```sh

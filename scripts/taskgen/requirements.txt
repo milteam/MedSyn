@@ -1,0 +1,4 @@
+click
+openai
+pandas
+natasha==1.6.0
