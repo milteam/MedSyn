@@ -21,3 +21,4 @@ scipy==1.11.1
 nltk==3.4.5
 sentence_transformers
 natasha==1.6.0
+xmltodict

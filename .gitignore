@@ -44,5 +44,4 @@ MANIFEST
 env/
 
 /results
-/data/benchmarks
-/data/wikimed
+/data/*

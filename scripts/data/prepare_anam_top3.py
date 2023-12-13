@@ -21,12 +21,15 @@ FULL_TRAIN_SET = 4690
     "--filtration-file",
     default="/home/gleb/VSProjects/projects/MIL/SberMedText/results/experiments/filtered.csv",
 )
-@click.option("--filtration", is_flag=True, show_default=True, default=True)
+@click.option("--filtration", is_flag=True, show_default=True, default=False)
 @click.option("--dev-path", default="data/benchmarks/RuMedTop3/dev_v1.jsonl")
 @click.option("--test-path", default="data/benchmarks/RuMedTop3/test_v1.jsonl")
 @click.option("--train-path", default="data/benchmarks/RuMedTop3/train_v1.jsonl")
-@click.option("--ratio", default=1)
+@click.option("--ratio", default=0.75)
 @click.option("--synthetic-only", is_flag=True, show_default=True, default=False)
+@click.option("--real-only", is_flag=True, show_default=True, default=True)
+@click.option("--samples-path", default="data/samples.csv")
+
 @click.option(
     "--path-to-save",
     default="data/benchmarks/RuMedTop3",
@@ -41,6 +44,8 @@ def generate_data(
     ratio: float,
     path_to_save: str,
     synthetic_only: bool,
+    real_only: bool,
+    samples_path: str,
     filtration_file: str,
     filtration: bool,
 ):
@@ -62,17 +67,33 @@ def generate_data(
     generated_samples = [sample for sample in generated_samples if ".json" in sample]
     common_samples = []
 
-    for single_file in tqdm(generated_samples):
-        if single_file != result_name:
-            with open(join(results_dir, single_file), "rb") as f:
-                samples = json.load(f)
-            for data in samples:
-                if filtration:
-                    if data["UID"] not in valid_uids:
-                        continue
-                icd = data["desease_code"].split(".")[0]
-                if icd in all_codes:
-                    common_samples.append(data)
+    if real_only:
+        samples = pd.read_csv(samples_path)
+        for idx in tqdm(samples.index):
+            code = samples.loc[idx]["gt"]
+            text = samples.loc[idx]["raw_visit_text"]
+            text = text.replace("\n", " ")
+            text = re.sub(" +", " ", text)
+            data = {
+                "desease_code": code, # full code
+                "response": text  # anamnesis
+            }
+            icd = data["desease_code"].split(".")[0]
+            if icd in all_codes:
+                common_samples.append(data)
+
+    else:
+        for single_file in tqdm(generated_samples):
+            if single_file != result_name:
+                with open(join(results_dir, single_file), "rb") as f:
+                    samples = json.load(f)
+                for data in samples:
+                    if filtration:
+                        if data["UID"] not in valid_uids:
+                            continue
+                    icd = data["desease_code"].split(".")[0]
+                    if icd in all_codes:
+                        common_samples.append(data)
 
     train_samples_aug = []
 
@@ -110,11 +131,13 @@ def generate_data(
             data = list(sample.values())
             train.loc[offset + idx] = data
 
-    data_name = (
-        "train_v1_synt_only_anam.jsonl"
-        if synthetic_only
-        else f"train_v1_aug_{ratio}_cons_anam_filt_{int(filtration)}.jsonl"
-    )
+
+    if synthetic_only:
+        data_name = f"train_v1_aug_{ratio}_cons_anam_filt_{int(filtration)}.jsonl"
+    elif real_only:
+        data_name = f"train_v1_aug_{ratio}_real_anam.jsonl"
+    else:
+        data_name = "train_v1_synt_only_anam.jsonl"
 
     train_codes = list(train["code"].unique())
     all_codes_new = set(dev_codes).union(set(test_codes)).union(set(train_codes))
