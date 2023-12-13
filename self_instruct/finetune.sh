@@ -1,28 +1,28 @@
-OUTPUT_DIR='ru_llama_7b_lora'
+OUTPUT_DIR='models/ru_llama_7b_lora'
 
-docker run --gpus '"device=4,5"' --shm-size 64g -p 7860:7860 --name alpaca \
+docker run --gpus '"device=0,1"' --name alpaca \
   -v "${HOME}"/.cache:/root/.cache \
-  -v "${HOME}"/SberMedText/self_instruct/models/:/workspace/models/ \
-  -v "${HOME}"/SberMedText/self_instruct/models/"$OUTPUT_DIR":/workspace/models/"$OUTPUT_DIR" \
-  -v "${HOME}"/SberMedText/self_instruct/data/:/workspace/data \
+  -v "${PWD}"/models/:/workspace/models/ \
+  -v "${PWD}"/models/"$OUTPUT_DIR":/workspace/models/"$OUTPUT_DIR" \
+  -v "${PWD}"/data/:/workspace/data \
+  -v "${PWD}"/:/workspace/ \
   --rm alpaca-lora \
-  python3.10 finetune.py \
-    --base_model='models/decapoda-llama-7b' \
-    --resume_from_checkpoint="models/ru_turbo_alpaca_7b" \
-    --only_target_loss=False \
-    --data_path='data/alpaca_med_data_10_5k.json' \
-    --template_path="templates/ru_alpaca.json" \
-    --model_type="causal" \
-    --mode="instruct" \
-    --num_epochs=3 \
-    --max_source_tokens_count=256 \
-    --max_target_tokens_count=512 \
-    --learning_rate=1e-5 \
-    --group_by_length \
-    --output_dir=models/"$OUTPUT_DIR" \
-    --lora_target_modules='[q_proj,v_proj]' \
-    --lora_r=8 \
-    --lora_alpha=16 \
-    --micro_batch_size=8 \
-    --warmup_steps=10 \
-    --val_set_size=0
+    python3.10 finetune.py \
+      --base_model="models/meta-llama-v2-7b" \
+      --resume_from_checkpoint="models/ru_saiga-v2_7b" \
+      --only_target_loss=True \
+      --data_path='data/all_data_merged_ift.jsonl' \
+      --template_path="templates/ru_alpaca.json" \
+      --model_type="causal" \
+      --num_epochs=5 \
+      --max_tokens_count=2048 \
+      --learning_rate=2e-5 \
+      --group_by_length \
+      --output_dir=models/"$OUTPUT_DIR" \
+      --lora_target_modules='[q_proj,v_proj,k_proj,o_proj]' \
+      --lora_r=16 \
+      --lora_alpha=16 \
+      --batch_size=256\
+      --micro_batch_size=4 \
+      --warmup_steps=100 \
+      --val_set_size=0

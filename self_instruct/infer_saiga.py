@@ -1,5 +1,6 @@
 import copy
 import json
+from typing import Optional
 
 import torch
 from tqdm import tqdm
@@ -9,7 +10,7 @@ from transformers import AutoTokenizer, GenerationConfig, AutoConfig, AutoModelF
 from peft import PeftConfig, PeftModel
 
 from utils.chat import Conversation
-from utils.utils import read_jsonl, gen_batch
+from utils.utils import read_jsonl, gen_batch, set_random_seed
 
 
 def generate(model, tokenizer, prompts, generation_config):
@@ -40,8 +41,12 @@ def generate_answers(
         input_path: str,
         output_path: str,
         batch_size: int = 1,
-        torch_dtype: str = None
+        torch_dtype: str = None,
+        seed: Optional[int] = None,
 ):
+    if seed is not None:
+        set_random_seed(seed)
+
     generation_config = GenerationConfig.from_pretrained(model_name)
     config = PeftConfig.from_pretrained(model_name)
     base_model_config = AutoConfig.from_pretrained(config.base_model_name_or_path)
@@ -53,7 +58,6 @@ def generate_answers(
 
     model = AutoModelForCausalLM.from_pretrained(
         config.base_model_name_or_path,
-        #base_model_name_or_path,
         torch_dtype=torch_dtype,
         load_in_8bit=False,
         device_map="auto"
