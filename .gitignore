@@ -44,7 +44,4 @@ MANIFEST
 env/
 
 /results
-/data/data_raw/*
-/data/benchmarks
-/data/wikimed
-/data/data_raw/medical_qa_ru_data.csv
+/data/*
