@@ -1,0 +1,13 @@
+FROM python:3.9-slim
+
+WORKDIR /
+
+RUN python3 -m pip install --upgrade pip
+
+COPY requirements.txt /
+RUN pip3 install -r requirements.txt
+
+COPY filter_wikimed.py /
+COPY extract_symptoms.py /
+COPY make_taskgen.py /
+COPY generate_anamneses.py /

@@ -1,0 +1,15 @@
+FROM nvcr.io/nvidia/pytorch:22.07-py3
+
+WORKDIR /
+
+COPY requirements.txt /
+
+RUN python3 -m pip install --upgrade pip
+RUN pip3 install -r requirements.txt
+
+COPY filter.py /
+
+ENV apt=0.7
+ENV srt=0.65
+
+CMD ["sh", "-c", "python3 filter.py -i ${input} -o ${output} -t ${taskgen} -apt ${apt} -srt ${srt}"]
