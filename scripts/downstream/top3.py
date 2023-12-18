@@ -17,5 +17,5 @@ def main(train, val, pred, checkpoint, bert, epochs):
     train_huggingface(train, val, pred, checkpoint, bert, epochs)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

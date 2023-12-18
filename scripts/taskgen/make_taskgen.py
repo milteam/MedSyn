@@ -28,7 +28,9 @@ def sample_symptoms(code: str) -> List[str]:
     l = len(its_symptoms)
     n_samples = min(l, np.random.randint(2, 6))
     if l > n_samples:
-        return leader, "|".join(sorted(np.random.choice(its_symptoms, n_samples, replace=False)))
+        return leader, "|".join(
+            sorted(np.random.choice(its_symptoms, n_samples, replace=False))
+        )
     else:
         return leader, "|".join(sorted(its_symptoms))
 
@@ -50,45 +52,51 @@ def shuffle_symptoms(s: str) -> stt:
 @click.option("--symptoms-filepath", required=True)
 @click.option("--output-folder", required=True)
 @click.option("--min-sample-words", default=30, type=int)
-def main(samples_filepath: str,
+def main(
+    samples_filepath: str,
     rumedtop3_filepath: str,
     symptoms_filepath: str,
     output_folder: str,
-    min_sample_words: int):
-
+    min_sample_words: int,
+):
     with open(symptoms_filepath, "rt") as file:
         icd2symptoms = json.load(file)
 
     rumed_df = pd.read_json(rumedtop3_filepath, lines=True)
     rumed_codes = set(rumed_df["code"].unique())
 
-    #region Фильтрация реальных сэмплов по числу слов
+    # region Фильтрация реальных сэмплов по числу слов
     samples = pd.read_csv(samples_filepath)
 
     samples["ICD10_CAT"] = samples["gt"].str[:3]
     samples["n_words"] = samples["raw_visit_text"].str.split().str.len()
 
-    filtered_samples = samples[samples["n_words"] >= min_sample_words].reset_index(drop=True).rename(columns={
-        "raw_visit_text": "anamnesis",
-        "gt": "ICD10_CODE"
-    })
-    #endregion
+    filtered_samples = (
+        samples[samples["n_words"] >= min_sample_words]
+        .reset_index(drop=True)
+        .rename(columns={"raw_visit_text": "anamnesis", "gt": "ICD10_CODE"})
+    )
+    # endregion
 
-    
     g = filtered_samples.groupby("ICD10_CAT").size()
     taskgen = pd.DataFrame({"ICD10_CAT": g.index, "size": g.values})
     taskgen = taskgen[taskgen["ICD10_CAT"].isin(rumed_codes)]
 
-    #region Обработка отсутствующих кодов в taskgen из RuMedTop3
+    # region Обработка отсутствующих кодов в taskgen из RuMedTop3
     lack_taskgen = set(rumed_codes) - set(taskgen["ICD10_CAT"].values)
 
     if not len(filtered_samples.loc[filtered_samples["ICD10_CAT"].isin(lack_taskgen)]):
-        print("\033[31mОбработка отсутствующих кодов в taskgen из RuMedTop3:", lack_taskgen)
+        print(
+            "\033[31mОбработка отсутствующих кодов в taskgen из RuMedTop3:",
+            lack_taskgen,
+        )
         print("Будет использован общий шаблон.\033[0m")
-        taskgen = pd.concat([taskgen, pd.DataFrame({"ICD10_CAT": list(lack_taskgen), "size": 1})])
+        taskgen = pd.concat(
+            [taskgen, pd.DataFrame({"ICD10_CAT": list(lack_taskgen), "size": 1})]
+        )
     taskgen["use_template"] = False
     taskgen.loc[taskgen["ICD10_CAT"].isin(lack_taskgen), "use_template"] = True
-    #endregion
+    # endregion
 
     calc_symptoms_mean = partial(get_symptoms_mean, icd2symptoms=icd2symptoms)
 
@@ -112,7 +120,7 @@ def main(samples_filepath: str,
     taskgen.sort_values(by="size", ascending=False, inplace=True)
     taskgen.to_csv(os.path.join(output_folder, "taskgen.csv"), index=False)
 
-    #region
+    # region
     np.random.seed(SEED)
 
     rumed_samples = filtered_samples[filtered_samples["ICD10_CAT"].isin(rumed_codes)]
@@ -127,16 +135,27 @@ def main(samples_filepath: str,
 
     dfs = []
     for e in taskgen.itertuples():
-        dfs.append(rumed_samples.loc[rumed_samples["ICD10_CAT"] == e.ICD10_CAT].sample(e.generate, replace=True, random_state=SEED))
-    #endregion
+        dfs.append(
+            rumed_samples.loc[rumed_samples["ICD10_CAT"] == e.ICD10_CAT].sample(
+                e.generate, replace=True, random_state=SEED
+            )
+        )
+    # endregion
 
     sampled_taskgen = pd.concat(dfs)
-    sampled_taskgen["anamnesis"] = sampled_taskgen["anamnesis"].str.replace("\n", " ", regex=False). \
-        str.replace("\r", "", regex=False). \
-        str.replace(r"\s{2,}", " ", regex=True)
+    sampled_taskgen["anamnesis"] = (
+        sampled_taskgen["anamnesis"]
+        .str.replace("\n", " ", regex=False)
+        .str.replace("\r", "", regex=False)
+        .str.replace(r"\s{2,}", " ", regex=True)
+    )
 
-    sampled_taskgen["symptoms_donor"], sampled_taskgen["sampled_symptoms"] = zip(*sampled_taskgen["ICD10_CAT"].map(sample_symptoms))
-    sampled_taskgen.drop(columns=["index", "hist", "word_count", "text_length"], inplace=True)
+    sampled_taskgen["symptoms_donor"], sampled_taskgen["sampled_symptoms"] = zip(
+        *sampled_taskgen["ICD10_CAT"].map(sample_symptoms)
+    )
+    sampled_taskgen.drop(
+        columns=["index", "hist", "word_count", "text_length"], inplace=True
+    )
     sampled_taskgen["duplicated"] = sampled_taskgen.duplicated(keep=False)
     sampled_taskgen["sample_id"] = [uuid.uuid4() for k in range(len(sampled_taskgen))]
 
@@ -146,9 +165,13 @@ def main(samples_filepath: str,
     assert all(sampled_taskgen["sampled_symptoms"].map(check))
 
     np.random.seed(SEED)
-    sampled_taskgen["shuffled_symptoms"] = sampled_taskgen["sampled_symptoms"].map(shuffle_symptoms)
+    sampled_taskgen["shuffled_symptoms"] = sampled_taskgen["sampled_symptoms"].map(
+        shuffle_symptoms
+    )
 
-    sampled_taskgen.to_csv(os.path.join(output_folder, "sampled_taskgen.csv"), index=False)
+    sampled_taskgen.to_csv(
+        os.path.join(output_folder, "sampled_taskgen.csv"), index=False
+    )
 
 
 if __name__ == "__main__":

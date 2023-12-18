@@ -1,8 +1,9 @@
-# taskgen
+# Generation task
 
-Фильтруем сведения о заболеваниях из wikimed по следующим критериям:
-- наличие клинических проявлений;
-- коды МКБ из wikimed пересекаются с кодами из RuMedTop3.
+Filter information about diseases from WikiMed based on the following criteria:
+
+* presence of clinical manifestations;
+* ICD codes from WikiMed intersect with codes from RuMedTop3."
 
 ```sh
 docker run --rm -v $MEDTEXT:/data medtext/taskgen python filter_wikimed.py \
@@ -11,14 +12,14 @@ docker run --rm -v $MEDTEXT:/data medtext/taskgen python filter_wikimed.py \
     --output-filepath /data/rumedtop3_wikimed_manifestations.csv
 ```
 
-Извлечение симптомов с помощью ChatGPT:
+Symptoms extraction with ChatGPT:
 ```sh
 docker run --rm -v $MEDTEXT:/data medtext/taskgen python extract_symptoms.py \
     --input-filepath /data/rumedtop3_wikimed_manifestations.csv \
     --output-folder /data/.extracted_symptoms \
 ```
 
-Создание задания на генерацию:
+Create a generation task:
 
 ```sh
 docker run -it --rm -v $MEDTEXT:/data medtext/taskgen python make_taskgen.py \
@@ -28,7 +29,7 @@ docker run -it --rm -v $MEDTEXT:/data medtext/taskgen python make_taskgen.py \
     --output-folder /data
 ```
 
-Генерация GPT4 по заданию:
+Generation with ChatGPT using task:
 
 ```sh
 docker run -it --rm -v $MEDTEXT:/data medtext/taskgen python generate_anamneses.py \

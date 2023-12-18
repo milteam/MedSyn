@@ -36,21 +36,28 @@ class DataHandler:
     """
 
     def __init__(
-            self,
-            tokenizer,
-            prompt_template: str = "prompts/medalpaca.json",
-            model_max_length: int = 256,
-            train_on_inputs: bool = True,
+        self,
+        tokenizer,
+        prompt_template: str = "prompts/medalpaca.json",
+        model_max_length: int = 256,
+        train_on_inputs: bool = True,
     ) -> None:
         if model_max_length > 2048:
-            logger.warn(f"{model_max_length} exceeds the max token length LLaMA was trained with.")
+            logger.warn(
+                f"{model_max_length} exceeds the max token length LLaMA was trained with."
+            )
         self.prompt_template = load_json(prompt_template)
         self.model_max_length = model_max_length
         self.train_on_inputs = train_on_inputs
         self.tokenizer = tokenizer
 
-    def tokenize(self, prompt: str, add_eos_token: bool = True, return_tensors: str = None, truncation: bool = True) -> \
-    Dict[str, list]:
+    def tokenize(
+        self,
+        prompt: str,
+        add_eos_token: bool = True,
+        return_tensors: str = None,
+        truncation: bool = True,
+    ) -> Dict[str, list]:
         """
         Tokenize the given prompt and optionally add an end-of-sequence (EOS) token.
 
@@ -82,9 +89,9 @@ class DataHandler:
             add_special_tokens=False,
         )
         if (
-                result["input_ids"][-1] != self.tokenizer.eos_token_id
-                and len(result["input_ids"]) < self.model_max_length
-                and add_eos_token
+            result["input_ids"][-1] != self.tokenizer.eos_token_id
+            and len(result["input_ids"]) < self.model_max_length
+            and add_eos_token
         ):
             result["input_ids"].append(self.tokenizer.eos_token_id)
             result["attention_mask"].append(1)
@@ -125,9 +132,12 @@ class DataHandler:
         tokenized_prompt: Dict = self.tokenize(prompt)
         if not self.train_on_inputs:
             user_prompt: str = self.generate_prompt(
-                instruction=data_point.get("instruction", ""), input=data_point.get("input", "")
+                instruction=data_point.get("instruction", ""),
+                input=data_point.get("input", ""),
             )
-            tokenized_user_prompt: Dict = self.tokenize(user_prompt, add_eos_token=False)
+            tokenized_user_prompt: Dict = self.tokenize(
+                user_prompt, add_eos_token=False
+            )
             user_prompt_len = len(tokenized_user_prompt["input_ids"])
             # mask out the inputs
             tokenized_prompt["labels"] = [
@@ -137,10 +147,10 @@ class DataHandler:
         return tokenized_prompt
 
     def generate_prompt(
-            self,
-            instruction: Optional[str] = None,
-            input: Optional[str] = None,
-            output: Optional[str] = None,
+        self,
+        instruction: Optional[str] = None,
+        input: Optional[str] = None,
+        output: Optional[str] = None,
     ) -> str:
         """
         Generates a prompt for the given instruction, input and output using the specified prompt
@@ -192,7 +202,9 @@ class DataHandler:
         """
 
         if not any([instruction, input, output]):
-            raise ValueError("At least one of `instruction`, `input`, `output` should be defined")
+            raise ValueError(
+                "At least one of `instruction`, `input`, `output` should be defined"
+            )
 
         prompt = (
             f'{self.prompt_template["primer"]}'

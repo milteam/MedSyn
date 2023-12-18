@@ -45,3 +45,8 @@ env/
 
 /results
 /data/*
+!/data/datasets
+!/data/benchmarks
+!/data/data_ift
+
+
