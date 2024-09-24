@@ -25,3 +25,26 @@ LLaMA-7b generation example:
 We provide a fine-tuned LLaMA-7b model checkpoint; it can be downloaded via the [link](https://drive.google.com/drive/folders/1nElrx-pG2WXxdjZW_oYx4tHsWvUkarJy?usp=sharing).
 
 ## Citation:
+```
+@InProceedings{10.1007/978-3-031-70381-2_14,
+author="Kumichev, Gleb
+and Blinov, Pavel
+and Kuzkina, Yulia
+and Goncharov, Vasily
+and Zubkova, Galina
+and Zenovkin, Nikolai
+and Goncharov, Aleksei
+and Savchenko, Andrey",
+editor="Bifet, Albert
+and Krilavi{\v{c}}ius, Tomas
+and Miliou, Ioanna
+and Nowaczyk, Slawomir",
+title="MedSyn: LLM-Based Synthetic Medical Text Generation Framework",
+booktitle="Machine Learning and Knowledge Discovery in Databases. Applied Data Science Track",
+year="2024",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="215--230",
+isbn="978-3-031-70381-2"
+}
+```
